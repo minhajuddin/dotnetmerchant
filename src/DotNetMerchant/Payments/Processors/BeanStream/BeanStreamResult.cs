@@ -28,12 +28,12 @@ using System;
 using System.Web;
 using DotNetMerchant.Extensions;
 
-namespace DotNetMerchant.Payments.Processors.BeanStream
+namespace DotNetMerchant.Payments.Processors.Beanstream
 {
     /// <summary>
-    /// The results for a transaction returning from <see cref="BeanStreamProcessor" />.
+    /// The results for a transaction returning from <see cref="BeanstreamProcessor" />.
     /// </summary>
-    public partial class BeanStreamResult : PaymentProcessorResultBase
+    public partial class BeanstreamResult : PaymentProcessorResultBase
     {
         //public string TransactionId { get; protected set; }
         //public TransactionStatus TransactionStatus { get; protected set; }

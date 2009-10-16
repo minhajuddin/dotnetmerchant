@@ -4,12 +4,12 @@ using DotNetMerchant.Billing.Model;
 using DotNetMerchant.Model;
 using DotNetMerchant.Payments;
 using DotNetMerchant.Payments.Model;
-using DotNetMerchant.Payments.Processors.BeanStream;
+using DotNetMerchant.Payments.Processors.Beanstream;
 using NUnit.Framework;
 
 namespace DotNetMerchant.UnitTests.Processors.Beanstream
 {
-    partial class BeanStreamTests
+    partial class BeanstreamTests
     {
         [Test]
         public void Can_create_standard_recurring_billing()
@@ -21,7 +21,7 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
             Assert.IsNotNull(result.RecurringBillingId);
         }
 
-        private BeanStreamResult CreateSubscription()
+        private BeanstreamResult CreateSubscription()
         {
             var subscription = new Subscription("Test Subscription",
                                                 DateTime.UtcNow,
@@ -33,7 +33,7 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
                                       DateTime.Now.Month,
                                       DateTime.Now.Year);
 
-            var beanstream = new BeanStreamProcessor(CredentialFirst, CredentialSecond, CredentialThird);
+            var beanstream = new BeanstreamProcessor(CredentialFirst, CredentialSecond, CredentialThird);
 
             //  Billing address is required for card transactions
             beanstream.SetBillingAddress(new Address
@@ -69,7 +69,7 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
                                       DateTime.Now.Month,
                                       DateTime.Now.Year);
             
-            var beanstream = new BeanStreamProcessor(CredentialFirst, 
+            var beanstream = new BeanstreamProcessor(CredentialFirst, 
                                                      CredentialSecond, 
                                                      CredentialThird);
             

@@ -28,15 +28,15 @@ using System;
 using DotNetMerchant.Model;
 using DotNetMerchant.Payments;
 using DotNetMerchant.Payments.Model;
-using DotNetMerchant.Payments.Processors.BeanStream;
+using DotNetMerchant.Payments.Processors.Beanstream;
 using NUnit.Framework;
 
 namespace DotNetMerchant.UnitTests.Processors.Beanstream
 {
     [TestFixture]
-    public partial class BeanStreamTests : ProcessorTestBase
+    public partial class BeanstreamTests : ProcessorTestBase
     {
-        public BeanStreamTests() : base("beanstream",
+        public BeanstreamTests() : base("beanstream",
                                         "merchantId",
                                         "username",
                                         "password")
@@ -56,7 +56,7 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
                                             expiryMonth,
                                             expiryYear);
             
-            var beanstream = new BeanStreamProcessor(CredentialFirst, 
+            var beanstream = new BeanstreamProcessor(CredentialFirst, 
                                                      CredentialSecond, 
                                                      CredentialThird);
 
@@ -90,7 +90,7 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
                                             "Paul Randal",
                                             expiryMonth, expiryYear);
 
-            var beanstream = new BeanStreamProcessor(CredentialFirst,
+            var beanstream = new BeanstreamProcessor(CredentialFirst,
                                                      CredentialSecond,
                                                      CredentialThird);
 
@@ -126,7 +126,7 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
                                             expiryMonth,
                                             expiryYear);
 
-            var beanstream = new BeanStreamProcessor(CredentialFirst,
+            var beanstream = new BeanstreamProcessor(CredentialFirst,
                                                      CredentialSecond,
                                                      CredentialThird);
 
@@ -163,7 +163,7 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
                                             expiryMonth,
                                             expiryYear);
 
-            var beanstream = new BeanStreamProcessor(CredentialFirst,
+            var beanstream = new BeanstreamProcessor(CredentialFirst,
                                                      CredentialSecond,
                                                      CredentialThird);
 

@@ -84,11 +84,11 @@
     <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Workflow.cs" />
     <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetResult.cs" />
     <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetResult.Maps.cs" />
-    <Compile Include="Payments\Processors\BeanStream\BeanStreamInfo.cs" />
-    <Compile Include="Payments\Processors\BeanStream\BeanStreamProcessor.cs" />
-    <Compile Include="Payments\Processors\BeanStream\BeanStreamProcessor.Workflow.cs" />
-    <Compile Include="Payments\Processors\BeanStream\BeanStreamResult.cs" />
-    <Compile Include="Payments\Processors\BeanStream\BeanStreamResult.Maps.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamInfo.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Workflow.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamResult.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamResult.Maps.cs" />
     <Compile Include="Payments\Processors\PaymentProcessorBase.cs" />
     <Compile Include="Payments\Processors\PaymentProcessorResultBase.cs" />
     <Compile Include="Payments\TransactionStatus.cs" />
@@ -144,7 +144,7 @@
     <None Include="Model\_Model.cd" />
     <None Include="Payments\Authentication\_Authentication.cd" />
     <None Include="Payments\Processors\AuthorizeNet\_AuthorizeNet.cd" />
-    <None Include="Payments\Processors\BeanStream\_Beanstream.cd" />
+    <None Include="Payments\Processors\Beanstream\_Beanstream.cd" />
     <None Include="Payments\Processors\_Processors.cd" />
     <None Include="Payments\Workflow\_Workflow.cd" />
   </ItemGroup>
@@ -187,7 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Specifications\ValidEmailSpecification.cs" />
-    <Compile Include="Payments\Processors\BeanStream\BeanStreamInfo.Recurring.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamInfo.Recurring.cs" />
     <Compile Include="Web\Attributes\BooleanToIntegerAttribute.cs" />
     <Compile Include="Web\Attributes\DateTimeFormatAttribute.cs" />
   </ItemGroup>

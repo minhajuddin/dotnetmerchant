@@ -26,9 +26,16 @@
 
 namespace DotNetMerchant.Payments
 {
+    /// <summary>
+    /// Payment info for credit card transactions.
+    /// </summary>
     public abstract class CreditCardPaymentInfoBase :
         ICreditCardPaymentInfo
     {
+        /// <summary>
+        /// Gets or sets the ship to email.
+        /// </summary>
+        /// <value>The ship to email.</value>
         public abstract string ShipToEmail { get; set; }
 
         #region ICreditCardPaymentInfo Members

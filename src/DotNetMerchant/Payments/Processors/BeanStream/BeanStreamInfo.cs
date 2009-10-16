@@ -27,13 +27,13 @@
 using System;
 using DotNetMerchant.Web.Attributes;
 
-namespace DotNetMerchant.Payments.Processors.BeanStream
+namespace DotNetMerchant.Payments.Processors.Beanstream
 {
     /// <summary>
-    /// A state management class for the <see cref="BeanStreamProcessor" />.
+    /// A state management class for the <see cref="BeanstreamProcessor" />.
     /// </summary>
     [Serializable]
-    public partial class BeanStreamInfo : CreditCardPaymentInfoBase
+    public partial class BeanstreamInfo : CreditCardPaymentInfoBase
     {
         /// <summary>
         /// Gets or sets the type of the transaction.

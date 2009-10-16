@@ -10,7 +10,7 @@ PayPal PayFlow Pro
 
 Canada
 -------------
-BeanStream (http://www.beanstream.com)			
+Beanstream (http://www.beanstream.com)			
 PayPal Website Payments Pro
 PayPal PayFlow Pro
 

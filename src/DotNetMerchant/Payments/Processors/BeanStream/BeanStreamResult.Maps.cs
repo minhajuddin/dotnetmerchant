@@ -26,9 +26,9 @@
 
 using System.Collections.Generic;
 
-namespace DotNetMerchant.Payments.Processors.BeanStream
+namespace DotNetMerchant.Payments.Processors.Beanstream
 {
-    partial class BeanStreamResult
+    partial class BeanstreamResult
     {
         private static readonly IDictionary<int, TransactionStatusReason> _reasonMap
             = new Dictionary<int, TransactionStatusReason>

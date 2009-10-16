@@ -32,6 +32,9 @@ using DotNetMerchant.Payments.Model;
 
 namespace DotNetMerchant.Payments
 {
+    /// <summary>
+    /// An external source that provides payment services.
+    /// </summary>
     public interface IPaymentProcessor
     {
         /// <summary>

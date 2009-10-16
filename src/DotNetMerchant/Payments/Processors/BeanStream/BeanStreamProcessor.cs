@@ -33,23 +33,23 @@ using DotNetMerchant.Payments.Authentication;
 using DotNetMerchant.Payments.Model;
 using DotNetMerchant.Payments.Workflow;
 
-namespace DotNetMerchant.Payments.Processors.BeanStream
+namespace DotNetMerchant.Payments.Processors.Beanstream
 {
     /// <summary>
     /// A robust Canadian-based payment gateway.
     /// </summary>
-    public partial class BeanStreamProcessor : 
-        PaymentProcessorBase<BeanStreamInfo, BeanStreamResult>,
-        ISupportCreditCards<BeanStreamResult>,
-        ISupportRecurringBilling<BeanStreamResult>
+    public partial class BeanstreamProcessor : 
+        PaymentProcessorBase<BeanstreamInfo, BeanstreamResult>,
+        ISupportCreditCards<BeanstreamResult>,
+        ISupportRecurringBilling<BeanstreamResult>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BeanStreamProcessor"/> class.
+        /// Initializes a new instance of the <see cref="BeanstreamProcessor"/> class.
         /// </summary>
         /// <param name="merchantId">The merchant id.</param>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
-        public BeanStreamProcessor(string merchantId,
+        public BeanstreamProcessor(string merchantId,
                                    string username,
                                    string password) :
                                        base(new AuthenticationTriplet
@@ -69,7 +69,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
 
         public override string DisplayName
         {
-            get { return "BeanStream"; }
+            get { return "Beanstream"; }
         }
 
         public override Uri HomepageUri

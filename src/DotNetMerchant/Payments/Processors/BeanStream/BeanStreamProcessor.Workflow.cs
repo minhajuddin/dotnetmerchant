@@ -31,11 +31,11 @@ using DotNetMerchant.Extensions;
 using DotNetMerchant.Model;
 using DotNetMerchant.Payments.Model;
 
-namespace DotNetMerchant.Payments.Processors.BeanStream
+namespace DotNetMerchant.Payments.Processors.Beanstream
 {
-    partial class BeanStreamProcessor
+    partial class BeanstreamProcessor
     {
-        #region ISupportCreditCards<BeanStreamResult> Members
+        #region ISupportCreditCards<BeanstreamResult> Members
         
         /// <summary>
         /// Purchases the specified amount.
@@ -43,7 +43,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         /// <param name="amount">The amount.</param>
         /// <param name="card">The card.</param>
         /// <returns></returns>
-        public BeanStreamResult Purchase(Money amount, CreditCard card)
+        public BeanstreamResult Purchase(Money amount, CreditCard card)
         {
             return RequestWithMoneyAndCard(CreditCardTransactionType.Purchase, amount, card);
         }
@@ -55,7 +55,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         /// <param name="card">The card.</param>
         /// <param name="transactionId">The transaction ID.</param>
         /// <returns></returns>
-        public BeanStreamResult Credit(Money amount, CreditCard card, string transactionId)
+        public BeanstreamResult Credit(Money amount, CreditCard card, string transactionId)
         {
             return RequestWithMoneyCardAndTransaction(CreditCardTransactionType.Credit, amount, card, transactionId);
         }
@@ -66,7 +66,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         /// <param name="amount">The amount.</param>
         /// <param name="card">The card.</param>
         /// <returns></returns>
-        public BeanStreamResult Authorize(Money amount, CreditCard card)
+        public BeanstreamResult Authorize(Money amount, CreditCard card)
         {
             return RequestWithMoneyAndCard(CreditCardTransactionType.PreAuthorization, amount, card);
         }
@@ -78,7 +78,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         /// <param name="card">The card.</param>
         /// <param name="transactionId">The transaction ID.</param>
         /// <returns></returns>
-        public BeanStreamResult Capture(Money amount, CreditCard card, string transactionId)
+        public BeanstreamResult Capture(Money amount, CreditCard card, string transactionId)
         {
             _info.AdjustmentId = transactionId;
             
@@ -90,7 +90,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         /// </summary>
         /// <param name="transactionId">The transaction ID.</param>
         /// <returns></returns>
-        public BeanStreamResult Void(string transactionId)
+        public BeanstreamResult Void(string transactionId)
         {
             _info.AdjustmentId = transactionId;
 
@@ -98,7 +98,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         }
         #endregion
 
-        #region ISupportRecurringBilling<BeanStreamResult> Members
+        #region ISupportRecurringBilling<BeanstreamResult> Members
 
         /// <summary>
         /// Gets the recurring billing production URI.
@@ -124,7 +124,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         /// <param name="subscription">The subscription.</param>
         /// <param name="card">The card.</param>
         /// <returns></returns>
-        public BeanStreamResult CreateRecurringBilling(Subscription subscription, CreditCard card)
+        public BeanstreamResult CreateRecurringBilling(Subscription subscription, CreditCard card)
         {
             ProcessWithMoneyAndCard(subscription.PaymentAmount, card, CreditCardTransactionType.Purchase);
 
@@ -167,9 +167,9 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
 
             // Creation uses non-recurring billing URI
             var result = Request(_info);
-            if (!result.RecurringBillingId.IsNullOrBlank())
+            if (result.RecurringBillingId.HasValue)
             {
-                subscription.ReferenceId = Convert.ToInt64(result.TransactionId);
+                subscription.ReferenceId = Convert.ToInt64(result.RecurringBillingId);
             }
 
             return result;
@@ -181,7 +181,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         /// <param name="subscription">The subscription.</param>
         /// <param name="card">The card.</param>
         /// <returns></returns>
-        public BeanStreamResult UpdateRecurringBilling(Subscription subscription, CreditCard card)
+        public BeanstreamResult UpdateRecurringBilling(Subscription subscription, CreditCard card)
         {
             _info.ServiceVersion = "1.0";
             _info.OperationType = "M";
@@ -199,7 +199,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
         /// </summary>
         /// <param name="subscription">The subscription.</param>
         /// <returns></returns>
-        public BeanStreamResult CancelRecurringBilling(Subscription subscription)
+        public BeanstreamResult CancelRecurringBilling(Subscription subscription)
         {
             _info.ServiceVersion = "1.0";
             _info.OperationType = "C";
@@ -208,7 +208,7 @@ namespace DotNetMerchant.Payments.Processors.BeanStream
             return SendRecurringBillingRequest();
         }
 
-        private BeanStreamResult SendRecurringBillingRequest()
+        private BeanstreamResult SendRecurringBillingRequest()
         {
             var uri = Mode == OperationMode.Production
                           ? RecurringBillingProductionUri

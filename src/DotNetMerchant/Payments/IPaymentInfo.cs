@@ -28,11 +28,33 @@ using DotNetMerchant.Web.Query;
 
 namespace DotNetMerchant.Payments
 {
+    /// <summary>
+    /// Details of a payment.
+    /// </summary>
     public interface IPaymentInfo : IWebQueryInfo
     {
+        /// <summary>
+        /// Gets or sets the payment method.
+        /// </summary>
+        /// <value>The payment method.</value>
         string PaymentMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the transaction.
+        /// </summary>
+        /// <value>The type of the transaction.</value>
         string TransactionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the transaction amount.
+        /// </summary>
+        /// <value>The transaction amount.</value>
         double TransactionAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the transaction id.
+        /// </summary>
+        /// <value>The transaction id.</value>
         string TransactionId { get; set; }
     }
 }

@@ -28,8 +28,15 @@ using System.Security;
 
 namespace DotNetMerchant.Payments
 {
+    /// <summary>
+    /// A method of making payments.
+    /// </summary>
     public interface IPaymentMethod
     {
+        /// <summary>
+        /// Gets the account number.
+        /// </summary>
+        /// <value>The account number.</value>
         SecureString AccountNumber { get; }
     }
 }

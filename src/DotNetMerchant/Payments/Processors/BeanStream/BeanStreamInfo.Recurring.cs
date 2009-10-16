@@ -27,9 +27,9 @@
 using System;
 using DotNetMerchant.Web.Attributes;
 
-namespace DotNetMerchant.Payments.Processors.BeanStream
+namespace DotNetMerchant.Payments.Processors.Beanstream
 {
-    partial class BeanStreamInfo
+    partial class BeanstreamInfo
     {
         /// <summary>
         /// Gets or sets a value indicating whether the transaction is a recurring billing request.
