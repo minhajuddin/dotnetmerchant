@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Struct Name="DotNetMerchant.Billing.Period">
+    <Position X="3.5" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAIAAQAAAAIAAABAEEAgCAAAAAgA=</HashCode>
+      <FileName>Period.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Frequency" />
+    </ShowAsAssociation>
+  </Struct>
+  <Interface Name="DotNetMerchant.Billing.IPeriodicPayment">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAQAAEAAAAAAAAAAAAAAAAAAAAAAAACI=</HashCode>
+      <FileName>IPeriodicPayment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Period" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="DotNetMerchant.Billing.IPayment">
+    <Position X="8.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IPayment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DotNetMerchant.Billing.IDelayedPayment">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDelayedPayment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DotNetMerchant.Billing.PeriodFrequency">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAgA=</HashCode>
+      <FileName>PeriodFrequency.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

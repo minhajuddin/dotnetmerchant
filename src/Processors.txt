@@ -1,0 +1,20 @@
+
+DotNetMerchant supports the following direct payment gateways:
+--------------------------------------------------------------------------------------------------
+
+United States									
+-------------									
+Authorize.net (http://authorize.net)	
+PayPal Website Payments Pro						
+PayPal PayFlow Pro							
+
+Canada
+-------------
+BeanStream (http://www.beanstream.com)			
+PayPal Website Payments Pro
+PayPal PayFlow Pro
+
+United Kingdom
+--------------
+PayPal Website Payments Pro
+PayPal PayFlow Pro

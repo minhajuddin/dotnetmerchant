@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="DotNetMerchant.Payments.Workflow.IPurchaseAuthorizationWorkflow&lt;T, K&gt;">
+    <Position X="1.25" Y="2.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAABAAAAACAAA=</HashCode>
+      <FileName>Payments\Workflow\IPurchaseAuthorizationWorkflow.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DotNetMerchant.Payments.Workflow.IPurchaseWorkflow&lt;T, K&gt;">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\Workflow\IPurchaseWorkflow.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DotNetMerchant.Payments.Workflow.ISupportBillingProfiles&lt;T&gt;">
+    <Position X="1.25" Y="5.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAIAAAgAAAAAAAAAAAAAAAAAAAggAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\Workflow\ISupportBillingProfiles.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DotNetMerchant.Payments.Workflow.ISupportRecurringBilling&lt;T&gt;">
+    <Position X="4.75" Y="5.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAEAAQAAAABAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Payments\Workflow\ISupportRecurringBilling.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DotNetMerchant.Payments.Workflow.ISupportCreditCards&lt;T&gt;" Collapsed="true">
+    <Position X="1.25" Y="4.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\Workflow\ISupportCreditCards.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DotNetMerchant.Payments.Workflow.ISupportDebitCards&lt;T&gt;" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\Workflow\ISupportDebitCards.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

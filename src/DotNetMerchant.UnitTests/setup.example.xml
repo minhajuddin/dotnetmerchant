@@ -1,0 +1,28 @@
+﻿<setup>
+  <processors>
+    <processor name="authorizedotnet">
+      <development>
+        <account>[LOGIN_ID]</account>
+        <password>[TRANSACTION_KEY]</password>
+      </development>
+      <production>
+        <account></account>
+        <password></password>
+      </production>
+    </processor>
+    <processor name="beanstream">
+      <development>
+        <account>[MERCHANT_ID]</account>
+        <username>[USERNAME]</username>
+        <password>[PASSWORD]</password>
+      </development>
+    </processor>
+    <processor name="paypal-webpaymentspro">
+      <development>
+        <account>[ACCOUNT]</account>
+        <password>[PASSWORD]</password>
+        <signature>[SIGNATURE]</signature>
+      </development>
+    </processor>
+  </processors>
+</setup>

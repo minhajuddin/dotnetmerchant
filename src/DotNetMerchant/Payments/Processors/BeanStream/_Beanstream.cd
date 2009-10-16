@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DotNetMerchant.Payments.Processors.BeanStream.BeanStreamProcessor">
+    <Position X="3.5" Y="1" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAVAFAAAAEAAQAABgAAEAAQKAAABIAABABAAAAACAAQ=</HashCode>
+      <FileName>Payments\Processors\BeanStream\BeanStreamProcessor.Workflow.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetMerchant.Payments.Processors.BeanStream.BeanStreamResult">
+    <Position X="0.5" Y="1" Width="2.5" />
+    <Members>
+      <Field Name="_reasonMap" Hidden="true" />
+      <Field Name="_statusMap" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAQABAAABAAAAAAABAAAAAA=</HashCode>
+      <FileName>Payments\Processors\BeanStream\BeanStreamResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetMerchant.Payments.Processors.BeanStream.BeanStreamInfo">
+    <Position X="0.5" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gCAFAQIAAF4AEwAQATACUAAABEACCEECgBIAEEYAEAA=</HashCode>
+      <FileName>Payments\Processors\BeanStream\BeanStreamInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

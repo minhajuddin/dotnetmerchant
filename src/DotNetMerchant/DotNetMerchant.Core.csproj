@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D178767B-0678-4C75-91E6-9F58AA37B36C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotNetMerchant</RootNamespace>
+    <AssemblyName>DotNetMerchant.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\DotNetMerchant.Core.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\DotNetMerchant.Core.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Payments\Model\Extensions\CreditCardExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\SecurityExtensions.cs" />
+    <Compile Include="Extensions\SpecificationExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Payments\Model\CreditCard.Cards.cs" />
+    <Compile Include="Payments\Model\CreditCard.cs" />
+    <Compile Include="Payments\Model\CreditCardType.cs" />
+    <Compile Include="Payments\IPaymentMethod.cs" />
+    <Compile Include="Payments\Model\DebitCard.cs" />
+    <Compile Include="Model\PaymentMethod.cs" />
+    <Compile Include="Payments\Model\Specifications\Cards\AmexSpecification.cs" />
+    <Compile Include="Payments\Model\Specifications\Cards\DiscoverSpecification.cs" />
+    <Compile Include="Payments\Model\Specifications\Cards\MasterCardSpecification.cs" />
+    <Compile Include="Payments\Model\Specifications\ValidCreditCardSpecification.cs" />
+    <Compile Include="Payments\Model\Specifications\Cards\VisaSpecification.cs" />
+    <Compile Include="Model\Money.cs" />
+    <Compile Include="Payments\Authentication\AuthenticationPair.cs" />
+    <Compile Include="Payments\Authentication\AuthenticationTriplet.cs" />
+    <Compile Include="Payments\Authentication\IAuthenticator.cs" />
+    <Compile Include="Payments\CreditCardPaymentInfoBase.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\RegionExtensions.cs" />
+    <Compile Include="Extensions\WebExtensions.cs" />
+    <Compile Include="Payments\ICreditCardPaymentInfo.cs" />
+    <Compile Include="Payments\IPaymentInfo.cs" />
+    <Compile Include="Payments\IPaymentProcessor.cs" />
+    <Compile Include="Payments\IPaymentProcessorResult.cs" />
+    <Compile Include="Payments\OperationMode.cs" />
+    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetInfo.cs" />
+    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.cs" />
+    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Workflow.cs" />
+    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetResult.cs" />
+    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetResult.Maps.cs" />
+    <Compile Include="Payments\Processors\BeanStream\BeanStreamInfo.cs" />
+    <Compile Include="Payments\Processors\BeanStream\BeanStreamProcessor.cs" />
+    <Compile Include="Payments\Processors\BeanStream\BeanStreamProcessor.Workflow.cs" />
+    <Compile Include="Payments\Processors\BeanStream\BeanStreamResult.cs" />
+    <Compile Include="Payments\Processors\BeanStream\BeanStreamResult.Maps.cs" />
+    <Compile Include="Payments\Processors\PaymentProcessorBase.cs" />
+    <Compile Include="Payments\Processors\PaymentProcessorResultBase.cs" />
+    <Compile Include="Payments\TransactionStatus.cs" />
+    <Compile Include="Payments\TransactionStatusReason.cs" />
+    <Compile Include="Payments\CreditCardTransactionType.cs" />
+    <Compile Include="Payments\Workflow\ISupportCreditCards.cs" />
+    <Compile Include="Payments\Workflow\ISupportDebitCards.cs" />
+    <Compile Include="Payments\Workflow\IPurchaseAuthorizationWorkflow.cs" />
+    <Compile Include="Payments\Workflow\IPurchaseWorkflow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specifications\AndSpecification.cs" />
+    <Compile Include="Specifications\CompositeSpecificationBase.cs" />
+    <Compile Include="Specifications\ISpecification.cs" />
+    <Compile Include="Specifications\NotSpecification.cs" />
+    <Compile Include="Specifications\OrSpecification.cs" />
+    <Compile Include="Specifications\SpecificationBase.cs" />
+    <Compile Include="Web\Attributes\HeaderAttribute.cs" />
+    <Compile Include="Web\Attributes\NamedAttribute.cs" />
+    <Compile Include="Web\Attributes\ParameterAttribute.cs" />
+    <Compile Include="Web\Attributes\UserAgentAttribute.cs" />
+    <Compile Include="Web\Caching\AspNetCache.cs" />
+    <Compile Include="Web\Caching\CacheFactory.cs" />
+    <Compile Include="Web\Caching\IClientCache.cs" />
+    <Compile Include="Web\Caching\IWebCache.cs" />
+    <Compile Include="Web\Extensions\CollectionExtensions.cs" />
+    <Compile Include="Web\Extensions\ReflectionExtensions.cs" />
+    <Compile Include="Web\Extensions\RegexExtensions.cs" />
+    <Compile Include="Web\Extensions\StringExtensions.cs" />
+    <Compile Include="Web\Extensions\WebExtensions.cs" />
+    <Compile Include="Web\HttpPostParameter.cs" />
+    <Compile Include="Web\HttpPostParameterType.cs" />
+    <Compile Include="Web\IWebQueryClient.cs" />
+    <Compile Include="Web\Pair.cs" />
+    <Compile Include="Web\Query\Basic\BasicAuthWebQuery.cs" />
+    <Compile Include="Web\Query\IWebQueryInfo.cs" />
+    <Compile Include="Web\Query\WebQueryBase.cs" />
+    <Compile Include="Web\Triplet.cs" />
+    <Compile Include="Web\WebCallback.cs" />
+    <Compile Include="Web\WebFormat.cs" />
+    <Compile Include="Web\WebMethod.cs" />
+    <Compile Include="Web\WebOperation.cs" />
+    <Compile Include="Web\WebParameter.cs" />
+    <Compile Include="Web\WebParameterCollection.cs" />
+    <Compile Include="Web\WebQueryClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web\WebQueryRequestEventArgs.cs" />
+    <Compile Include="Web\WebQueryResponseEventArgs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Billing\Model\_Model.cd" />
+    <None Include="Billing\_Billing.cd" />
+    <None Include="Model\_Model.cd" />
+    <None Include="Payments\Authentication\_Authentication.cd" />
+    <None Include="Payments\Processors\AuthorizeNet\_AuthorizeNet.cd" />
+    <None Include="Payments\Processors\BeanStream\_Beanstream.cd" />
+    <None Include="Payments\Processors\_Processors.cd" />
+    <None Include="Payments\Workflow\_Workflow.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Billing\IDelayedPayment.cs" />
+    <Compile Include="Billing\IPayment.cs" />
+    <Compile Include="Billing\IPeriodicPayment.cs" />
+    <Compile Include="Billing\Model\BillingProfile.cs" />
+    <Compile Include="Billing\Model\Subscription.cs" />
+    <Compile Include="Billing\Period.cs" />
+    <Compile Include="Billing\PeriodFrequency.cs" />
+    <Compile Include="Extensions\MathExtensions.cs" />
+    <Compile Include="Extensions\TimeExtensions.cs" />
+    <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Identity.cs" />
+    <Compile Include="Payments\Model\AmericanCheck.cs" />
+    <Compile Include="Payments\Model\CheckBase.cs" />
+    <Compile Include="Payments\Model\CanadianCheck.cs" />
+    <Compile Include="Model\CurrencyInfo.cs" />
+    <Compile Include="Model\CurrencyInfo.Entries.cs" />
+    <Compile Include="Model\Currency.cs" />
+    <Compile Include="Model\IEntity.cs" />
+    <Compile Include="Model\Money.Operators.cs" />
+    <Compile Include="Payments\Model\Specifications\CreditCardSpecification.cs" />
+    <Compile Include="Payments\Model\Specifications\Cards\DinersClubSpecification.cs" />
+    <Compile Include="Payments\Model\Specifications\Cards\JcbSpecification.cs" />
+    <Compile Include="DateInterval.cs" />
+    <Compile Include="DateSpan.cs" />
+    <Compile Include="Payments\RecurringBillingTransactionType.cs" />
+    <Compile Include="Payments\Workflow\ISupportBillingProfiles.cs" />
+    <Compile Include="Payments\Workflow\ISupportRecurringBilling.cs" />
+    <Compile Include="Web\Attributes\RequiredAttribute.cs" />
+    <Compile Include="Web\Attributes\SpecificationAttribute.cs" />
+    <Compile Include="Web\Attributes\WebEntityAttribute.cs" />
+    <Compile Include="Web\Extensions\SerializationExtensions.cs" />
+    <Compile Include="Web\Query\WebEntity.cs" />
+    <Compile Include="Web\Query\XmlQueryInfo.cs" />
+    <Compile Include="Web\Xml\XmlWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Specifications\ValidEmailSpecification.cs" />
+    <Compile Include="Payments\Processors\BeanStream\BeanStreamInfo.Recurring.cs" />
+    <Compile Include="Web\Attributes\BooleanToIntegerAttribute.cs" />
+    <Compile Include="Web\Attributes\DateTimeFormatAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Billing\Model\Extensions\" />
+    <Folder Include="Billing\Model\Specifications\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

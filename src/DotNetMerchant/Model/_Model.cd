@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DotNetMerchant.Model.CreditCard">
+    <Position X="3.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAFAAAoAAIAABAAAAwAAAkAgAgAEAAAAQAAIAEAAAA=</HashCode>
+      <FileName>Model\CreditCard.Cards.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetMerchant.Model.DebitCard">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\DebitCard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetMerchant.Model.CheckBase">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CheckBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetMerchant.Model.AmericanCheck" Collapsed="true">
+    <Position X="6.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Model\AmericanCheck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetMerchant.Model.CanadianCheck" Collapsed="true">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CanadianCheck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="DotNetMerchant.Model.Money">
+    <Position X="1.25" Y="0.75" Width="1.75" />
+    <Members>
+      <Field Name="_units" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+      <Method Name="implicit operator double" Hidden="true" />
+      <Method Name="implicit operator long" Hidden="true" />
+      <Method Name="implicit operator Money" Hidden="true" />
+      <Method Name="operator -" Hidden="true" />
+      <Method Name="operator !=" Hidden="true" />
+      <Method Name="operator +" Hidden="true" />
+      <Method Name="operator &lt;" Hidden="true" />
+      <Method Name="operator &lt;=" Hidden="true" />
+      <Method Name="operator ==" Hidden="true" />
+      <Method Name="operator &gt;" Hidden="true" />
+      <Method Name="operator &gt;=" Hidden="true" />
+      <Method Name="ScaleDown" Hidden="true" />
+      <Method Name="ScaleUp" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAACACAACCAAAAQE4AXIBgAAAAAACIAAAhAAAABAByI=</HashCode>
+      <FileName>Model\Money.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Struct>
+  <Interface Name="DotNetMerchant.Payments.IPaymentMethod">
+    <Position X="1.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\IPaymentMethod.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DotNetMerchant.Model.CreditCardType">
+    <Position X="1.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAEAAAABg=</HashCode>
+      <FileName>Model\CreditCardType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

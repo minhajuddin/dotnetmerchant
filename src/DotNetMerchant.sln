@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Core", "DotNetMerchant\DotNetMerchant.Core.csproj", "{D178767B-0678-4C75-91E6-9F58AA37B36C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Core.UnitTests", "DotNetMerchant.UnitTests\DotNetMerchant.Core.UnitTests.csproj", "{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{5639AD0D-6A46-45C1-A6D7-1D428A8A0452}"
+	ProjectSection(SolutionItems) = preProject
+		License.txt = License.txt
+		Processors.txt = Processors.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D178767B-0678-4C75-91E6-9F58AA37B36C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D178767B-0678-4C75-91E6-9F58AA37B36C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D178767B-0678-4C75-91E6-9F58AA37B36C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D178767B-0678-4C75-91E6-9F58AA37B36C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
