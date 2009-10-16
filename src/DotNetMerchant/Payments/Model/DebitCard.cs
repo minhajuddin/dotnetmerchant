@@ -29,11 +29,18 @@ using System.Security;
 
 namespace DotNetMerchant.Payments.Model
 {
+    /// <summary>
+    /// A debit card.
+    /// </summary>
     [Serializable]
     public class DebitCard : IPaymentMethod
     {
         #region IPaymentMethod Members
 
+        /// <summary>
+        /// Gets the account number.
+        /// </summary>
+        /// <value>The account number.</value>
         public SecureString AccountNumber
         {
             get { throw new NotImplementedException(); }

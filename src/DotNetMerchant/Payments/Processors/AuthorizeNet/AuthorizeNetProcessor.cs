@@ -35,66 +35,112 @@ using DotNetMerchant.Payments.Workflow;
 
 namespace DotNetMerchant.Payments.Processors.AuthorizeNet
 {
+    /// <summary>
+    /// A US-based payment gateway.
+    /// </summary>
     public partial class AuthorizeNetProcessor : 
         PaymentProcessorBase<AuthorizeNetInfo, AuthorizeNetResult>,
         ISupportCreditCards<AuthorizeNetResult>,
         ISupportRecurringBilling<AuthorizeNetResult>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthorizeNetProcessor"/> class.
+        /// </summary>
+        /// <param name="loginId">The login id.</param>
+        /// <param name="transactionKey">The transaction key.</param>
         public AuthorizeNetProcessor(string loginId, string transactionKey) :
             base(new AuthenticationPair {First = loginId, Second = transactionKey})
         {
         }
 
+        /// <summary>
+        /// The identifying name for this payment processor. Used to match configuration values.
+        /// </summary>
         public override string Name
         {
             get { return "authorizedotnet"; }
         }
 
+        /// <summary>
+        /// The friendly name for this payment processor.
+        /// </summary>
         public override string DisplayName
         {
             get { return "Authorize.net"; }
         }
 
+        /// <summary>
+        /// The homepage for this payment processor or API.
+        /// </summary>
         public override Uri HomepageUri
         {
             get { return "http://authorize.net".Uri(); }
         }
 
+        /// <summary>
+        /// The regions this payment processor will support.
+        /// </summary>
         public override IEnumerable<RegionInfo> SupportedRegions
         {
             get { return "US".Region().AsEnumerable(); }
         }
 
+        /// <summary>
+        /// The credit cards this payment processor can support. 
+        /// Express multiple types using enum flag syntax.
+        /// </summary>
         public override IEnumerable<CreditCardType> SupportedCreditCardTypes
         {
             get { return _visa.And(_masterCard).And(_amex).And(_discover); }
         }
 
+        /// <summary>
+        /// The service endpoint used for secure transactions.
+        /// </summary>
         public override Uri ProductionUri
         {
             get { return "https://secure.authorize.net/gateway/transact.dll".Uri(); }
         }
 
+        /// <summary>
+        /// The service endpoint used for testing transactions, if available.
+        /// </summary>
         public override Uri DevelopmentUri
         {
             get { return "https://test.authorize.net/gateway/transact.dll".Uri(); }
         }
 
+        /// <summary>
+        /// Gets the recurring billing production URI.
+        /// </summary>
+        /// <value>The recurring billing production URI.</value>
         public Uri RecurringBillingProductionUri
         {
             get { return "https://api.authorize.net/xml/v1/request.api".Uri(); }
         }
 
+        /// <summary>
+        /// Gets the recurring billing development URI.
+        /// </summary>
+        /// <value>The recurring billing development URI.</value>
         public Uri RecurringBillingDevelopmentUri
         {
             get { return "https://apitest.authorize.net/xml/v1/request.api".Uri(); }
         }
 
+        /// <summary>
+        /// Sets the invoice number.
+        /// </summary>
+        /// <param name="number">The number.</param>
         public void SetInvoiceNumber(string number)
         {
             _info.InvoiceNumber = number;
         }
 
+        /// <summary>
+        /// Sets the purchase order number.
+        /// </summary>
+        /// <param name="number">The number.</param>
         public void SetPurchaseOrderNumber(string number)
         {
             _info.PurchaseOrderNumber = number;

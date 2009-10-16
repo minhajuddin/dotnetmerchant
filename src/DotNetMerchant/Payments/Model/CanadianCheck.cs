@@ -26,9 +26,21 @@
 
 namespace DotNetMerchant.Payments.Model
 {
+    /// <summary>
+    /// A check from a Canadian bank.
+    /// </summary>
     public class CanadianCheck : CheckBase
     {
+        /// <summary>
+        /// Gets or sets the institution number.
+        /// </summary>
+        /// <value>The institution number.</value>
         public int InstitutionNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the transit number.
+        /// </summary>
+        /// <value>The transit number.</value>
         public int TransitNumber { get; set; }
     }
 }

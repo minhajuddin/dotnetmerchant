@@ -28,7 +28,7 @@ using System.Text.RegularExpressions;
 
 namespace DotNetMerchant.Web.Extensions
 {
-    public static class RegexExtensions
+    internal static class RegexExtensions
     {
         public static bool Matches(this string input, string pattern)
         {

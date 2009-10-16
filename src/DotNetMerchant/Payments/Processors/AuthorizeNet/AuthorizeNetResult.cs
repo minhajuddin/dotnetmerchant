@@ -31,6 +31,9 @@ using DotNetMerchant.Extensions;
 
 namespace DotNetMerchant.Payments.Processors.AuthorizeNet
 {
+    /// <summary>
+    /// The results for a transaction returning from <see cref="AuthorizeNetProcessor" />.
+    /// </summary>
     public partial class AuthorizeNetResult : PaymentProcessorResultBase
     {
         /*
@@ -40,7 +43,16 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
         TransactionStatusReason TransactionStatusReason { get; }
         */
 
+        /// <summary>
+        /// Gets or sets the reason text.
+        /// </summary>
+        /// <value>The reason text.</value>
         public string ReasonText { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the reason code.
+        /// </summary>
+        /// <value>The reason code.</value>
         public string ReasonCode { get; private set; }
 
         public override void PopulateFromResponse(string response)

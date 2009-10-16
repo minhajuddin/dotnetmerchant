@@ -26,13 +26,12 @@
 
 using System;
 using DotNetMerchant.Extensions;
-using DotNetMerchant.Payments.Model;
 using DotNetMerchant.Payments.Model.Specifications;
 using DotNetMerchant.Payments.Model.Specifications.Cards;
 
-namespace DotNetMerchant.Model.Extensions
+namespace DotNetMerchant.Payments.Model.Extensions
 {
-    public static class CreditCardExtensions
+    internal static class CreditCardExtensions
     {
         /// <summary>
         /// Determines if a given credit card is valid.

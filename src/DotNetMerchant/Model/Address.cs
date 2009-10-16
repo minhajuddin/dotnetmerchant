@@ -34,15 +34,64 @@ namespace DotNetMerchant.Model
     [Serializable]
     public class Address
     {
+        /// <summary>
+        /// Gets or sets the first name.
+        /// </summary>
+        /// <value>The first name.</value>
         public string FirstName { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the last name.
+        /// </summary>
+        /// <value>The last name.</value>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email.
+        /// </summary>
+        /// <value>The email.</value>
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets the company.
+        /// </summary>
+        /// <value>The company.</value>
         public string Company { get; set; }
+
+        /// <summary>
+        /// Gets or sets the phone.
+        /// </summary>
+        /// <value>The phone.</value>
         public string Phone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the address line.
+        /// </summary>
+        /// <value>The address line.</value>
         public string AddressLine { get; set; }
+
+        /// <summary>
+        /// Gets or sets the city.
+        /// </summary>
+        /// <value>The city.</value>
         public string City { get; set; }
+
+        /// <summary>
+        /// Gets or sets the state.
+        /// </summary>
+        /// <value>The state.</value>
         public string State { get; set; }
+
+        /// <summary>
+        /// Gets or sets the zip.
+        /// </summary>
+        /// <value>The zip.</value>
         public string Zip { get; set; }
+
+        /// <summary>
+        /// Gets or sets the country.
+        /// </summary>
+        /// <value>The country.</value>
         public string Country { get; set; }
     }
 }

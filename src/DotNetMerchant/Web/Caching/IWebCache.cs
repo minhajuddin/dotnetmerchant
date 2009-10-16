@@ -34,25 +34,94 @@ namespace DotNetMerchant.Web.Caching
     /// </summary>
     public interface IWebCache : IClientCache
     {
+        /// <summary>
+        /// Adds the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="dependency">The dependency.</param>
+        /// <param name="absoluteExpiration">The absolute expiration.</param>
+        /// <param name="slidingExpiration">The sliding expiration.</param>
+        /// <param name="priority">The priority.</param>
+        /// <param name="removedCallback">The removed callback.</param>
         void Add(string key, object value, CacheDependency dependency, DateTime absoluteExpiration,
                  TimeSpan slidingExpiration, CacheItemPriority priority, CacheItemRemovedCallback removedCallback);
 
+        /// <summary>
+        /// Inserts the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="dependencies">The dependencies.</params>
         void Insert(string key, object value, CacheDependency dependencies);
+
+        /// <summary>
+        /// Inserts the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="dependencies">The dependencies.</param>
+        /// <param name="absoluteExpiration">The absolute expiration.</param>
         void Insert(string key, object value, CacheDependency dependencies, DateTime absoluteExpiration);
+
+        /// <summary>
+        /// Inserts the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="dependencies">The dependencies.</param>
+        /// <param name="slidingExpiration">The sliding expiration.</param>
         void Insert(string key, object value, CacheDependency dependencies, TimeSpan slidingExpiration);
 
+        /// <summary>
+        /// Inserts the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="dependencies">The dependencies.</param>
+        /// <param name="slidingExpiration">The sliding expiration.</param>
+        /// <param name="priority">The priority.</param>
+        /// <param name="onRemoveCallback">The on remove callback.</param>
         void Insert(string key, object value, CacheDependency dependencies, TimeSpan slidingExpiration,
                     CacheItemPriority priority, CacheItemRemovedCallback onRemoveCallback);
 
+        /// <summary>
+        /// Inserts the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="dependencies">The dependencies.</param>
+        /// <param name="absoluteExpiration">The absolute expiration.</param>
+        /// <param name="priority">The priority.</param>
+        /// <param name="onRemoveCallback">The on remove callback.</param>
         void Insert(string key, object value, CacheDependency dependencies, DateTime absoluteExpiration,
                     CacheItemPriority priority, CacheItemRemovedCallback onRemoveCallback);
 
+        /// <summary>
+        /// Inserts the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="dependencies">The dependencies.</param>
+        /// <param name="slidingExpiration">The sliding expiration.</param>
+        /// <param name="onUpdateCallback">The on update callback.</param>
         void Insert(string key, object value, CacheDependency dependencies, TimeSpan slidingExpiration,
                     CacheItemUpdateCallback onUpdateCallback);
 
+        /// <summary>
+        /// Inserts the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="dependencies">The dependencies.</param>
+        /// <param name="absoluteExpiration">The absolute expiration.</param>
+        /// <param name="onUpdateCallback">The on update callback.</param>
         void Insert(string key, object value, CacheDependency dependencies, DateTime absoluteExpiration,
                     CacheItemUpdateCallback onUpdateCallback);
 
+        /// <summary>
+        /// Clears this instance.
+        /// </summary>
         void Clear();
     }
 }

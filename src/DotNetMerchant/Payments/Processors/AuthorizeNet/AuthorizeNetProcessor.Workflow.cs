@@ -39,21 +39,45 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
     {
         #region ISupportCreditCards<AuthorizeNetResult> Members
 
+        /// <summary>
+        /// Authorizes the specified amount.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <returns></returns>
         public AuthorizeNetResult Authorize(Money amount, CreditCard card)
         {
             return RequestWithMoneyAndCard(CreditCardTransactionType.PreAuthorization, amount, card);
         }
 
+        /// <summary>
+        /// Captures the specified amount.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <param name="transactionId">The transaction id.</param>
+        /// <returns></returns>
         public AuthorizeNetResult Capture(Money amount, CreditCard card, string transactionId)
         {
             return RequestWithMoneyCardAndTransaction(CreditCardTransactionType.Capture, amount, card, transactionId);
         }
 
+        /// <summary>
+        /// Purchases the specified amount.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <returns></returns>
         public AuthorizeNetResult Purchase(Money amount, CreditCard card)
         {
             return RequestWithMoneyAndCard(CreditCardTransactionType.Purchase, amount, card);
         }
 
+        /// <summary>
+        /// Voids the specified transaction id.
+        /// </summary>
+        /// <param name="transactionId">The transaction id.</param>
+        /// <returns></returns>
         public AuthorizeNetResult Void(string transactionId)
         {
             ValidateTransaction(transactionId);
@@ -64,6 +88,13 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             return Request(_info);
         }
 
+        /// <summary>
+        /// Credits the specified amount.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <param name="transactionId">The transaction id.</param>
+        /// <returns></returns>
         public AuthorizeNetResult Credit(Money amount, CreditCard card, string transactionId)
         {
             ValidateAmountTransaction(amount, transactionId);
@@ -80,6 +111,12 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
 
         #region ISupportRecurringBilling<AuthorizeNetResult> Members
 
+        /// <summary>
+        /// Creates the recurring billing.
+        /// </summary>
+        /// <param name="subscription">The subscription.</param>
+        /// <param name="card">The card.</param>
+        /// <returns></returns>
         public AuthorizeNetResult CreateRecurringBilling(Subscription subscription, CreditCard card)
         {
             ValidateSubscription(subscription);
@@ -98,7 +135,13 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
 
             return result;
         }
-        
+
+        /// <summary>
+        /// Updates the recurring billing.
+        /// </summary>
+        /// <param name="subscription">The subscription.</param>
+        /// <param name="card">The card.</param>
+        /// <returns></returns>
         public AuthorizeNetResult UpdateRecurringBilling(Subscription subscription, CreditCard card)
         {
             ValidateSubscription(subscription);
@@ -112,6 +155,11 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             return SendRecurringBillingRequest(document);
         }
 
+        /// <summary>
+        /// Cancels the recurring billing.
+        /// </summary>
+        /// <param name="subscription">The subscription.</param>
+        /// <returns></returns>
         public AuthorizeNetResult CancelRecurringBilling(Subscription subscription)
         {
             var document = BuildRecurringBillingRequest(RecurringBillingTransactionType.Cancel,
@@ -174,8 +222,7 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             {
                 return null;
             }
-            
-            
+
             var unit = subscription.Period.Frequency == PeriodFrequency.Months ? "months" : "days";
 
             int length;

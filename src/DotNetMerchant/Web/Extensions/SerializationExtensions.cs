@@ -29,10 +29,8 @@ using System.Xml.Serialization;
 
 namespace DotNetMerchant.Web.Extensions
 {
-    public static class SerializationExtensions
+    internal static class SerializationExtensions
     {
-        private static readonly XDeclaration _header = new XDeclaration("1.0", "utf-8", "yes");
-
         public static XDocument ToXml<T>(this T instance)
         {
             var document = new XDocument();
@@ -58,7 +56,6 @@ namespace DotNetMerchant.Web.Extensions
                 return document;
             }
         }
-
 
         public static T FromXml<T>(this XDocument source) where T : class
         {

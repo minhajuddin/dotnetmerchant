@@ -37,14 +37,41 @@ namespace DotNetMerchant.Model
     [Serializable]
     public enum Currency : ushort
     {
+        /// <summary>
+        /// USD
+        /// </summary>
         USD = 840,
+        /// <summary>
+        /// CAD
+        /// </summary>
         CAD = 124,
+        /// <summary>
+        /// EUR
+        /// </summary>
         EUR = 978,
+        /// <summary>
+        /// AUD
+        /// </summary>
         AUD = 036,
+        /// <summary>
+        /// GBP
+        /// </summary>
         GBP = 826,
+        /// <summary>
+        /// INR
+        /// </summary>
         INR = 356,
+        /// <summary>
+        /// JPY
+        /// </summary>
         JPY = 392,
+        /// <summary>
+        /// CHF
+        /// </summary>
         CHF = 756,
+        /// <summary>
+        /// NZD
+        /// </summary>
         NZD = 554
     }
 }

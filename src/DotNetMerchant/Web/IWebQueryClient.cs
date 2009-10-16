@@ -31,7 +31,7 @@ using System.Security.Permissions;
 
 namespace DotNetMerchant.Web
 {
-    public interface IWebQueryClient
+    internal interface IWebQueryClient
     {
         WebResponse Response { get; }
         WebRequest Request { get; }

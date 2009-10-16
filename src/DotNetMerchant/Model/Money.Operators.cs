@@ -25,11 +25,18 @@
 #endregion
 
 using System;
+using System.Globalization;
 
 namespace DotNetMerchant.Model
 {
     partial struct Money
     {
+        /// <summary>
+        /// Implements the operator &lt;=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator <=(Money left, Money right)
         {
             EnsureSameCurrency(left, right);
@@ -37,6 +44,12 @@ namespace DotNetMerchant.Model
             return left._units <= right._units;
         }
 
+        /// <summary>
+        /// Implements the operator &gt;=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator >=(Money left, Money right)
         {
             EnsureSameCurrency(left, right);
@@ -44,6 +57,12 @@ namespace DotNetMerchant.Model
             return left._units >= right._units;
         }
 
+        /// <summary>
+        /// Implements the operator &gt;.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator >(Money left, Money right)
         {
             EnsureSameCurrency(left, right);
@@ -51,6 +70,12 @@ namespace DotNetMerchant.Model
             return left._units > right._units;
         }
 
+        /// <summary>
+        /// Implements the operator &lt;.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator <(Money left, Money right)
         {
             EnsureSameCurrency(left, right);
@@ -58,6 +83,12 @@ namespace DotNetMerchant.Model
             return left._units < right._units;
         }
 
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator ==(Money left, Money right)
         {
             return left._units == right._units &&
@@ -65,11 +96,23 @@ namespace DotNetMerchant.Model
                    left._currencyInfo == right._currencyInfo;
         }
 
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator !=(Money left, Money right)
         {
             return !(left == right);
         }
 
+        /// <summary>
+        /// Implements the operator +.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static Money operator +(Money left, Money right)
         {
             EnsureSameCurrency(left, right);
@@ -81,6 +124,12 @@ namespace DotNetMerchant.Model
             return left;
         }
 
+        /// <summary>
+        /// Implements the operator -.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static Money operator -(Money left, Money right)
         {
             EnsureSameCurrency(left, right);
@@ -92,6 +141,12 @@ namespace DotNetMerchant.Model
             return left;
         }
 
+        /// <summary>
+        /// Implements the operator *.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static Money operator *(Money left, Money right)
         {
             EnsureSameCurrency(left, right);
@@ -109,6 +164,12 @@ namespace DotNetMerchant.Model
             return result;
         }
 
+        /// <summary>
+        /// Implements the operator /.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static Money operator /(Money left, Money right)
         {
             EnsureSameCurrency(left, right);
@@ -120,6 +181,46 @@ namespace DotNetMerchant.Model
             var result = new Money(left._currencyInfo, quotient);
 
             return result;
+        }
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="System.Int64"/> to <see cref="DotNetMerchant.Model.Money"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator Money(long value)
+        {
+            return new Money(value);
+        }
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="System.Double"/> to <see cref="DotNetMerchant.Model.Money"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator Money(double value)
+        {
+            return new Money(CultureInfo.CurrentCulture, value);
+        }
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="DotNetMerchant.Model.Money"/> to <see cref="System.Int64"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator long(Money value)
+        {
+            return (long) value.ScaleDown();
+        }
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="DotNetMerchant.Model.Money"/> to <see cref="System.Double"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator double(Money value)
+        {
+            return value.ScaleDown();
         }
     }
 }

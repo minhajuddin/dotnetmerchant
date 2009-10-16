@@ -28,13 +28,24 @@ using System;
 
 namespace DotNetMerchant.Web
 {
+    /// <summary>
+    /// Event data for web requests.
+    /// </summary>
     public class WebQueryRequestEventArgs : EventArgs
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebQueryRequestEventArgs"/> class.
+        /// </summary>
+        /// <param name="request">The request.</param>
         public WebQueryRequestEventArgs(string request)
         {
             Request = request;
         }
 
+        /// <summary>
+        /// Gets or sets the request URL that was sent.
+        /// </summary>
+        /// <value>The request.</value>
         public string Request { get; private set; }
     }
 }

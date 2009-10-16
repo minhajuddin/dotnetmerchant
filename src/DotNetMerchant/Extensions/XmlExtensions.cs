@@ -31,7 +31,7 @@ using System.Xml.Linq;
 
 namespace DotNetMerchant.Extensions
 {
-    public static class XmlExtensions
+    internal static class XmlExtensions
     {
         public static IDictionary<string, XNamespace> GetRootNamespaces(this XDocument document)
         {

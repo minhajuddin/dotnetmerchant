@@ -26,5 +26,8 @@
 
 namespace DotNetMerchant.Web.Query
 {
+    /// <summary>
+    /// A marker contract for classes that are used to build web requests.
+    /// </summary>
     public interface IWebQueryInfo { }
 }

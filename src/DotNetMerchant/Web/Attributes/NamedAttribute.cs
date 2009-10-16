@@ -26,15 +26,8 @@
 
 namespace DotNetMerchant.Web.Attributes
 {
-    /// <summary>
-    /// Interface for attributes that have a name
-    /// </summary>
-    public interface INamedAttribute
+    internal interface INamedAttribute
     {
-        /// <summary>
-        /// Gets the name.
-        /// </summary>
-        /// <value>The name.</value>
         string Name { get; }
     }
 }

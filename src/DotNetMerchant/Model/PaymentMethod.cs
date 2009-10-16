@@ -28,6 +28,9 @@ using System;
 
 namespace DotNetMerchant.Model
 {
+    /// <summary>
+    /// Supported methods of making a payment.
+    /// </summary>
     [Serializable]
     public enum PaymentMethod
     {

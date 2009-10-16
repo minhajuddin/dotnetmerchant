@@ -147,13 +147,13 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
         public string Password { get; set; }
 
         [Parameter("ordName")] // concat with separator?
-            public override string BillToFirstName { get; set; }
+        public override string BillToFirstName { get; set; }
 
         //[Parameter("ordName")]
         public override string BillToLastName { get; set; }
 
-        [Parameter("ordEmailAddress")] // regex validator?
-            public override string BillToEmail { get; set; }
+        [Parameter("ordEmailAddress")]
+        public override string BillToEmail { get; set; }
 
         [Parameter("ordAddress1")]
         public override string BillToCompany { get; set; }

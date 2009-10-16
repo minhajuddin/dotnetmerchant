@@ -35,6 +35,10 @@ namespace DotNetMerchant.Payments.Model
         private const string MasterCardNumber = "5555555555554444";
         private const string VisaNumber = "4111111111111111";
 
+        /// <summary>
+        /// Gets the visa test card.
+        /// </summary>
+        /// <value>The visa test card.</value>
         public static CreditCard VisaTestCard
         {
             get
@@ -47,6 +51,10 @@ namespace DotNetMerchant.Payments.Model
             }
         }
 
+        /// <summary>
+        /// Gets the master card test card.
+        /// </summary>
+        /// <value>The master card test card.</value>
         public static CreditCard MasterCardTestCard
         {
             get
@@ -59,6 +67,10 @@ namespace DotNetMerchant.Payments.Model
             }
         }
 
+        /// <summary>
+        /// Gets the amex test card.
+        /// </summary>
+        /// <value>The amex test card.</value>
         public static CreditCard AmexTestCard
         {
             get
@@ -71,6 +83,10 @@ namespace DotNetMerchant.Payments.Model
             }
         }
 
+        /// <summary>
+        /// Gets the discover test card.
+        /// </summary>
+        /// <value>The discover test card.</value>
         public static CreditCard DiscoverTestCard
         {
             get

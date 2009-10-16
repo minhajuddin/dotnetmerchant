@@ -32,7 +32,7 @@ using System.Linq;
 
 namespace DotNetMerchant.Web
 {
-    public class WebParameterCollection : IList<WebParameter>
+    internal class WebParameterCollection : IList<WebParameter>
     {
         private IList<WebParameter> _parameters;
 

@@ -28,72 +28,143 @@ using DotNetMerchant.Web.Attributes;
 
 namespace DotNetMerchant.Payments.Processors.AuthorizeNet
 {
+    /// <summary>
+    /// A state management class for the <see cref="AuthorizeNetProcessor" />.
+    /// </summary>
     public class AuthorizeNetInfo : CreditCardPaymentInfoBase
     {
+        /// <summary>
+        /// Gets or sets the payment method.
+        /// </summary>
+        /// <value>The payment method.</value>
         [Parameter("x_method")]
         public override string PaymentMethod { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the credit card.
+        /// </summary>
+        /// <value>The name of the credit card.</value>
         [Parameter("x_card_name")]
         public override string CreditCardName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the credit card number.
+        /// </summary>
+        /// <value>The credit card number.</value>
         [Parameter("x_card_num")]
         public override string CreditCardNumber { get; set; }
 
+        /// <summary>
+        /// Gets or sets the credit card expiry.
+        /// </summary>
+        /// <value>The credit card expiry.</value>
         [Parameter("x_exp_date")]
         public override string CreditCardExpiry { get; set; }
 
+        /// <summary>
+        /// Gets or sets the credit card verification code.
+        /// </summary>
+        /// <value>The credit card verification code.</value>
         [Parameter("x_card_code")]
         public override string CreditCardVerificationCode { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of the transaction.
+        /// </summary>
+        /// <value>The type of the transaction.</value>
         [Parameter("x_type")]
         public override string TransactionType { get; set; }
 
+        /// <summary>
+        /// Gets or sets the transaction id.
+        /// </summary>
+        /// <value>The transaction id.</value>
         [Parameter("x_trans_id")]
         public override string TransactionId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the transaction amount.
+        /// </summary>
+        /// <value>The transaction amount.</value>
         [Parameter("x_amount")]
         public override double TransactionAmount { get; set; }
 
+        /// <summary>
+        /// Gets or sets the version.
+        /// </summary>
+        /// <value>The version.</value>
         [Parameter("x_version")]
         public string Version { get; set; }
 
+        /// <summary>
+        /// Gets or sets the description.
+        /// </summary>
+        /// <value>The description.</value>
         [Parameter("x_description")]
         public string Description { get; set; }
 
+        /// <summary>
+        /// Gets a value indicating whether [delimit data].
+        /// </summary>
+        /// <value><c>true</c> if [delimit data]; otherwise, <c>false</c>.</value>
         [Parameter("x_delim_data")]
         public bool DelimitData
         {
             get { return true; }
         }
 
+        /// <summary>
+        /// Gets the delimiter character.
+        /// </summary>
+        /// <value>The delimiter character.</value>
         [Parameter("x_delim_char")]
         public char? DelimitCharacter
         {
             get { return '|'; }
         }
 
+        /// <summary>
+        /// Gets or sets the login.
+        /// </summary>
+        /// <value>The login.</value>
         [Parameter("x_login")]
         public string Login { get; set; }
 
+        /// <summary>
+        /// Gets or sets the transaction key.
+        /// </summary>
+        /// <value>The transaction key.</value>
         [Parameter("x_tran_key")]
         public string TransactionKey { get; set; }
 
+        /// <summary>
+        /// Gets or sets the invoice number.
+        /// </summary>
+        /// <value>The invoice number.</value>
         [Parameter("x_invoice_num")]
         public string InvoiceNumber { get; set; }
 
+        /// <summary>
+        /// Gets or sets the purchase order number.
+        /// </summary>
+        /// <value>The purchase order number.</value>
         [Parameter("x_po_num")]
         public string PurchaseOrderNumber { get; set; }
 
+        /// <summary>
+        /// Gets or sets the currency code.
+        /// </summary>
+        /// <value>The currency code.</value>
         [Parameter("x_currency_code")]
         public string CurrencyCode { get; set; }
 
-        // refactor to discrete objects with a mapping strategy
         [Parameter("x_ship_to_first_name")]
         public override string ShipToFirstName { get; set; }
 
         [Parameter("x_ship_to_last_name")]
         public override string ShipToLastName { get; set; }
 
+        //[Parameter("x_ship_to_email")]
         public override string ShipToEmail { get; set; }
 
         [Parameter("x_ship_to_company")]
@@ -123,6 +194,7 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
         [Parameter("x_last_name")]
         public override string BillToLastName { get; set; }
 
+        //[Parameter("x_bill_to_email")]
         public override string BillToEmail { get; set; }
 
         [Parameter("x_address")]

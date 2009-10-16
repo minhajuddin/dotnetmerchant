@@ -60,23 +60,38 @@ namespace DotNetMerchant.Model
 
         private CurrencyInfo()
         {
+
         }
 
+        /// <summary>
+        /// Gets the display name.
+        /// </summary>
+        /// <value>The display name.</value>
         public string DisplayName { get; private set; }
+
+        /// <summary>
+        /// Gets the currency code.
+        /// </summary>
+        /// <value>The currency code.</value>
         public Currency Code { get; private set; }
 
         /// <summary>
-        /// The native region where this currency is from.
+        /// Gets the native region where this currency is from.
         /// </summary>
         public RegionInfo NativeRegion { get; private set; }
 
         /// <summary>
-        /// The display culture set when this currency instance was created. 
+        /// Gets the display culture set when this currency instance was created. 
         /// It reflects the best guess between the thread of the culture the instance
         /// was created on, and the native region of the currency itself.
         /// </summary>
         public CultureInfo DisplayCulture { get; private set; }
 
+        /// <summary>
+        /// Compares equality between this instance and a value.
+        /// </summary>
+        /// <param name="other">The other value.</param>
+        /// <returns></returns>
         public bool Equals(CurrencyInfo other)
         {
             if (ReferenceEquals(null, other))
@@ -85,7 +100,16 @@ namespace DotNetMerchant.Model
             }
             return ReferenceEquals(this, other) || Equals(other.Code, Code);
         }
-
+        
+        /// <summary>
+        /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+        /// </summary>
+        /// <returns>
+        /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+        /// </returns>
+        /// <param name="other">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. 
+        /// </param><exception cref="T:System.NullReferenceException">The <paramref name="other"/> parameter is null.
+        /// </exception><filterpriority>2</filterpriority>
         public override bool Equals(object other)
         {
             if (ReferenceEquals(null, other))
@@ -99,21 +123,45 @@ namespace DotNetMerchant.Model
             return other.GetType() == typeof (CurrencyInfo) && Equals((CurrencyInfo) other);
         }
 
+        /// <summary>
+        /// Serves as a hash function for a particular type. 
+        /// </summary>
+        /// <returns>
+        /// A hash code for the current <see cref="T:System.Object"/>.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
             return Code.GetHashCode();
         }
 
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator ==(CurrencyInfo left, CurrencyInfo right)
         {
             return Equals(left, right);
         }
 
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator !=(CurrencyInfo left, CurrencyInfo right)
         {
             return !Equals(left, right);
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="DotNetMerchant.Model.Currency"/> to <see cref="DotNetMerchant.Model.CurrencyInfo"/>.
+        /// </summary>
+        /// <param name="currency">The currency.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator CurrencyInfo(Currency currency)
         {
             var currencyInfo = _currencies[currency];
@@ -123,6 +171,11 @@ namespace DotNetMerchant.Model
             return currencyInfo;
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="System.Globalization.RegionInfo"/> to <see cref="DotNetMerchant.Model.CurrencyInfo"/>.
+        /// </summary>
+        /// <param name="regionInfo">The region info.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator CurrencyInfo(RegionInfo regionInfo)
         {
             var symbol = regionInfo.ISOCurrencySymbol;
@@ -131,6 +184,11 @@ namespace DotNetMerchant.Model
             return currencyCode;
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="System.Globalization.CultureInfo"/> to <see cref="DotNetMerchant.Model.CurrencyInfo"/>.
+        /// </summary>
+        /// <param name="cultureInfo">The culture info.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator CurrencyInfo(CultureInfo cultureInfo)
         {
             return new RegionInfo(cultureInfo.LCID);

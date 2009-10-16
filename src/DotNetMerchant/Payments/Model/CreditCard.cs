@@ -27,13 +27,24 @@
 using System;
 using System.Security;
 using DotNetMerchant.Extensions;
-using DotNetMerchant.Model.Extensions;
+using DotNetMerchant.Payments.Model.Extensions;
 
 namespace DotNetMerchant.Payments.Model
 {
+    /// <summary>
+    /// A credit card.
+    /// </summary>
     [Serializable]
     public partial class CreditCard : IPaymentMethod
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreditCard"/> class.
+        /// </summary>
+        /// <param name="expectedType">The expected type.</param>
+        /// <param name="accountNumber">The account number.</param>
+        /// <param name="cardholderName">The name of the cardholder.</param>
+        /// <param name="expiryMonth">The expiry month.</param>
+        /// <param name="expiryYear">The expiry year.</param>
         public CreditCard(CreditCardType expectedType,
                           string accountNumber,
                           string cardholderName,
@@ -47,6 +58,15 @@ namespace DotNetMerchant.Payments.Model
             IsExpired = ExpiryDate >= DateTime.Today;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreditCard"/> class.
+        /// </summary>
+        /// <param name="expectedType">The expected type.</param>
+        /// <param name="accountNumber">The account number.</param>
+        /// <param name="cardholderName">The name of the cardholder.</param>
+        /// <param name="verificationCode">The verification code.</param>
+        /// <param name="expiryMonth">The expiry month.</param>
+        /// <param name="expiryYear">The expiry year.</param>
         public CreditCard(CreditCardType expectedType,
                           string accountNumber,
                           string cardholderName,
@@ -59,6 +79,13 @@ namespace DotNetMerchant.Payments.Model
                 .Secure();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreditCard"/> class.
+        /// </summary>
+        /// <param name="accountNumber">The account number.</param>
+        /// <param name="cardholderName">The name of the cardholder.</param>
+        /// <param name="expiryMonth">The expiry month.</param>
+        /// <param name="expiryYear">The expiry year.</param>
         public CreditCard(string accountNumber,
                           string cardholderName,
                           int expiryMonth,
@@ -72,6 +99,14 @@ namespace DotNetMerchant.Payments.Model
             Type = type;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreditCard"/> class.
+        /// </summary>
+        /// <param name="accountNumber">The account number.</param>
+        /// <param name="cardholderName">The name of the cardholder.</param>
+        /// <param name="verificationCode">The verification code.</param>
+        /// <param name="expiryMonth">The expiry month.</param>
+        /// <param name="expiryYear">The expiry year.</param>
         public CreditCard(string accountNumber,
                           string cardholderName,
                           string verificationCode,
@@ -83,11 +118,42 @@ namespace DotNetMerchant.Payments.Model
                 .Secure();
         }
 
+        /// <summary>
+        /// Gets or sets the verification code.
+        /// </summary>
+        /// <value>The verification code.</value>
         public SecureString VerificationCode { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        /// <value>The type.</value>
         public CreditCardType Type { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the name of the cardholder.
+        /// </summary>
+        /// <value>The name of the cardholder.</value>
         public string CardholderName { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the expiry date.
+        /// </summary>
+        /// <value>The expiry date.</value>
         public DateTime ExpiryDate { get; private set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is valid.
+        /// </summary>
+        /// <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
         public bool IsValid { get; private set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is expired.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this instance is expired; otherwise, <c>false</c>.
+        /// </value>
         public bool IsExpired { get; private set; }
 
         #region IPaymentMethod Members

@@ -28,9 +28,16 @@ using System;
 
 namespace DotNetMerchant.Payments.Model
 {
+    /// <summary>
+    /// A check from an American bank.
+    /// </summary>
     [Serializable]
     public class AmericanCheck : CheckBase
     {
+        /// <summary>
+        /// Gets or sets the routing number.
+        /// </summary>
+        /// <value>The routing number.</value>
         public int RoutingNumber { get; set; }
     }
 }

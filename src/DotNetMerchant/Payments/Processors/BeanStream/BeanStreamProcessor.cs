@@ -36,7 +36,7 @@ using DotNetMerchant.Payments.Workflow;
 namespace DotNetMerchant.Payments.Processors.Beanstream
 {
     /// <summary>
-    /// A robust Canadian-based payment gateway.
+    /// A Canadian-based payment gateway.
     /// </summary>
     public partial class BeanstreamProcessor : 
         PaymentProcessorBase<BeanstreamInfo, BeanstreamResult>,
@@ -62,31 +62,50 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
 
         }
 
+        /// <summary>
+        /// The identifying name for this payment processor. Used to match configuration values.
+        /// </summary>
         public override string Name
         {
             get { return "beanstream"; }
         }
 
+        /// <summary>
+        /// The friendly name for this payment processor.
+        /// </summary>
         public override string DisplayName
         {
             get { return "Beanstream"; }
         }
 
+        /// <summary>
+        /// The homepage for this payment processor or API.
+        /// </summary>
         public override Uri HomepageUri
         {
             get { return "http://www.beanstream.com".Uri(); }
         }
 
+        /// <summary>
+        /// The regions this payment processor will support.
+        /// </summary>
         public override IEnumerable<RegionInfo> SupportedRegions
         {
             get { return "CA".Region().AsEnumerable(); }
         }
 
+        /// <summary>
+        /// The service endpoint used for secure transactions.
+        /// </summary>
         public override Uri ProductionUri
         {
             get { return "https://www.beanstream.com/scripts/process_transaction.asp".Uri(); }
         }
 
+        /// <summary>
+        /// The credit cards this payment processor can support. 
+        /// Express multiple types using enum flag syntax.
+        /// </summary>
         public override IEnumerable<CreditCardType> SupportedCreditCardTypes
         {
             get { return _visa.And(_masterCard).And(_amex); }

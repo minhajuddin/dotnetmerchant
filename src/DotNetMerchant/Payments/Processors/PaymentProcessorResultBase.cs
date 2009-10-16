@@ -36,11 +36,30 @@ namespace DotNetMerchant.Payments.Processors
     {
         #region IPaymentProcessorResult Members
 
+        /// <summary>
+        /// The original URL sent to the payment processor, useful for debugging request parameters.
+        /// </summary>
         public Uri RequestUri { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the resulting or reference transaction.
+        /// </summary>
         public string TransactionId { get; protected set; }
+
+        /// <summary>
+        /// The status of the transaction for this result.
+        /// </summary>
         public TransactionStatus TransactionStatus { get; protected set; }
+
+        /// <summary>
+        /// The reason for the <see cref="IPaymentProcessorResult.TransactionStatus"/> for this result.
+        /// </summary>
         public TransactionStatusReason TransactionStatusReason { get; protected set; }
 
+        /// <summary>
+        /// Populates a processor result based on a given response string.
+        /// </summary>
+        /// <param name="response">The response from the payment processor.</param>
         public abstract void PopulateFromResponse(string response);
 
         #endregion

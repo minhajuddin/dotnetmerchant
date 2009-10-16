@@ -59,8 +59,8 @@
     <Compile Include="Processors\AuthorizeNet\AuthorizeNetTests.cs" />
     <Compile Include="Processors\AuthorizeNet\AuthorizeNetTests.Helpers.cs" />
     <Compile Include="Processors\AuthorizeNet\AuthorizeNetTests.Recurring.cs" />
-    <Compile Include="Processors\Beanstream\BeanStreamTests.cs" />
-    <Compile Include="Processors\Beanstream\BeanStreamTests.Recurring.cs" />
+    <Compile Include="Processors\Beanstream\BeanstreamTests.cs" />
+    <Compile Include="Processors\Beanstream\BeanstreamTests.Recurring.cs" />
     <Compile Include="Processors\ProcessorTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DateSpanTests.cs" />

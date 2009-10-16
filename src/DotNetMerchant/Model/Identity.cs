@@ -48,12 +48,10 @@ namespace DotNetMerchant.Model
 
         private ValueType Key { get; set; }
 
+        /// <summary>
+        /// Gets the value equal to no identity.
+        /// </summary>
         public static Identity None { get; private set; }
-
-        public Identity Id
-        {
-            get { return this; }
-        }
 
         #region IComparable<ValueType> Members
 
@@ -94,16 +92,33 @@ namespace DotNetMerchant.Model
             return (Key != null ? Key.GetHashCode() : 0);
         }
 
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator ==(Identity left, Identity right)
         {
             return left.Equals(right);
         }
 
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator !=(Identity left, Identity right)
         {
             return !left.Equals(right);
         }
 
+        /// <summary>
+        /// Compares equality between this instance and a value.
+        /// </summary>
+        /// <param name="other">The other value.</param>
+        /// <returns></returns>
         public bool Equals(Identity other)
         {
             if (other.Key == null && Key == null)
@@ -138,21 +153,41 @@ namespace DotNetMerchant.Model
             return Equals(other.Key, internalKey);
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="System.Guid"/> to <see cref="DotNetMerchant.Model.Identity"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator Identity(Guid value)
         {
             return new Identity(value);
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="System.Int32"/> to <see cref="DotNetMerchant.Model.Identity"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator Identity(int value)
         {
             return new Identity(value);
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="System.Int64"/> to <see cref="DotNetMerchant.Model.Identity"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator Identity(long value)
         {
             return new Identity(value);
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="DotNetMerchant.Model.Identity"/> to <see cref="System.Guid"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator Guid(Identity value)
         {
             if (value.Key == null)
@@ -163,6 +198,11 @@ namespace DotNetMerchant.Model
             return (Guid) value.Key;
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="DotNetMerchant.Model.Identity"/> to <see cref="System.Int32"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator int(Identity value)
         {
             if (value.Key == null)
@@ -173,6 +213,11 @@ namespace DotNetMerchant.Model
             return (int) value.Key;
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="DotNetMerchant.Model.Identity"/> to <see cref="System.Int64"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator long(Identity value)
         {
             if (value.Key == null)
@@ -183,6 +228,13 @@ namespace DotNetMerchant.Model
             return (long) value.Key;
         }
 
+        /// <summary>
+        /// Returns the fully qualified type name of this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String"/> containing a fully qualified type name.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
         public override string ToString()
         {
             if(this == None)

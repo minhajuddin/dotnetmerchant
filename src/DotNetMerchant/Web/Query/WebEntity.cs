@@ -28,10 +28,27 @@ using System.Text;
 
 namespace DotNetMerchant.Web.Query
 {
+    /// <summary>
+    /// An arbitrary block of data to send with a POST request.
+    /// </summary>
     public class WebEntity
     {
+        /// <summary>
+        /// Gets or sets the content.
+        /// </summary>
+        /// <value>The content.</value>
         public object Content { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the type of the content.
+        /// </summary>
+        /// <value>The type of the content.</value>
         public string ContentType { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the content encoding.
+        /// </summary>
+        /// <value>The content encoding.</value>
         public Encoding ContentEncoding { get; set; }
     }
 }

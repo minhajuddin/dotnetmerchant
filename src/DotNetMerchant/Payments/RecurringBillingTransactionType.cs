@@ -31,8 +31,17 @@ namespace DotNetMerchant.Payments
     /// </summary>
     public enum RecurringBillingTransactionType
     {
+        /// <summary>
+        /// Create
+        /// </summary>
         Create,
+        /// <summary>
+        /// Update
+        /// </summary>
         Update,
+        /// <summary>
+        /// Cancel
+        /// </summary>
         Cancel
     }
 }

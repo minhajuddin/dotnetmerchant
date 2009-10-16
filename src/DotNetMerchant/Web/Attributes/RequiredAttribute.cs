@@ -29,7 +29,8 @@ using System;
 namespace DotNetMerchant.Web.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-    public class RequiredAttribute : Attribute
+    internal class RequiredAttribute : Attribute
     {
+
     }
 }

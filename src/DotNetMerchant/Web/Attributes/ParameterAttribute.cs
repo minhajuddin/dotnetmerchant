@@ -29,7 +29,7 @@ using System;
 namespace DotNetMerchant.Web.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-    public class ParameterAttribute : Attribute, INamedAttribute
+    internal class ParameterAttribute : Attribute, INamedAttribute
     {
         public ParameterAttribute(string name)
         {

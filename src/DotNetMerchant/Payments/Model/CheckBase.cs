@@ -29,6 +29,9 @@ using System.Security;
 
 namespace DotNetMerchant.Payments.Model
 {
+    /// <summary>
+    /// A check.
+    /// </summary>
     [Serializable]
     public abstract class CheckBase : IPaymentMethod
     {

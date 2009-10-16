@@ -26,11 +26,26 @@
 
 namespace DotNetMerchant.Web
 {
+    /// <summary>
+    /// Supported web content formats.
+    /// </summary>
     public enum WebFormat
     {
+        /// <summary>
+        /// XML
+        /// </summary>
         Xml,
+        /// <summary>
+        /// JSON
+        /// </summary>
         Json,
+        /// <summary>
+        /// RSS
+        /// </summary>
         Rss,
+        /// <summary>
+        /// Atom
+        /// </summary>
         Atom,
     }
 }

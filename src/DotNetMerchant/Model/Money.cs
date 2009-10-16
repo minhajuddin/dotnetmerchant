@@ -49,10 +49,18 @@ namespace DotNetMerchant.Model
         private int _places;
         private long _units;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Money"/> struct.
+        /// </summary>
+        /// <param name="units">The units.</param>
         public Money(long units) : this(CultureInfo.CurrentCulture, units)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Money"/> struct.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public Money(double value) : this(CultureInfo.CurrentCulture, value)
         {
         }
@@ -63,11 +71,21 @@ namespace DotNetMerchant.Model
             _currencyInfo = currencyInfo;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Money"/> struct.
+        /// </summary>
+        /// <param name="currencyInfo">The currency info.</param>
+        /// <param name="units">The units.</param>
         public Money(CurrencyInfo currencyInfo, long units) : this(currencyInfo)
         {
             _units = units;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Money"/> struct.
+        /// </summary>
+        /// <param name="currencyInfo">The currency info.</param>
+        /// <param name="value">The value.</param>
         public Money(CurrencyInfo currencyInfo, double value) : this(currencyInfo)
         {
             _units = ScaleUp(value);
@@ -81,6 +99,10 @@ namespace DotNetMerchant.Model
             get { return _createdDate; }
         }
 
+        /// <summary>
+        /// Gets the currency info.
+        /// </summary>
+        /// <value>The currency info.</value>
         public CurrencyInfo CurrencyInfo
         {
             get { return _currencyInfo; }
@@ -115,36 +137,34 @@ namespace DotNetMerchant.Model
 
         #endregion
 
-        public static implicit operator Money(long value)
-        {
-            return new Money(value);
-        }
-
-        public static implicit operator Money(double value)
-        {
-            return new Money(CultureInfo.CurrentCulture, value);
-        }
-
-        public static implicit operator long(Money value)
-        {
-            return (long) value.ScaleDown();
-        }
-
-        public static implicit operator double(Money value)
-        {
-            return value.ScaleDown();
-        }
-
+        /// <summary>
+        /// Compares equality between this instance and a value.
+        /// </summary>
+        /// <param name="other">The other value.</param>
+        /// <returns></returns>
         public bool Equals(double other)
         {
             return other == ScaleDown();
         }
 
+        /// <summary>
+        /// Compares equality between this instance and a value.
+        /// </summary>
+        /// <param name="other">The other value.</param>
+        /// <returns></returns>
         public bool Equals(long other)
         {
             return other == ScaleUp(ScaleDown());
         }
 
+        /// <summary>
+        /// Indicates whether this instance and a specified object are equal.
+        /// </summary>
+        /// <returns>
+        /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
+        /// </returns>
+        /// <param name="obj">Another object to compare to. 
+        ///                 </param><filterpriority>2</filterpriority>
         public override bool Equals(object other)
         {
             if (ReferenceEquals(null, other))
@@ -156,6 +176,13 @@ namespace DotNetMerchant.Model
                    Equals((Money) other);
         }
 
+        /// <summary>
+        /// Returns the hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A 32-bit signed integer that is the hash code for this instance.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
             return _units.GetHashCode();
@@ -230,6 +257,11 @@ namespace DotNetMerchant.Model
             return ToString("c", _currencyInfo.DisplayCulture.NumberFormat);
         }
 
+        /// <summary>
+        /// Displays the current instance as it would appear in a specified culture.
+        /// </summary>
+        /// <param name="displayCulture">The display culture.</param>
+        /// <returns></returns>
         public string DisplayIn(CultureInfo displayCulture)
         {
             return DisplayIn(displayCulture, true);

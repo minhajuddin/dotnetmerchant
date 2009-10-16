@@ -26,9 +26,18 @@
 
 namespace DotNetMerchant.Web
 {
+    /// <summary>
+    /// Modes of HTTP request handling.
+    /// </summary>
     public enum WebOperation
     {
+        /// <summary>
+        /// Sequential
+        /// </summary>
         Sequential,
+        /// <summary>
+        /// Asynchronous
+        /// </summary>
         Asynchronous
     }
 }
