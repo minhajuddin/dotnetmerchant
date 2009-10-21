@@ -32,7 +32,7 @@ namespace DotNetMerchant.Web
     /// A name value pair used in web requests.
     ///</summary>
     [DebuggerDisplay("{Name}:{Value}")]
-    public class WebParameter
+    internal class WebParameter
     {
         public WebParameter(string name, string value)
         {

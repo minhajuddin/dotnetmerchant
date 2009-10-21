@@ -37,6 +37,10 @@ namespace DotNetMerchant.Payments.Model
     {
         #region IPaymentMethod Members
 
+        /// <summary>
+        /// Gets the account number.
+        /// </summary>
+        /// <value>The account number.</value>
         public SecureString AccountNumber { get; set; }
 
         #endregion

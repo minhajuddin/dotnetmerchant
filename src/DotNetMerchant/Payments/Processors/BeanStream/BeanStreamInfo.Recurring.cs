@@ -1,9 +1,9 @@
 ﻿#region License
 
 // The MIT License
-// 
+//  
 // Copyright (c) 2009 Conatus Creative, Inc.
-// 
+//  
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -74,7 +74,7 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
         /// <value>The second billing.</value>
         [Parameter("rbSecondBilling"), DateTimeFormat("MMddyyyy")]
         public DateTime? SecondBilling { get; set; }
-        
+
         /// <summary>
         /// Gets or sets a value indicating whether to charge for the first payment
         /// immediately, or wait until the first billing date to charge for the subscription.

@@ -68,18 +68,12 @@ namespace DotNetMerchant.Payments
         /// requesting payment processing from this service.
         /// </summary>
         IAuthenticator Authenticator { get; set; }
-
-        /// <summary>
-        /// The service endpoint used for secure transactions.
-        /// </summary>
-        Uri ProductionUri { get; }
-
-        /// <summary>
-        /// The service endpoint used for testing transactions, if available.
-        /// </summary>
-        Uri DevelopmentUri { get; }
     }
 
+    /// <summary>
+    /// An external source that provides payment services.
+    /// </summary>
+    /// <typeparam name="T">The type of payment info state</typeparam>
     public interface IPaymentProcessor<T> : IPaymentProcessor where T : IPaymentInfo
     {
 

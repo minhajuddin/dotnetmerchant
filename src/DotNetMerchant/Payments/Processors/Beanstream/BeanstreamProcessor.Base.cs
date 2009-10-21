@@ -1,9 +1,9 @@
 ﻿#region License
 
 // The MIT License
-// 
+//  
 // Copyright (c) 2009 Conatus Creative, Inc.
-// 
+//  
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -38,10 +38,7 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
     /// <summary>
     /// A Canadian-based payment gateway.
     /// </summary>
-    public partial class BeanstreamProcessor : 
-        PaymentProcessorBase<BeanstreamInfo, BeanstreamResult>,
-        ISupportCreditCards<BeanstreamResult>,
-        ISupportRecurringBilling<BeanstreamResult>
+    public partial class BeanstreamProcessor : PaymentProcessorBase<BeanstreamInfo, BeanstreamResult>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BeanstreamProcessor"/> class.
@@ -54,12 +51,11 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
                                    string password) :
                                        base(new AuthenticationTriplet
                                                 {
-                                                    Third = merchantId,
                                                     First = username,
-                                                    Second = password
+                                                    Second = password,
+                                                    Third = merchantId
                                                 })
         {
-
         }
 
         /// <summary>
@@ -95,22 +91,21 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
         }
 
         /// <summary>
-        /// The service endpoint used for secure transactions.
-        /// </summary>
-        public override Uri ProductionUri
-        {
-            get { return "https://www.beanstream.com/scripts/process_transaction.asp".Uri(); }
-        }
-
-        /// <summary>
         /// The credit cards this payment processor can support. 
         /// Express multiple types using enum flag syntax.
         /// </summary>
         public override IEnumerable<CreditCardType> SupportedCreditCardTypes
         {
-            get { return _visa.And(_masterCard).And(_amex); }
+            get { 
+                return CreditCardType.Visa
+                .And(CreditCardType.MasterCard)
+                .And(CreditCardType.Amex);
+            }
         }
 
+        /// <summary>
+        /// Maps the authenticator.
+        /// </summary>
         protected override void MapAuthenticator()
         {
             if (Authenticator == null)
@@ -123,6 +118,9 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
             _info.Password = Authenticator.Second;
         }
 
+        /// <summary>
+        /// Maps the payment method.
+        /// </summary>
         protected override void MapPaymentMethod()
         {
             switch (_paymentMethod)
@@ -136,6 +134,9 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
             }
         }
 
+        /// <summary>
+        /// Maps the type of the transaction.
+        /// </summary>
         protected override void MapTransactionType()
         {
             switch (_creditCardTransactionType)
@@ -158,6 +159,10 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
             }
         }
 
+        /// <summary>
+        /// Sets the credit card.
+        /// </summary>
+        /// <param name="card">The card.</param>
         protected override void SetCreditCard(CreditCard card)
         {
             base.SetCreditCard(card);
@@ -166,6 +171,10 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
             _info.CreditCardExpiryYear = _info.CreditCardExpiry.Substring(2, 2);
         }
 
+        /// <summary>
+        /// Sets the order number.
+        /// </summary>
+        /// <param name="orderNumber">The order number.</param>
         public void SetOrderNumber(string orderNumber)
         {
             _info.OrderNumber = orderNumber.Trim();

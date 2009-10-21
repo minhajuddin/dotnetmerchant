@@ -1,9 +1,9 @@
 ﻿#region License
 
 // The MIT License
-// 
+//  
 // Copyright (c) 2009 Conatus Creative, Inc.
-// 
+//  
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -37,78 +37,6 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
 {
     partial class AuthorizeNetProcessor
     {
-        #region ISupportCreditCards<AuthorizeNetResult> Members
-
-        /// <summary>
-        /// Authorizes the specified amount.
-        /// </summary>
-        /// <param name="amount">The amount.</param>
-        /// <param name="card">The card.</param>
-        /// <returns></returns>
-        public AuthorizeNetResult Authorize(Money amount, CreditCard card)
-        {
-            return RequestWithMoneyAndCard(CreditCardTransactionType.PreAuthorization, amount, card);
-        }
-
-        /// <summary>
-        /// Captures the specified amount.
-        /// </summary>
-        /// <param name="amount">The amount.</param>
-        /// <param name="card">The card.</param>
-        /// <param name="transactionId">The transaction id.</param>
-        /// <returns></returns>
-        public AuthorizeNetResult Capture(Money amount, CreditCard card, string transactionId)
-        {
-            return RequestWithMoneyCardAndTransaction(CreditCardTransactionType.Capture, amount, card, transactionId);
-        }
-
-        /// <summary>
-        /// Purchases the specified amount.
-        /// </summary>
-        /// <param name="amount">The amount.</param>
-        /// <param name="card">The card.</param>
-        /// <returns></returns>
-        public AuthorizeNetResult Purchase(Money amount, CreditCard card)
-        {
-            return RequestWithMoneyAndCard(CreditCardTransactionType.Purchase, amount, card);
-        }
-
-        /// <summary>
-        /// Voids the specified transaction id.
-        /// </summary>
-        /// <param name="transactionId">The transaction id.</param>
-        /// <returns></returns>
-        public AuthorizeNetResult Void(string transactionId)
-        {
-            ValidateTransaction(transactionId);
-
-            _info.TransactionId = transactionId;
-            _creditCardTransactionType = CreditCardTransactionType.Void;
-
-            return Request(_info);
-        }
-
-        /// <summary>
-        /// Credits the specified amount.
-        /// </summary>
-        /// <param name="amount">The amount.</param>
-        /// <param name="card">The card.</param>
-        /// <param name="transactionId">The transaction id.</param>
-        /// <returns></returns>
-        public AuthorizeNetResult Credit(Money amount, CreditCard card, string transactionId)
-        {
-            ValidateAmountTransaction(amount, transactionId);
-
-            _creditCard = card;
-            _creditCardTransactionType = CreditCardTransactionType.Credit;
-            _info.TransactionId = transactionId;
-            _info.TransactionAmount = amount;
-
-            return Request(_info);
-        }
-
-        #endregion
-
         #region ISupportRecurringBilling<AuthorizeNetResult> Members
 
         /// <summary>
@@ -123,12 +51,12 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             ValidateAmountCard(subscription.PaymentAmount, card);
             ValidateBillingAddress();
 
-            var document = BuildRecurringBillingRequest(RecurringBillingTransactionType.Create, 
-                                                        subscription, 
+            var document = BuildRecurringBillingRequest(RecurringBillingTransactionType.Create,
+                                                        subscription,
                                                         card);
 
             var result = SendRecurringBillingRequest(document);
-            if(!result.TransactionId.IsNullOrBlank())
+            if (!result.TransactionId.IsNullOrBlank())
             {
                 subscription.ReferenceId = Convert.ToInt64(result.TransactionId);
             }
@@ -163,11 +91,13 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
         public AuthorizeNetResult CancelRecurringBilling(Subscription subscription)
         {
             var document = BuildRecurringBillingRequest(RecurringBillingTransactionType.Cancel,
-                                                        subscription, 
-                                                        null); 
+                                                        subscription,
+                                                        null);
 
             return SendRecurringBillingRequest(document);
         }
+
+        #endregion
 
         private AuthorizeNetResult SendRecurringBillingRequest(XDocument document)
         {
@@ -180,23 +110,23 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
         }
 
         private XDocument BuildRecurringBillingRequest(RecurringBillingTransactionType type,
-                                                       Subscription subscription, 
+                                                       Subscription subscription,
                                                        CreditCard card)
         {
             XNamespace xmlns = "AnetApi/xml/v1/schema/AnetApiSchema.xsd";
             var xml = new XmlWrapper(xmlns);
 
             var hasSubscription = subscription != null;
-            
+
             var hasId = hasSubscription && subscription.Id != Identity.None;
             var hasRefId = hasSubscription && subscription.ReferenceId.HasValue;
-            
+
             var refId = hasSubscription ? subscription.Id : Identity.None;
             var subscriptionId = hasSubscription
                                      ? subscription.ReferenceId.ValueOr(Identity.None)
                                      : Identity.None;
-            
-            if(type == RecurringBillingTransactionType.Cancel)
+
+            if (type == RecurringBillingTransactionType.Cancel)
             {
                 subscription = null;
             }
@@ -215,10 +145,10 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
         }
 
         private XElement BuildSubscriptionNode(Subscription subscription,
-                                               XmlWrapper xml, 
+                                               XmlWrapper xml,
                                                CreditCard card)
         {
-            if(subscription == null)
+            if (subscription == null)
             {
                 return null;
             }
@@ -233,10 +163,10 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
                     length = subscription.Period.Quantifier;
                     break;
                 case PeriodFrequency.Weeks:
-                    length = subscription.Period.Quantifier * 7;
+                    length = subscription.Period.Quantifier*7;
                     break;
                 case PeriodFrequency.Years:
-                    length = subscription.Period.Quantifier * 365;
+                    length = subscription.Period.Quantifier*365;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -245,7 +175,8 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             if (unit.Equals("months") && length > 12 ||
                 unit.Equals("days") && length > 365)
             {
-                throw new ArgumentException("Authorize.net only supports recurring billing periods up to one year in length.");
+                throw new ArgumentException(
+                    "Authorize.net only supports recurring billing periods up to one year in length.");
             }
 
             return xml.Tag("subscription"
@@ -257,15 +188,21 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
                                            )
                                      , xml.Tag("startDate", subscription.PaymentStartDate.ToString("yyyy-MM-dd"))
                                      , xml.Tag("totalOccurrences", subscription.TotalPayments.ValueOr(9999))
-                                     , xml.If(subscription.TrialPayments.HasValue, xml.Tag("trialOccurrences", subscription.TrialPayments.ValueOr(0)))
+                                     ,
+                                     xml.If(subscription.TrialPayments.HasValue,
+                                            xml.Tag("trialOccurrences", subscription.TrialPayments.ValueOr(0)))
                                  )
-                           , xml.Tag("amount", (double)subscription.PaymentAmount)
-                           , xml.If(subscription.TrialPayments.HasValue, xml.Tag("trialAmount", (double)subscription.TrialAmount.ValueOr(0)))
+                           , xml.Tag("amount", (double) subscription.PaymentAmount)
+                           ,
+                           xml.If(subscription.TrialPayments.HasValue,
+                                  xml.Tag("trialAmount", (double) subscription.TrialAmount.ValueOr(0)))
                            , xml.Tag("payment"
                                      , xml.Tag("creditCard"
                                                , xml.Tag("cardNumber", card.AccountNumber.Insecure())
                                                , xml.Tag("expirationDate", card.ExpiryDate.ToString("yyyy-MM"))
-                                               , xml.If(!card.VerificationCode.IsNullOrBlank(), xml.Tag("cardCode", card.VerificationCode.Insecure())))
+                                               ,
+                                               xml.If(!card.VerificationCode.IsNullOrBlank(),
+                                                      xml.Tag("cardCode", card.VerificationCode.Insecure())))
                                  )
                            , xml.Tag("billTo"
                                      , xml.Tag("firstName", _info.BillToFirstName)
@@ -273,7 +210,5 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
                                  )
                 );
         }
-
-        #endregion
     }
 }

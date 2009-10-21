@@ -52,7 +52,7 @@ namespace DotNetMerchant.Web.Caching
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        /// <param name="dependencies">The dependencies.</params>
+        /// <param name="dependencies">The dependencies.</param>
         void Insert(string key, object value, CacheDependency dependencies);
 
         /// <summary>

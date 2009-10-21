@@ -80,13 +80,13 @@
     <Compile Include="Payments\IPaymentProcessorResult.cs" />
     <Compile Include="Payments\OperationMode.cs" />
     <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetInfo.cs" />
-    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.cs" />
-    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Workflow.cs" />
+    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Base.cs" />
+    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Credit.cs" />
     <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetResult.cs" />
     <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetResult.Maps.cs" />
     <Compile Include="Payments\Processors\Beanstream\BeanstreamInfo.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Workflow.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Base.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Credit.cs" />
     <Compile Include="Payments\Processors\Beanstream\BeanstreamResult.cs" />
     <Compile Include="Payments\Processors\Beanstream\BeanstreamResult.Maps.cs" />
     <Compile Include="Payments\Processors\PaymentProcessorBase.cs" />
@@ -187,13 +187,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Specifications\ValidEmailSpecification.cs" />
+    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Recurring.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamInfo.Profiles.cs" />
     <Compile Include="Payments\Processors\Beanstream\BeanstreamInfo.Recurring.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Profiles.cs" />
+    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Recurring.cs" />
     <Compile Include="Web\Attributes\BooleanToIntegerAttribute.cs" />
     <Compile Include="Web\Attributes\DateTimeFormatAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Billing\Model\Extensions\" />
     <Folder Include="Billing\Model\Specifications\" />
+    <Folder Include="Payments\Processors\PayPal\PayflowPro\" />
+    <Folder Include="Payments\Processors\PayPal\WebsitePaymentsPro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

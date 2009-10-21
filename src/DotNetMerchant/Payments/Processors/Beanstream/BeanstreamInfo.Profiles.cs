@@ -24,23 +24,10 @@
 
 #endregion
 
-using System.Collections.Generic;
-
 namespace DotNetMerchant.Payments.Processors.Beanstream
 {
-    partial class BeanstreamResult
+    partial class BeanstreamInfo
     {
-        private static readonly IDictionary<int, TransactionStatusReason> _reasonMap
-            = new Dictionary<int, TransactionStatusReason>
-                  {
-                      {0, TransactionStatusReason.Restricted}
-                  };
 
-        private static readonly IDictionary<int, TransactionStatus> _statusMap
-            = new Dictionary<int, TransactionStatus>
-                  {
-                      {0, TransactionStatus.Declined},
-                      {1, TransactionStatus.Approved}
-                  };
     }
 }

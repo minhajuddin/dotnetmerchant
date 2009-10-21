@@ -35,6 +35,7 @@ using DotNetMerchant.Model;
 using DotNetMerchant.Payments.Authentication;
 using DotNetMerchant.Payments.Model;
 using DotNetMerchant.Payments.Model.Extensions;
+using DotNetMerchant.Payments.Workflow;
 using DotNetMerchant.Web;
 using DotNetMerchant.Web.Query;
 using DotNetMerchant.Web.Query.Basic;
@@ -50,18 +51,32 @@ namespace DotNetMerchant.Payments.Processors
         where T : ICreditCardPaymentInfo, new()
         where K : IPaymentProcessorResult, new()
     {
-        protected CreditCardType _amex = CreditCardType.Amex;
+        #region todo: remove protected members and consider placement of state
+        /// <summary>
+        /// Internal state for storing a credit card.
+        /// </summary>
         protected CreditCard _creditCard;
+
+        /// <summary>
+        /// Internal state for storing a payment method
+        /// </summary>
+        protected PaymentMethod _paymentMethod;
+
+        /// <summary>
+        /// Internal state for store a credit card transaction type
+        /// </summary>
         protected CreditCardTransactionType _creditCardTransactionType;
 
-        protected CreditCardType _diners = CreditCardType.DinersClub;
-        protected CreditCardType _discover = CreditCardType.Discover;
-        protected T _info;
-        protected CreditCardType _jcb = CreditCardType.Jcb;
-        protected CreditCardType _masterCard = CreditCardType.MasterCard;
-        protected PaymentMethod _paymentMethod;
-        protected CreditCardType _visa = CreditCardType.Visa;
+        /// <summary>
+        /// Internal state for store processor info.
+        /// </summary>
+        protected T _info; 
+        #endregion
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PaymentProcessorBase&lt;T, K&gt;"/> class.
+        /// </summary>
+        /// <param name="authenticator">The authenticator.</param>
         protected PaymentProcessorBase(IAuthenticator authenticator)
         {
             _info = new T();
@@ -77,35 +92,61 @@ namespace DotNetMerchant.Payments.Processors
 
         #region IPaymentProcessor<T> Members
 
-        public abstract Uri ProductionUri { get; }
-
-        public virtual Uri DevelopmentUri
-        {
-            get { return ProductionUri; }
-        }
-
+        /// <summary>
+        /// The identifying name for this payment processor. Used to match configuration values.
+        /// </summary>
         public abstract string Name { get; }
+
+        /// <summary>
+        /// The friendly name for this payment processor.
+        /// </summary>
         public abstract string DisplayName { get; }
+        
+        /// <summary>
+        /// The homepage for this payment processor or API.
+        /// </summary>
         public abstract Uri HomepageUri { get; }
+
+        /// <summary>
+        /// The credit cards this payment processor can support. 
+        /// Express multiple types using enum flag syntax.
+        /// </summary>
         public abstract IEnumerable<CreditCardType> SupportedCreditCardTypes { get; }
+
+        /// <summary>
+        /// The regions this payment processor will support.
+        /// </summary>
         public abstract IEnumerable<RegionInfo> SupportedRegions { get; }
+        
+        /// <summary>
+        /// The authentication scheme used to identify the merchant account
+        /// requesting payment processing from this service.
+        /// </summary>
         public IAuthenticator Authenticator { get; set; }
 
         #endregion
 
+        /// <summary>
+        /// Maps the type of the transaction.
+        /// </summary>
         protected abstract void MapTransactionType();
+
+        /// <summary>
+        /// Maps the payment method.
+        /// </summary>
         protected abstract void MapPaymentMethod();
+
+        /// <summary>
+        /// Maps the authenticator.
+        /// </summary>
         protected abstract void MapAuthenticator();
 
-        protected K Request(T info)
-        {
-            var uri = Mode == OperationMode.Production
-                          ? ProductionUri
-                          : DevelopmentUri;
-
-            return Request(info, uri);
-        }
-
+        /// <summary>
+        /// Makes a request to the payment processor
+        /// </summary>
+        /// <param name="info">The info.</param>
+        /// <param name="uri">The URI.</param>
+        /// <returns></returns>
         protected K Request(T info, Uri uri)
         {
             MapAuthenticator();
@@ -120,15 +161,12 @@ namespace DotNetMerchant.Payments.Processors
             return RequestImpl(info, uri);
         }
 
-        protected K Request(XDocument xml)
-        {
-            var uri = Mode == OperationMode.Production
-                          ? ProductionUri
-                          : DevelopmentUri;
-
-            return Request(xml, uri);
-        }
-        
+        /// <summary>
+        /// Makes a request to the payment processor with an XML payload.
+        /// </summary>
+        /// <param name="xml">The XML.</param>
+        /// <param name="uri">The URI.</param>
+        /// <returns></returns>
         protected K Request(XDocument xml, Uri uri)
         {
             var info = new XmlQueryInfo {Xml = xml.ToString()};
@@ -145,6 +183,10 @@ namespace DotNetMerchant.Payments.Processors
             return result;
         }
 
+        /// <summary>
+        /// Validates the amount of money passed into a processing method.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
         protected static void ValidateAmount(Money amount)
         {
             if (amount <= 0.0)
@@ -153,6 +195,10 @@ namespace DotNetMerchant.Payments.Processors
             }
         }
 
+        /// <summary>
+        /// Validates the credit card passed into a processing method.
+        /// </summary>
+        /// <param name="card">The card.</param>
         protected void ValidateCreditCard(CreditCard card)
         {
             if (card == null || !card.IsValid || card.IsExpired)
@@ -166,12 +212,26 @@ namespace DotNetMerchant.Payments.Processors
             }
         }
 
+        /// <summary>
+        /// Validates the amount of money passed into a processing method.
+        /// Validates the credit card passed into a processing method.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
         protected void ValidateAmountCard(Money amount, CreditCard card)
         {
             ValidateAmount(amount);
             ValidateCreditCard(card);
         }
 
+        /// <summary>
+        /// Validates the amount of money passed into a processing method.
+        /// Validates the credit card passed into a processing method.
+        /// Validates the transaction ID passed into the processing method.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <param name="transactionId">The transaction ID.</param>
         protected void ValidateAmountCardTransaction(Money amount, CreditCard card, string transactionId)
         {
             ValidateAmount(amount);
@@ -179,12 +239,22 @@ namespace DotNetMerchant.Payments.Processors
             ValidateTransaction(transactionId);
         }
 
+        /// <summary>
+        /// Validates the amount of money passed into a processing method.
+        /// Validates the transaction ID passed into the processing method.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="transactionId">The transaction ID.</param>
         protected static void ValidateAmountTransaction(Money amount, string transactionId)
         {
             ValidateAmount(amount);
             ValidateTransaction(transactionId);
         }
 
+        /// <summary>
+        /// Validates the transaction ID passed into the processing method.
+        /// </summary>
+        /// <param name="transactionId">The transaction ID.</param>
         protected static void ValidateTransaction(string transactionId)
         {
             if (transactionId.IsNullOrBlank())
@@ -238,6 +308,10 @@ namespace DotNetMerchant.Payments.Processors
             _info.BillToCountry = billingAddress.Country;
         }
 
+        /// <summary>
+        /// Sets the credit card.
+        /// </summary>
+        /// <param name="card">The card.</param>
         protected virtual void SetCreditCard(CreditCard card)
         {
             ValidateCreditCard(card);
@@ -248,29 +322,67 @@ namespace DotNetMerchant.Payments.Processors
             _info.CreditCardExpiry = _creditCard.ExpiryDate.ToPaddedString();
         }
 
-        protected K RequestWithMoneyAndCard(CreditCardTransactionType type, Money amount, CreditCard card)
+        /// <summary>
+        /// Sends the request with money and credit card.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <param name="uri">The URI.</param>
+        /// <returns></returns>
+        protected K RequestWithMoneyAndCard(CreditCardTransactionType type, 
+                                            Money amount, 
+                                            CreditCard card,
+                                            Uri uri)
         {
-            ProcessWithMoneyAndCard(amount, card, type);
+            ProcessWithMoneyAndCreditCard(amount, card, type);
 
-            return Request(_info);
+            return Request(_info, uri);
         }
 
-        protected K RequestWithTransaction(CreditCardTransactionType type, string transactionId)
+        /// <summary>
+        /// Sends the request with a transaction.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="transactionId">The transaction id.</param>
+        /// <param name="uri">The URI.</param>
+        /// <returns></returns>
+        protected K RequestWithTransaction(CreditCardTransactionType type, 
+                                           string transactionId, 
+                                           Uri uri)
         {
             ProcessWithTransaction(type, transactionId);
 
-            return Request(_info);
+            return Request(_info, uri);
         }
 
-        protected K RequestWithMoneyCardAndTransaction(CreditCardTransactionType type, Money amount, CreditCard card,
-                                                       string transactionId)
+        /// <summary>
+        /// Sends the request with money, credit card and a transaction.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <param name="transactionId">The transaction id.</param>
+        /// <param name="uri">The URI.</param>
+        /// <returns></returns>
+        protected K RequestWithMoneyCreditCardAndTransaction(CreditCardTransactionType type, 
+                                                       Money amount, 
+                                                       CreditCard card,
+                                                       string transactionId,
+                                                       Uri uri)
         {
-            ProcessWithMoneyAndCard(amount, card, type);
+            ProcessWithMoneyAndCreditCard(amount, card, type);
             ProcessWithMoneyAndTransaction(amount, transactionId, type);
 
-            return Request(_info);
+            return Request(_info, uri);
         }
 
+        /// <summary>
+        /// Processes the request with money and a transaction.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="transactionId">The transaction id.</param>
+        /// <param name="type">The type.</param>
         protected void ProcessWithMoneyAndTransaction(Money amount, string transactionId, CreditCardTransactionType type)
         {
             ValidateAmountTransaction(amount, transactionId);
@@ -280,6 +392,11 @@ namespace DotNetMerchant.Payments.Processors
             _info.TransactionId = transactionId;
         }
 
+        /// <summary>
+        /// Processes the request with a transaction.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="transactionId">The transaction id.</param>
         protected void ProcessWithTransaction(CreditCardTransactionType type, string transactionId)
         {
             ValidateTransaction(transactionId);
@@ -288,7 +405,13 @@ namespace DotNetMerchant.Payments.Processors
             _info.TransactionId = transactionId;
         }
 
-        protected void ProcessWithMoneyAndCard(Money amount, CreditCard card, CreditCardTransactionType type)
+        /// <summary>
+        /// Processes the transaction with money and a credit card.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <param name="type">The type.</param>
+        protected void ProcessWithMoneyAndCreditCard(Money amount, CreditCard card, CreditCardTransactionType type)
         {
             ValidateAmountCard(amount, card);
 
@@ -298,18 +421,59 @@ namespace DotNetMerchant.Payments.Processors
             _info.TransactionAmount = amount;
         }
 
-        protected static void ValidateSubscription(Subscription subscription)
+        /// <summary>
+        /// Validates the subcription. In <see cref="PaymentProcessorBase{T,K}"/>
+        /// this is a no-op call. You must override to validate in a descendent processor.
+        /// </summary>
+        /// <param name="subscription">The subscription.</param>
+        protected virtual void ValidateSubscription(Subscription subscription)
         {
-            if(subscription.TrialPeriod.HasValue && 
-               !subscription.TrialPeriod.Value.Equals(subscription.Period))
-            {
-                throw new ArgumentException("Authorize.net does not support trial periods that do not match the billing period.");
-            }
+            return;
         }
 
+        /// <summary>
+        /// Validates the billing address. In <see cref="PaymentProcessorBase{T,K}"/>
+        /// this is a no-op call. You must override to validate in a descendent processor.
+        /// </summary>
         protected virtual void ValidateBillingAddress()
         {
             return;
+        }
+
+        /// <summary>
+        /// Gets the credit card URI.
+        /// </summary>
+        /// <param name="processor">The processor.</param>
+        /// <returns></returns>
+        protected Uri GetCreditCardUri(ISupportCreditCards<K> processor)
+        {
+            return Mode == OperationMode.Production
+                       ? processor.CreditCardProductionUri
+                       : processor.CreditCardDevelopmentUri;
+        }
+
+        /// <summary>
+        /// Gets the recurring billing URI.
+        /// </summary>
+        /// <param name="processor">The processor.</param>
+        /// <returns></returns>
+        protected Uri GetRecurringBillingUri(ISupportRecurringBilling<K> processor)
+        {
+            return Mode == OperationMode.Production
+                       ? processor.RecurringBillingProductionUri
+                       : processor.RecurringBillingDevelopmentUri;
+        }
+
+        /// <summary>
+        /// Gets the billing profile URI.
+        /// </summary>
+        /// <param name="processor">The processor.</param>
+        /// <returns></returns>
+        protected Uri GetBillingProfileUri(ISupportBillingProfiles<K> processor)
+        {
+            return Mode == OperationMode.Production
+                       ? processor.BillingProfileProductionUri
+                       : processor.BillingProfileDevelopmentUri;
         }
     }
 }

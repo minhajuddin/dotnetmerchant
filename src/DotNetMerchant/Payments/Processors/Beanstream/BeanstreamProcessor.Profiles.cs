@@ -1,9 +1,9 @@
-#region License
+﻿#region License
 
 // The MIT License
-// 
+//  
 // Copyright (c) 2009 Conatus Creative, Inc.
-// 
+//  
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -26,51 +26,66 @@
 
 using System;
 using DotNetMerchant.Billing.Model;
+using DotNetMerchant.Extensions;
 using DotNetMerchant.Payments.Model;
+using DotNetMerchant.Payments.Workflow;
 
-namespace DotNetMerchant.Payments.Workflow
+namespace DotNetMerchant.Payments.Processors.Beanstream
 {
-    /// <summary>
-    /// A contract for processors that support recurring billing. Recurring billing allows
-    /// you to continually bill a customer for a subscription without requiring credit card
-    /// information stored on your server.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface ISupportRecurringBilling<T> where T : IPaymentProcessorResult
+    partial class BeanstreamProcessor : ISupportBillingProfiles<BeanstreamResult>
     {
-        /// <summary>
-        /// Gets the recurring billing production URI.
-        /// </summary>
-        /// <value>The recurring billing production URI.</value>
-        Uri RecurringBillingProductionUri { get; }
+        #region ISupportBillingProfiles<BeanstreamResult> Members
 
         /// <summary>
-        /// Gets the recurring billing development URI.
+        /// Gets the billing profile production URI.
         /// </summary>
-        /// <value>The recurring billing development URI.</value>
-        Uri RecurringBillingDevelopmentUri { get; }
+        /// <value>The billing profile production URI.</value>
+        public Uri BillingProfileProductionUri
+        {
+            get { return "https://www.beanstream.com/scripts/payment_profile.asp".Uri(); }
+        }
 
         /// <summary>
-        /// Creates the recurring billing.
+        /// Gets the billing profile development URI.
         /// </summary>
-        /// <param name="subscription">The subscription.</param>
+        /// <value>The billing profile development URI.</value>
+        public Uri BillingProfileDevelopmentUri
+        {
+            get { return BillingProfileProductionUri; }
+        }
+
+        /// <summary>
+        /// Creates the billing profile.
+        /// </summary>
+        /// <param name="billingProfile">The billing profile.</param>
         /// <param name="card">The card.</param>
         /// <returns></returns>
-        T CreateRecurringBilling(Subscription subscription, CreditCard card);
+        public BeanstreamResult CreateBillingProfile(BillingProfile billingProfile, CreditCard card)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
-        /// Updates the recurring billing.
+        /// Updates the billing profile.
         /// </summary>
-        /// <param name="subscription">The subscription.</param>
+        /// <param name="billingProfile">The billing profile.</param>
         /// <param name="card">The card.</param>
         /// <returns></returns>
-        T UpdateRecurringBilling(Subscription subscription, CreditCard card);
+        public BeanstreamResult UpdateBillingProfile(BillingProfile billingProfile, CreditCard card)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
-        /// Cancels the recurring billing.
+        /// Cancels the billing profile.
         /// </summary>
-        /// <param name="subscription">The subscription.</param>
+        /// <param name="billingProfile">The billing profile.</param>
         /// <returns></returns>
-        T CancelRecurringBilling(Subscription subscription);
+        public BeanstreamResult CancelBillingProfile(BillingProfile billingProfile)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

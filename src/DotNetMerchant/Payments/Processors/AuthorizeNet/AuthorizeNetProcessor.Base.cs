@@ -1,9 +1,9 @@
 ﻿#region License
 
 // The MIT License
-// 
+//  
 // Copyright (c) 2009 Conatus Creative, Inc.
-// 
+//  
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -38,7 +38,7 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
     /// <summary>
     /// A US-based payment gateway.
     /// </summary>
-    public partial class AuthorizeNetProcessor : 
+    public partial class AuthorizeNetProcessor :
         PaymentProcessorBase<AuthorizeNetInfo, AuthorizeNetResult>,
         ISupportCreditCards<AuthorizeNetResult>,
         ISupportRecurringBilling<AuthorizeNetResult>
@@ -91,24 +91,16 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
         /// </summary>
         public override IEnumerable<CreditCardType> SupportedCreditCardTypes
         {
-            get { return _visa.And(_masterCard).And(_amex).And(_discover); }
+            get
+            {
+                return CreditCardType.Visa
+                    .And(CreditCardType.MasterCard)
+                    .And(CreditCardType.Amex)
+                    .And(CreditCardType.Discover);
+            }
         }
 
-        /// <summary>
-        /// The service endpoint used for secure transactions.
-        /// </summary>
-        public override Uri ProductionUri
-        {
-            get { return "https://secure.authorize.net/gateway/transact.dll".Uri(); }
-        }
-
-        /// <summary>
-        /// The service endpoint used for testing transactions, if available.
-        /// </summary>
-        public override Uri DevelopmentUri
-        {
-            get { return "https://test.authorize.net/gateway/transact.dll".Uri(); }
-        }
+        #region ISupportRecurringBilling<AuthorizeNetResult> Members
 
         /// <summary>
         /// Gets the recurring billing production URI.
@@ -128,6 +120,8 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             get { return "https://apitest.authorize.net/xml/v1/request.api".Uri(); }
         }
 
+        #endregion
+
         /// <summary>
         /// Sets the invoice number.
         /// </summary>
@@ -146,6 +140,9 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             _info.PurchaseOrderNumber = number;
         }
 
+        /// <summary>
+        /// Maps the type of the transaction.
+        /// </summary>
         protected override void MapTransactionType()
         {
             switch (_creditCardTransactionType)
@@ -168,6 +165,9 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             }
         }
 
+        /// <summary>
+        /// Maps the payment method.
+        /// </summary>
         protected override void MapPaymentMethod()
         {
             switch (_paymentMethod)
@@ -178,6 +178,9 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             }
         }
 
+        /// <summary>
+        /// Maps the authenticator.
+        /// </summary>
         protected override void MapAuthenticator()
         {
             if (Authenticator == null)
@@ -189,12 +192,16 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
             _info.TransactionKey = Authenticator.Second;
         }
 
+        /// <summary>
+        /// Validates the billing address.
+        /// </summary>
         protected override void ValidateBillingAddress()
         {
             if (_info.BillToFirstName.IsNullOrBlank() ||
                 _info.BillToLastName.IsNullOrBlank())
             {
-                throw new ArgumentException("Authorize.net requires the first and last name of the billing recipient to create a recurring billing/");
+                throw new ArgumentException(
+                    "Authorize.net requires the first and last name of the billing recipient to create a recurring billing/");
             }
         }
     }

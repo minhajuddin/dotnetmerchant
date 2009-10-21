@@ -26,5 +26,8 @@
 
 namespace DotNetMerchant.Web
 {
+    /// <summary>
+    /// A web callback raised when an HTTP response is received.
+    /// </summary>
     public delegate void WebCallback(object sender, WebQueryResponseEventArgs e);
 }

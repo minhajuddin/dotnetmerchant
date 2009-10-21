@@ -167,9 +167,6 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
                                                      CredentialSecond,
                                                      CredentialThird);
 
-            // This is required for every transaction
-            beanstream.SetOrderNumber("2232");
-
             // Billing address is required for card transactions
             beanstream.SetBillingAddress(new Address
             {

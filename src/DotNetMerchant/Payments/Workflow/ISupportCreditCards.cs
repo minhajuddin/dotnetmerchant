@@ -24,14 +24,27 @@
 
 #endregion
 
+using System;
 using DotNetMerchant.Payments.Model;
 
 namespace DotNetMerchant.Payments.Workflow
 {
-    internal interface ISupportCreditCards<T> :
+    /// <summary>
+    /// A contract for supporting credit card payments
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public interface ISupportCreditCards<T> : 
         IPurchaseAuthorizationWorkflow<T, CreditCard>
         where T : IPaymentProcessorResult
     {
+        /// <summary>
+        /// The service endpoint used for secure credit card transactions.
+        /// </summary>
+        Uri CreditCardProductionUri { get; }
 
+        /// <summary>
+        /// The service endpoint used for testing credit card transactions, if available.
+        /// </summary>
+        Uri CreditCardDevelopmentUri { get; }
     }
 }

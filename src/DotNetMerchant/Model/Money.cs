@@ -110,6 +110,21 @@ namespace DotNetMerchant.Model
 
         #region IComparable<Money> Members
 
+        /// <summary>
+        /// Compares the current object with another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has the following meanings:
+        /// Value
+        /// Meaning
+        /// Less than zero
+        /// This object is less than the <paramref name="other"/> parameter.
+        /// Zero
+        /// This object is equal to <paramref name="other"/>.
+        /// Greater than zero
+        /// This object is greater than <paramref name="other"/>.
+        /// </returns>
         public int CompareTo(Money other)
         {
             return other._units.CompareTo(_units);
@@ -119,6 +134,13 @@ namespace DotNetMerchant.Model
 
         #region IEquatable<Money> Members
 
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+        /// </returns>
         public bool Equals(Money other)
         {
             return other == this;
@@ -128,6 +150,14 @@ namespace DotNetMerchant.Model
 
         #region IFormattable Members
 
+        /// <summary>
+        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// </summary>
+        /// <param name="format">The format.</param>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>
+        /// A <see cref="System.String"/> that represents this instance.
+        /// </returns>
         public string ToString(string format, IFormatProvider formatProvider)
         {
             var value = ScaleDown();
@@ -161,9 +191,9 @@ namespace DotNetMerchant.Model
         /// Indicates whether this instance and a specified object are equal.
         /// </summary>
         /// <returns>
-        /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
+        /// true if <paramref name="other"/> and this instance are the same type and represent the same value; otherwise, false.
         /// </returns>
-        /// <param name="obj">Another object to compare to. 
+        /// <param name="other">Another object to compare to. 
         ///                 </param><filterpriority>2</filterpriority>
         public override bool Equals(object other)
         {
@@ -252,6 +282,12 @@ namespace DotNetMerchant.Model
             }
         }
 
+        /// <summary>
+        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String"/> that represents this instance.
+        /// </returns>
         public override string ToString()
         {
             return ToString("c", _currencyInfo.DisplayCulture.NumberFormat);

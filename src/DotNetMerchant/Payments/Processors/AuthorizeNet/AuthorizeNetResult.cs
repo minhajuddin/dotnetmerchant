@@ -1,9 +1,9 @@
 ﻿#region License
 
 // The MIT License
-// 
+//  
 // Copyright (c) 2009 Conatus Creative, Inc.
-// 
+//  
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -55,6 +55,10 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
         /// <value>The reason code.</value>
         public string ReasonCode { get; private set; }
 
+        /// <summary>
+        /// Populates a processor result based on a given response string.
+        /// </summary>
+        /// <param name="response">The response from the payment processor.</param>
         public override void PopulateFromResponse(string response)
         {
             /*
@@ -87,8 +91,8 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
         private void PopulateXmlResult(string response)
         {
             var document = XDocument.Parse(response, LoadOptions.PreserveWhitespace);
-            
-            if(document.Root == null)
+
+            if (document.Root == null)
             {
                 return;
             }

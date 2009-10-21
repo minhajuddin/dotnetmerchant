@@ -1,9 +1,9 @@
 #region License
 
 // The MIT License
-// 
+//  
 // Copyright (c) 2009 Conatus Creative, Inc.
-// 
+//  
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -45,6 +45,7 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
         /// <value>The reason text.</value>
         /// 
         public string ReasonText { get; private set; }
+
         /// <summary>
         /// Gets or sets the reason code.
         /// </summary>

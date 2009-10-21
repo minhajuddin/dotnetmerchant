@@ -28,14 +28,37 @@ using DotNetMerchant.Model;
 
 namespace DotNetMerchant.Payments.Workflow
 {
-    internal interface IPurchaseAuthorizationWorkflow<T, K> : IPurchaseWorkflow<T, K>
+    /// <summary>
+    /// A contract for processing providers that can authorize and capture money.
+    /// </summary>
+    /// <typeparam name="T">The processor result</typeparam>
+    /// <typeparam name="K">The payment method</typeparam>
+    public interface IPurchaseAuthorizationWorkflow<T, K> : IPurchaseWorkflow<T, K>
         where T : IPaymentProcessorResult
         where K : IPaymentMethod
     {
+        /// <summary>
+        /// Authorizes the specified amount.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <returns></returns>
         T Authorize(Money amount, K card);
 
+        /// <summary>
+        /// Captures the specified amount.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="card">The card.</param>
+        /// <param name="transactionId">The transaction id.</param>
+        /// <returns></returns>
         T Capture(Money amount, K card, string transactionId);
 
+        /// <summary>
+        /// Voids the specified transaction id.
+        /// </summary>
+        /// <param name="transactionId">The transaction id.</param>
+        /// <returns></returns>
         T Void(string transactionId);
     }
 }
