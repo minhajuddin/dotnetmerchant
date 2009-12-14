@@ -19,10 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudoFitness.UnitTests", "Su
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{3752BA4D-AD3C-4138-8C56-2074638DE3D2}"
 	ProjectSection(SolutionItems) = preProject
+		..\lib\Unity\Microsoft.Practices.Unity.dll = ..\lib\Unity\Microsoft.Practices.Unity.dll
 		..\lib\nunit.framework.dll = ..\lib\nunit.framework.dll
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{BF9088E2-1B83-42D6-83F2-7E5445EB3DA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Storefront", "DotNetMerchant.Storefront\DotNetMerchant.Storefront.csproj", "{83E7C71E-9C09-4066-A9FC-55523F4700EB}"
 EndProject
@@ -65,7 +64,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D8784883-C20B-4B63-B011-623DBA9ABC81} = {33F7930B-5D68-4CC0-A9D2-279005213511}
 		{8738BDAD-EE48-433D-8D29-F3DE751D8D48} = {33F7930B-5D68-4CC0-A9D2-279005213511}
-		{83E7C71E-9C09-4066-A9FC-55523F4700EB} = {BF9088E2-1B83-42D6-83F2-7E5445EB3DA4}
-		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5} = {BF9088E2-1B83-42D6-83F2-7E5445EB3DA4}
 	EndGlobalSection
 EndGlobal
