@@ -8,7 +8,7 @@
     <ProjectGuid>{D178767B-0678-4C75-91E6-9F58AA37B36C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetMerchant</RootNamespace>
+    <RootNamespace>DotNetMerchant.Core</RootNamespace>
     <AssemblyName>DotNetMerchant.Core</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
