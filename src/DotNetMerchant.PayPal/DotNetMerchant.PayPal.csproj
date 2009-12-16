@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}</ProjectGuid>
+    <ProjectGuid>{B078BD16-084A-47F8-BD9D-86CE8FFD9D22}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetMerchant.UnitTests</RootNamespace>
-    <AssemblyName>DotNetMerchant.UnitTests</AssemblyName>
+    <RootNamespace>DotNetMerchant.PayPal</RootNamespace>
+    <AssemblyName>DotNetMerchant.PayPal</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -49,27 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Billing\PeriodTests.cs" />
-    <Compile Include="Billing\Model\SubscriptionTests.cs" />
-    <Compile Include="Extensions\SpecificationExtensionsTests.cs" />
-    <Compile Include="Model\CreditCardTests.cs" />
-    <Compile Include="Model\CurrencyTests.cs" />
-    <Compile Include="Model\IdentityTests.cs" />
-    <Compile Include="Model\MoneyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DateSpanTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetMerchant\DotNetMerchant.Core.csproj">
       <Project>{D178767B-0678-4C75-91E6-9F58AA37B36C}</Project>
       <Name>DotNetMerchant.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="setup.example.xml" />
-    <Content Include="setup.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

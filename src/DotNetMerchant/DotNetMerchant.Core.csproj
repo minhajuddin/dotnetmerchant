@@ -8,8 +8,8 @@
     <ProjectGuid>{D178767B-0678-4C75-91E6-9F58AA37B36C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetMerchant.Core</RootNamespace>
-    <AssemblyName>DotNetMerchant.Core</AssemblyName>
+    <RootNamespace>DotNetMerchant</RootNamespace>
+    <AssemblyName>DotNetMerchant</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\DotNetMerchant.Core.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\DotNetMerchant.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,10 +30,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\DotNetMerchant.Core.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\DotNetMerchant.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -79,16 +83,6 @@
     <Compile Include="Payments\IPaymentProcessor.cs" />
     <Compile Include="Payments\IPaymentProcessorResult.cs" />
     <Compile Include="Payments\OperationMode.cs" />
-    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetInfo.cs" />
-    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Base.cs" />
-    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Credit.cs" />
-    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetResult.cs" />
-    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetResult.Maps.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamInfo.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Base.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Credit.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamResult.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamResult.Maps.cs" />
     <Compile Include="Payments\Processors\PaymentProcessorBase.cs" />
     <Compile Include="Payments\Processors\PaymentProcessorResultBase.cs" />
     <Compile Include="Payments\TransactionStatus.cs" />
@@ -143,8 +137,6 @@
     <None Include="Billing\_Billing.cd" />
     <None Include="Model\_Model.cd" />
     <None Include="Payments\Authentication\_Authentication.cd" />
-    <None Include="Payments\Processors\AuthorizeNet\_AuthorizeNet.cd" />
-    <None Include="Payments\Processors\Beanstream\_Beanstream.cd" />
     <None Include="Payments\Processors\_Processors.cd" />
     <None Include="Payments\Workflow\_Workflow.cd" />
   </ItemGroup>
@@ -187,19 +179,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Specifications\ValidEmailSpecification.cs" />
-    <Compile Include="Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.Recurring.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamInfo.Profiles.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamInfo.Recurring.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Profiles.cs" />
-    <Compile Include="Payments\Processors\Beanstream\BeanstreamProcessor.Recurring.cs" />
     <Compile Include="Web\Attributes\BooleanToIntegerAttribute.cs" />
     <Compile Include="Web\Attributes\DateTimeFormatAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Billing\Model\Extensions\" />
     <Folder Include="Billing\Model\Specifications\" />
-    <Folder Include="Payments\Processors\PayPal\PayflowPro\" />
-    <Folder Include="Payments\Processors\PayPal\WebsitePaymentsPro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

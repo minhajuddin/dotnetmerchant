@@ -29,9 +29,10 @@ using DotNetMerchant.Model;
 using DotNetMerchant.Payments;
 using DotNetMerchant.Payments.Model;
 using DotNetMerchant.Payments.Processors.Beanstream;
+using DotNetMerchant.UnitTests.Processors;
 using NUnit.Framework;
 
-namespace DotNetMerchant.UnitTests.Processors.Beanstream
+namespace DotNetMerchant.Gateways.UnitTests.Beanstream
 {
     [TestFixture]
     public partial class BeanstreamTests : ProcessorTestBase
@@ -132,16 +133,16 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
 
             //  Billing address is required for card transactions
             beanstream.SetBillingAddress(new Address
-            {
-                FirstName = "Paul Randal",
-                Email = "prandal@mydomain.net", // required
-                Phone = "9999999",
-                AddressLine = "1045 Main Street",
-                City = "Vancouver",
-                State = "BC",
-                Zip = "V8R 1J6",
-                Country = "CA",
-            });
+                                             {
+                                                 FirstName = "Paul Randal",
+                                                 Email = "prandal@mydomain.net", // required
+                                                 Phone = "9999999",
+                                                 AddressLine = "1045 Main Street",
+                                                 City = "Vancouver",
+                                                 State = "BC",
+                                                 Zip = "V8R 1J6",
+                                                 Country = "CA",
+                                             });
 
             var auth = beanstream.Authorize(10.00, creditCard);
             var result = beanstream.Capture(10.00, creditCard, auth.TransactionId);
@@ -169,16 +170,16 @@ namespace DotNetMerchant.UnitTests.Processors.Beanstream
 
             // Billing address is required for card transactions
             beanstream.SetBillingAddress(new Address
-            {
-                FirstName = "Paul Randal",
-                Email = "prandal@mydomain.net", // required
-                Phone = "9999999",
-                AddressLine = "1045 Main Street",
-                City = "Vancouver",
-                State = "BC",
-                Zip = "V8R 1J6",
-                Country = "CA",
-            });
+                                             {
+                                                 FirstName = "Paul Randal",
+                                                 Email = "prandal@mydomain.net", // required
+                                                 Phone = "9999999",
+                                                 AddressLine = "1045 Main Street",
+                                                 City = "Vancouver",
+                                                 State = "BC",
+                                                 Zip = "V8R 1J6",
+                                                 Country = "CA",
+                                             });
 
             var auth = beanstream.Authorize(10.00, creditCard);
             var capture = beanstream.Capture(10.00, creditCard, auth.TransactionId);

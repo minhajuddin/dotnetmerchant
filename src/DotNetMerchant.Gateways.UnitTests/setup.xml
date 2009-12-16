@@ -1,0 +1,19 @@
+﻿<setup>
+  <processors>
+    <processor name="authorizedotnet">
+      <development>
+        <loginId>8rg8pNbHT8VW</loginId>
+        <transactionKey>42z9w4Y83sQwFZyy</transactionKey>
+      </development>
+    </processor>
+    <processor name="beanstream">
+      <development>
+        <merchantId>193930000</merchantId>
+        <username>api-test</username>
+        <password>MmvW484D</password>
+        <recurringBillingPassCode>JS373wJG4LmP8Lkhljp1DVm5HH9779j1</recurringBillingPassCode>
+        <paymentProfilesPassCode>r6anjjnP68LL8L3bMvCG8tuacn3eCBGD</paymentProfilesPassCode>
+      </development>  
+    </processor>    
+  </processors>  
+</setup>

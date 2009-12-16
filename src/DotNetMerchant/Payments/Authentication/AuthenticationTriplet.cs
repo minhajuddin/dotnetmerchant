@@ -26,7 +26,7 @@
 
 namespace DotNetMerchant.Payments.Authentication
 {
-    internal class AuthenticationTriplet : IAuthenticator
+    public class AuthenticationTriplet : IAuthenticator
     {
         public string Third { get; set; }
 

@@ -28,8 +28,7 @@ namespace DotNetMerchant.Storefront
             _dependencyContainer.RegisterInstance(RouteTable.Routes);
             
             // Filters
-
-
+            
             // Factories
             var factory = new DependencyContainerControllerFactory(_dependencyContainer);
             ControllerBuilder.Current.SetControllerFactory(factory);           

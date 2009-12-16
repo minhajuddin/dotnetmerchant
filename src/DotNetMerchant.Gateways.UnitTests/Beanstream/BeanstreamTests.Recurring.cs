@@ -7,7 +7,7 @@ using DotNetMerchant.Payments.Model;
 using DotNetMerchant.Payments.Processors.Beanstream;
 using NUnit.Framework;
 
-namespace DotNetMerchant.UnitTests.Processors.Beanstream
+namespace DotNetMerchant.Gateways.UnitTests.Beanstream
 {
     partial class BeanstreamTests
     {

@@ -31,7 +31,6 @@ namespace DotNetMerchant.Payments.Workflow
     internal interface ISupportDebitCards<T> : IPurchaseWorkflow<T, DebitCard>
         where T : IPaymentProcessorResult
     {
-
-
+        
     }
 }

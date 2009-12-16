@@ -27,6 +27,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Storefront",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Storefront.UnitTests", "DotNetMerchant.Storefront.UnitTests\DotNetMerchant.Storefront.UnitTests.csproj", "{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment Gateways", "Payment Gateways", "{1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Beanstream", "DotNetMerchant.Beanstream\DotNetMerchant.Beanstream.csproj", "{8E959D59-7C82-49F0-8FDF-88580BE10A9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.PayPal", "DotNetMerchant.PayPal\DotNetMerchant.PayPal.csproj", "{B078BD16-084A-47F8-BD9D-86CE8FFD9D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Gateways.UnitTests", "DotNetMerchant.Gateways.UnitTests\DotNetMerchant.Gateways.UnitTests.csproj", "{A68CDF8E-DF54-42C8-8100-5A44B3F7D384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.AuthorizeNet", "DotNetMerchant.AuthorizeNet\DotNetMerchant.AuthorizeNet.csproj", "{66B7E4B8-7368-443F-9B1A-6663DB94D567}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +67,22 @@ Global
 		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E959D59-7C82-49F0-8FDF-88580BE10A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E959D59-7C82-49F0-8FDF-88580BE10A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E959D59-7C82-49F0-8FDF-88580BE10A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E959D59-7C82-49F0-8FDF-88580BE10A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B078BD16-084A-47F8-BD9D-86CE8FFD9D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B078BD16-084A-47F8-BD9D-86CE8FFD9D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B078BD16-084A-47F8-BD9D-86CE8FFD9D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B078BD16-084A-47F8-BD9D-86CE8FFD9D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A68CDF8E-DF54-42C8-8100-5A44B3F7D384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68CDF8E-DF54-42C8-8100-5A44B3F7D384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68CDF8E-DF54-42C8-8100-5A44B3F7D384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68CDF8E-DF54-42C8-8100-5A44B3F7D384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B7E4B8-7368-443F-9B1A-6663DB94D567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B7E4B8-7368-443F-9B1A-6663DB94D567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B7E4B8-7368-443F-9B1A-6663DB94D567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B7E4B8-7368-443F-9B1A-6663DB94D567}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +90,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D8784883-C20B-4B63-B011-623DBA9ABC81} = {33F7930B-5D68-4CC0-A9D2-279005213511}
 		{8738BDAD-EE48-433D-8D29-F3DE751D8D48} = {33F7930B-5D68-4CC0-A9D2-279005213511}
+		{8E959D59-7C82-49F0-8FDF-88580BE10A9F} = {1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}
+		{B078BD16-084A-47F8-BD9D-86CE8FFD9D22} = {1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}
+		{A68CDF8E-DF54-42C8-8100-5A44B3F7D384} = {1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}
+		{66B7E4B8-7368-443F-9B1A-6663DB94D567} = {1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}
 	EndGlobalSection
 EndGlobal

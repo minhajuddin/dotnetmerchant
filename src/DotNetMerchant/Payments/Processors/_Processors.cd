@@ -1,72 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DotNetMerchant.Payments.Processors.PaymentProcessorBase&lt;T, K&gt;">
-    <Position X="1.25" Y="3" Width="2.75" />
+  <Class Name="DotNetMerchant.Payments.Processors.PaymentProcessorBase&lt;T, K&gt;" BaseTypeListCollapsed="true">
+    <Position X="1" Y="1.5" Width="2" />
     <Members>
-      <Field Name="_amex" Hidden="true" />
       <Field Name="_creditCard" Hidden="true" />
       <Field Name="_creditCardTransactionType" Hidden="true" />
-      <Field Name="_discover" Hidden="true" />
       <Field Name="_info" Hidden="true" />
-      <Field Name="_masterCard" Hidden="true" />
       <Field Name="_paymentMethod" Hidden="true" />
-      <Field Name="_visa" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>CElAERAABIAAZgAAABICYAQKACAIoAlJAAAoAQAABEE=</HashCode>
+      <HashCode>AEBAERAABIAAYAAAAAMCZAQOACAQoEhBABAsAQIABAE=</HashCode>
       <FileName>Payments\Processors\PaymentProcessorBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DotNetMerchant.Payments.Processors.PaymentProcessorResultBase">
-    <Position X="4.5" Y="3" Width="2" />
+  <Class Name="DotNetMerchant.Payments.Processors.PaymentProcessorResultBase" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="3" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAACACAAAAAAAAQAAAAAAABAAAAAA=</HashCode>
       <FileName>Payments\Processors\PaymentProcessorResultBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DotNetMerchant.Payments.Processors.AuthorizeNet.AuthorizeNetProcessor">
-    <Position X="1.25" Y="10.75" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>AAVAkAAAQEAAQAABABAAAAQKAAIAIAAAABAAAAACAAA=</HashCode>
-      <FileName>Payments\Processors\AuthorizeNet\AuthorizeNetProcessor.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Interface Name="DotNetMerchant.Payments.IPaymentProcessorResult">
-    <Position X="4.5" Y="0.5" Width="2" />
+    <Position X="3.25" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAACACAAAAAAAAQAAAAAAABAAAAAA=</HashCode>
       <FileName>Payments\IPaymentProcessorResult.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="DotNetMerchant.Payments.IPaymentProcessor&lt;T&gt;">
-    <Position X="1.25" Y="0.5" Width="2.75" />
+  <Interface Name="DotNetMerchant.Payments.IPaymentProcessor&lt;T&gt;" Collapsed="true">
+    <Position X="1" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Payments\IPaymentProcessor.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="DotNetMerchant.Payments.Workflow.ICreditCardPurchaseWorkflow&lt;T&gt;" Collapsed="true">
-    <Position X="5" Y="14.5" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Payments\Workflow\ICreditCardPurchaseWorkflow.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="DotNetMerchant.Payments.Workflow.IPurchaseAuthorizationWorkflow&lt;T, K&gt;">
-    <Position X="5" Y="12.5" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAABAAAAACAAA=</HashCode>
-      <FileName>Payments\Workflow\IPurchaseAuthorizationWorkflow.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="DotNetMerchant.Payments.Workflow.IPurchaseWorkflow&lt;T, K&gt;">
-    <Position X="5" Y="10.75" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Payments\Workflow\IPurchaseWorkflow.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
