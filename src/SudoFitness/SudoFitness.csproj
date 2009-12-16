@@ -100,6 +100,10 @@
       <Project>{83E7C71E-9C09-4066-A9FC-55523F4700EB}</Project>
       <Name>DotNetMerchant.Storefront</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DotNetMerchant\DotNetMerchant.Core.csproj">
+      <Project>{D178767B-0678-4C75-91E6-9F58AA37B36C}</Project>
+      <Name>DotNetMerchant.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
