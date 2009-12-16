@@ -2,7 +2,7 @@
 using System.Web.Routing;
 using DotNetMerchant.Storefront.Configuration;
 
-namespace DotNetMerchant.Storefront.Tasks
+namespace SudoFitness.Tasks
 {
     public class RegisterRoutesTask : IBootstrapperTask
     {
@@ -21,13 +21,12 @@ namespace DotNetMerchant.Storefront.Tasks
 
         public void Execute()
         {
-            _routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            AreaRegistration.RegisterAllAreas();
-            
-            HasExecuted = true;
+            _routes.MapRoute(
+                "Default",                                               // Route name
+                "{controller}/{action}/{id}",                            // URL with parameters
+                new { controller = "Home", action = "Index", id = "" },  // Parameter defaults
+                new[] { "SudoFitness.Controllers" }                      // Namespaces
+                );
         }
-
-        public bool HasExecuted { get; private set; }
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace DotNetMerchant.Storefront.Configuration
+﻿using System.Reflection;
+
+namespace DotNetMerchant.Storefront.Configuration
 {
     public interface IDependencyConfiguration
     {
-        void Configure();
+        void Configure(Assembly assembly);
     }
 }

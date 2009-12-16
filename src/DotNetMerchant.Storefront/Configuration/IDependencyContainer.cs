@@ -11,5 +11,7 @@ namespace DotNetMerchant.Storefront.Configuration
         void RegisterInstance<T>(string name, T instance);
         void RegisterInstance<T>(T instance);
         void RegisterType<T, K>() where K : T;
+        void RegisterType(Type contract, Type concrete);
+        void RegisterType(Type contract, Type concrete, string name);
     }
 }

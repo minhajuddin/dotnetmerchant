@@ -45,5 +45,15 @@ namespace DotNetMerchant.Storefront.Configuration.Unity
         {
             _container.RegisterType<T, K>();
         }
+
+        public void RegisterType(Type contract, Type concrete)
+        {
+            _container.RegisterType(contract, concrete);
+        }
+
+        public void RegisterType(Type contract, Type concrete, string name)
+        {
+            _container.RegisterType(contract, concrete, name);
+        }
     }
 }

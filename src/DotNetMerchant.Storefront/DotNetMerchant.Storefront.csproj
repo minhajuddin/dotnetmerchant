@@ -65,12 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Routes.cs" />
     <Compile Include="Configuration\Bootstrapper.cs" />
     <Compile Include="Configuration\DependencyContainer.cs" />
     <Compile Include="Configuration\IBootstrapperTask.cs" />
     <Compile Include="Configuration\IDependencyConfiguration.cs" />
     <Compile Include="Configuration\IDependencyContainer.cs" />
     <Compile Include="Configuration\Unity\UnityDependencyContainer.cs" />
+    <Compile Include="Extensions\AssemblyExtensions.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Factories\DependencyContainerControllerFactory.cs" />
     <Compile Include="Globals.cs" />
@@ -96,6 +100,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Account\Login.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\Home\Index.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\Shared\LoginControl.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Shared\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Content\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -37,6 +37,16 @@ namespace DotNetMerchant.Storefront.Configuration
             _container.RegisterType<T, K>();
         }
 
+        public void RegisterType(Type contract, Type concrete)
+        {
+            _container.RegisterType(contract, concrete);
+        }
+
+        public void RegisterType(Type contract, Type concrete, string name)
+        {
+            _container.RegisterType(contract, concrete, name);
+        }
+
         public IEnumerable<T> ResolveAll<T>()
         {
             return _container.ResolveAll<T>();

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace DotNetMerchant.Storefront.Configuration
@@ -9,7 +8,9 @@ namespace DotNetMerchant.Storefront.Configuration
     {
         public static void Run()
         {
-            Activator.CreateInstance<T>().Configure();
+            var assembly = Assembly.GetCallingAssembly();
+
+            Activator.CreateInstance<T>().Configure(assembly);
 
             var dependencyContainer =
                 HttpContext.Current.Application[Globals.DependencyContainer]
@@ -20,21 +21,11 @@ namespace DotNetMerchant.Storefront.Configuration
                 return;
             }
 
-            var tasks = GetPendingTasks(dependencyContainer);
-            while (tasks.Count() > 0)
+            var tasks = dependencyContainer.ResolveAll<IBootstrapperTask>();
+            foreach (var task in tasks)
             {
-                foreach(var task in tasks)
-                {
-                    task.Execute();
-                }
-
-                tasks = GetPendingTasks(dependencyContainer);
+                task.Execute();
             }
-        }
-
-        private static IEnumerable<IBootstrapperTask> GetPendingTasks(IDependencyContainer source)
-        {
-            return source.ResolveAll<IBootstrapperTask>().Where(t => !t.HasExecuted);
         }
     }
 }
