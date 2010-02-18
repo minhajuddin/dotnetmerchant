@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using DotNetMerchant.Beanstream;
 using DotNetMerchant.Billing;
 using DotNetMerchant.Billing.Model;
 using DotNetMerchant.Model;

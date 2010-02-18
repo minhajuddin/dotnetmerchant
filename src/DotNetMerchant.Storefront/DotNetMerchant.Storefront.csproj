@@ -104,7 +104,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="Areas\Admin\Views\Home\Index.aspx">
-      <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="Areas\Admin\Views\Shared\LoginControl.ascx" />
   </ItemGroup>

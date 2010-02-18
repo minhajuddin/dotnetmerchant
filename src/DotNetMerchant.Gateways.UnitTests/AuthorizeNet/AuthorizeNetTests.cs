@@ -1,4 +1,4 @@
-﻿#region License
+#region License
 
 // The MIT License
 // 
@@ -30,7 +30,7 @@ using NUnit.Framework;
 namespace DotNetMerchant.UnitTests.Processors.AuthorizeNet
 {
     [TestFixture]
-    public partial class AuthorizeNetTests : ProcessorTestBase
+    public partial class AuthorizeNetTests : Gateways.UnitTests.ProcessorTestBase
     {
         public AuthorizeNetTests() : base("authorizedotnet",
                                           "loginId",

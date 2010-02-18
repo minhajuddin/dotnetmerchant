@@ -1,4 +1,4 @@
-﻿#region License
+#region License
 
 // The MIT License
 // 
@@ -25,6 +25,7 @@
 #endregion
 
 using System;
+using DotNetMerchant.Beanstream;
 using DotNetMerchant.Model;
 using DotNetMerchant.Payments;
 using DotNetMerchant.Payments.Model;

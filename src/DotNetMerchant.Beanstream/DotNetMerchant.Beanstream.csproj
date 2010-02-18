@@ -59,7 +59,6 @@
     <Compile Include="BeanstreamProcessor.Recurring.cs" />
     <Compile Include="BeanstreamResult.cs" />
     <Compile Include="BeanstreamResult.Maps.cs" />
-    <Compile Include="ProcessorTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 
 // The MIT License
 //  
-// Copyright (c) 2009 Conatus Creative, Inc.
+// Copyright (c) 2010 Conatus Creative, Inc.
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,10 +27,12 @@
 using System;
 using DotNetMerchant.Extensions;
 using DotNetMerchant.Model;
+using DotNetMerchant.Payments;
 using DotNetMerchant.Payments.Model;
+using DotNetMerchant.Payments.Processors.Beanstream;
 using DotNetMerchant.Payments.Workflow;
 
-namespace DotNetMerchant.Payments.Processors.Beanstream
+namespace DotNetMerchant.Beanstream
 {
     partial class BeanstreamProcessor : ISupportCreditCards<BeanstreamResult>
     {

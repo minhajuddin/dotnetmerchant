@@ -37,8 +37,8 @@ namespace DotNetMerchant.Storefront
             // Filters
             
             // Factories
-            var factory = new DependencyContainerControllerFactory(_dependencyContainer);
-            ControllerBuilder.Current.SetControllerFactory(factory);           
+            //var factory = new DependencyContainerControllerFactory(_dependencyContainer);
+            //ControllerBuilder.Current.SetControllerFactory(factory);           
 
             // Self-registration
             _dependencyContainer.RegisterInstance(_dependencyContainer);

@@ -26,6 +26,7 @@
 
 using System;
 using System.Web;
+using DotNetMerchant.Beanstream;
 using DotNetMerchant.Extensions;
 
 namespace DotNetMerchant.Payments.Processors.Beanstream
