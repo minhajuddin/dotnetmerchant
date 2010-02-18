@@ -25,6 +25,7 @@
 #endregion
 
 using System;
+using System.Globalization;
 
 namespace DotNetMerchant.Payments.Processors
 {
@@ -62,6 +63,11 @@ namespace DotNetMerchant.Payments.Processors
         /// <param name="response">The response from the payment processor.</param>
         public abstract void PopulateFromResponse(string response);
 
+        /// <summary>
+        /// Gets the processor's culture info for considering when parsing values.
+        /// </summary>
+        /// <value>The processor culture info.</value>
+        public abstract CultureInfo ProcessorCultureInfo { get; }
         #endregion
     }
 }

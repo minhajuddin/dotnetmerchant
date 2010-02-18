@@ -24,7 +24,9 @@
 
 #endregion
 
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace DotNetMerchant.Payments.Processors.AuthorizeNet
 {
@@ -48,5 +50,11 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
                       {3, TransactionStatus.Error},
                       {4, TransactionStatus.FraudReview}
                   };
+
+        private static readonly CultureInfo _processorCultureInfo = new CultureInfo("en-US");
+        public override CultureInfo ProcessorCultureInfo
+        {
+            get { return _processorCultureInfo; }
+        }
     }
 }

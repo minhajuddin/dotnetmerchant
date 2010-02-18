@@ -25,6 +25,7 @@
 #endregion
 
 using System;
+using System.Globalization;
 using System.Web;
 using DotNetMerchant.Beanstream;
 using DotNetMerchant.Extensions;
@@ -94,7 +95,15 @@ namespace DotNetMerchant.Payments.Processors.Beanstream
             ReasonText = pairs["messageText"];
             BankAuthorizationCode = pairs["authCode"];
             RecurringBillingId = Convert.ToInt64(pairs["rbAccountId"]);
-            TransactionDate = Convert.ToDateTime(pairs["trnDate"]);
+
+            // [T1]: Beanstream uses en-US DateTime, localize always
+            TransactionDate = Convert.ToDateTime(pairs["trnDate"], _processorCultureInfo);
+        }
+
+        private static readonly CultureInfo _processorCultureInfo = new CultureInfo("en-US");
+        public override CultureInfo ProcessorCultureInfo
+        {
+            get { return _processorCultureInfo; }
         }
     }
 }
