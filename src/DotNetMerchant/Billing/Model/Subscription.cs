@@ -1,26 +1,27 @@
-﻿#region License
+#region License
 
-// The MIT License
+// DotNetMerchant
+// (http://dotnetmerchant.org)
+// Copyright (c) 2010 Conatus Creative Inc.
 // 
-// Copyright (c) 2009 Conatus Creative, Inc.
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
 // 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
 // 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #endregion
 
@@ -49,7 +50,8 @@ namespace DotNetMerchant.Billing.Model
         /// <param name="billingPeriod">The billing period.</param>
         /// <param name="billingAmount">The billing amount.</param>
         /// <param name="trialPeriod">The trial period.</param>
-        public Subscription(string name, DateTime start, DateTime end, Period billingPeriod, Money billingAmount, Period trialPeriod)
+        public Subscription(string name, DateTime start, DateTime end, Period billingPeriod, Money billingAmount,
+                            Period trialPeriod)
             : this(name, start, end, billingPeriod, billingAmount)
         {
             ApplyTrialPeriod(trialPeriod, 1);
@@ -67,7 +69,8 @@ namespace DotNetMerchant.Billing.Model
         /// <param name="billingPeriod">The billing period.</param>
         /// <param name="billingAmount">The billing amount.</param>
         /// <param name="trialPeriod">The trial period.</param>
-        public Subscription(string name, DateTime start, DateTime end, DateTime activated, Period billingPeriod, Money billingAmount, Period trialPeriod)
+        public Subscription(string name, DateTime start, DateTime end, DateTime activated, Period billingPeriod,
+                            Money billingAmount, Period trialPeriod)
             : this(name, start, end, billingPeriod, billingAmount)
         {
             ApplyTrialPeriod(trialPeriod, 1);
@@ -97,7 +100,8 @@ namespace DotNetMerchant.Billing.Model
         /// <param name="billingAmount">The billing amount.</param>
         /// <param name="trialPeriod">The trial period.</param>
         /// <param name="trialAmount">The trial amount.</param>
-        public Subscription(string name, DateTime start, Period billingPeriod, Money billingAmount, Period trialPeriod, Money trialAmount)
+        public Subscription(string name, DateTime start, Period billingPeriod, Money billingAmount, Period trialPeriod,
+                            Money trialAmount)
             : this(name, start, billingPeriod, billingAmount)
         {
             ApplyTrialPeriod(trialPeriod, trialAmount, 1);
@@ -114,7 +118,8 @@ namespace DotNetMerchant.Billing.Model
         /// <param name="billingAmount">The billing amount.</param>
         /// <param name="trialPeriod">The trial period.</param>
         /// <param name="trialAmount">The trial amount.</param>
-        public Subscription(string name, DateTime start, DateTime activated, Period billingPeriod, Money billingAmount, Period trialPeriod, Money trialAmount)
+        public Subscription(string name, DateTime start, DateTime activated, Period billingPeriod, Money billingAmount,
+                            Period trialPeriod, Money trialAmount)
             : this(name, start, billingPeriod, billingAmount)
         {
             ApplyTrialPeriod(trialPeriod, trialAmount, 1);
@@ -131,7 +136,8 @@ namespace DotNetMerchant.Billing.Model
         /// <param name="trialPeriod">The trial period.</param>
         /// <param name="trialAmount">The trial amount.</param>
         /// <param name="trialOccurrences">The number of trial period occurrences.</param>
-        public Subscription(string name, DateTime start, Period billingPeriod, Money billingAmount, Period trialPeriod, Money trialAmount, int trialOccurrences)
+        public Subscription(string name, DateTime start, Period billingPeriod, Money billingAmount, Period trialPeriod,
+                            Money trialAmount, int trialOccurrences)
             : this(name, start, billingPeriod, billingAmount)
         {
             ApplyTrialPeriod(trialPeriod, trialAmount, trialOccurrences);
@@ -150,7 +156,8 @@ namespace DotNetMerchant.Billing.Model
         /// <param name="trialPeriod">The trial period.</param>
         /// <param name="trialAmount">The trial amount.</param>
         /// <param name="trialOccurrences">The number of trial period occurrences.</param>
-        public Subscription(string name, DateTime start, DateTime activated, Period billingPeriod, Money billingAmount, Period trialPeriod, Money trialAmount, int trialOccurrences)
+        public Subscription(string name, DateTime start, DateTime activated, Period billingPeriod, Money billingAmount,
+                            Period trialPeriod, Money trialAmount, int trialOccurrences)
             : this(name, start, billingPeriod, billingAmount)
         {
             ApplyTrialPeriod(trialPeriod, trialAmount, trialOccurrences);
@@ -171,7 +178,8 @@ namespace DotNetMerchant.Billing.Model
         /// <param name="trialPeriod">The trial period.</param>
         /// <param name="trialAmount">The trial amount.</param>
         /// <param name="trialOccurrences">The number of trial period occurrences.</param>
-        public Subscription(string name, DateTime start, DateTime end, DateTime activated, Period billingPeriod, Money billingAmount, Period trialPeriod, Money trialAmount, int trialOccurrences)
+        public Subscription(string name, DateTime start, DateTime end, DateTime activated, Period billingPeriod,
+                            Money billingAmount, Period trialPeriod, Money trialAmount, int trialOccurrences)
             : this(name, start, end, billingPeriod, billingAmount)
         {
             ApplyTrialPeriod(trialPeriod, trialAmount, trialOccurrences);
@@ -189,7 +197,8 @@ namespace DotNetMerchant.Billing.Model
         /// <param name="activated">The activated date.</param>
         /// <param name="billingPeriod">The billing period.</param>
         /// <param name="billingAmount">The billing amount.</param>
-        public Subscription(string name, DateTime start, DateTime end, DateTime activated, Period billingPeriod, Money billingAmount)
+        public Subscription(string name, DateTime start, DateTime end, DateTime activated, Period billingPeriod,
+                            Money billingAmount)
             : this(name, start, end, billingPeriod, billingAmount)
         {
             ApplyProratedAmount(start, billingAmount, activated);
@@ -277,7 +286,7 @@ namespace DotNetMerchant.Billing.Model
             }
         }
 
-            /// <summary>
+        /// <summary>
         /// Gets the last payment date.
         /// </summary>
         /// <value>The last payment date.</value>
@@ -332,14 +341,6 @@ namespace DotNetMerchant.Billing.Model
             }
         }
 
-        #region IPeriodicPayment Members
-
-        /// <summary>
-        /// Gets or sets the payment structure for this subscription that determines
-        /// when payments are due.
-        /// </summary>
-        public Period Period { get; set; }
-
 
         /// <summary>
         /// Gets or sets the payment structure for this subscription that determines
@@ -354,39 +355,9 @@ namespace DotNetMerchant.Billing.Model
         public Money? ProratedAmount { get; set; }
 
         /// <summary>
-        /// Gets or sets the amount due on each regular payment period occurrence.
-        /// </summary>
-        public Money PaymentAmount { get; set; }
-
-        /// <summary>
         /// Gets or sets the amount due on each trial payment period occurrence.
         /// </summary>
         public Money? TrialAmount { get; set; }
-
-        /// <summary>
-        /// Gets the total number of payments made in the life of this subscription.
-        /// If the trial period includes an amount, those payments are included here.
-        /// If the value cannot be determined, in the case where the subscription
-        /// has no defined end date, it is null.
-        /// </summary>
-        public virtual int? TotalPayments
-        {
-            get
-            {
-                var billingPayments = BillingPayments;
-
-                if(billingPayments == null)
-                {
-                    return null;
-                }
-
-                var trialPayments = TrialPayments;
-
-                var count = billingPayments + trialPayments.ValueOr(0);
-
-                return count;
-            }
-        }
 
         /// <summary>
         /// Gets the total number of payments made in the life of this subscription
@@ -418,7 +389,7 @@ namespace DotNetMerchant.Billing.Model
         {
             get
             {
-                if(!TrialAmount.HasValue || TrialAmount == 0 || !TrialPeriod.HasValue)
+                if (!TrialAmount.HasValue || TrialAmount == 0 || !TrialPeriod.HasValue)
                 {
                     return null;
                 }
@@ -431,6 +402,114 @@ namespace DotNetMerchant.Billing.Model
                 {
                     return null;
                 }
+
+                return count;
+            }
+        }
+
+        /// <summary>
+        /// Gets the total amount of money paid during the life of this subscription.
+        /// If there is a trial period with a non-zero payment amount, this is not included.
+        /// If the value cannot be determined, it is infinite.
+        /// </summary>
+        public virtual Money TotalBillingAmount
+        {
+            get
+            {
+                if (!PeriodEndDate.HasValue)
+                {
+                    var infinity = PaymentAmount > 0
+                                       ? double.PositiveInfinity
+                                       : PaymentAmount < 0
+                                             ? double.NegativeInfinity
+                                             : 0;
+
+                    return new Money(infinity);
+                }
+
+                var billingPayments = PaymentAmount*BillingPayments.Value;
+                return billingPayments;
+            }
+        }
+
+        /// <summary>
+        /// Gets the total amount of money paid during the trial life of this subscription.
+        /// If there is no trial period defined, or the trial is free, this is null.
+        /// </summary>
+        public virtual Money? TotalTrialAmount
+        {
+            get
+            {
+                if (!TrialAmount.HasValue || !TrialPayments.HasValue)
+                {
+                    return null;
+                }
+
+                var trialPayments = TrialAmount.Value*TrialPayments.Value;
+                return trialPayments;
+            }
+        }
+
+        /// <summary>
+        /// This is the date subscription was activated.
+        /// The payment start date is when regular billing occurs, whereas this is the date
+        /// the subscription was activated. This is also the date the prorated subscription
+        /// payment is due. If there is no prorated payment due, this is null.
+        /// </summary>
+        public DateTime? ProratedStartDate { get; set; }
+
+        /// <summary>
+        /// The unique identifier for this subscription assigned by an external provider.
+        /// If you pass this instance to a payment processor, the ID assigned by the
+        /// processor, if any, is assigned here.
+        /// </summary>
+        public Identity? ReferenceId { get; set; }
+
+        #region IEntity Members
+
+        ///<summary>
+        /// The unique identifier for this subscription.
+        /// You set this value if you intend to save this instance to a database.
+        /// If you pass this instance to a payment processor, the ID assigned by the
+        /// processor, if any, is assigned to <see cref="ReferenceId" />.
+        ///</summary>
+        public Identity Id { get; set; }
+
+        #endregion
+
+        #region IPeriodicPayment Members
+
+        /// <summary>
+        /// Gets or sets the payment structure for this subscription that determines
+        /// when payments are due.
+        /// </summary>
+        public Period Period { get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount due on each regular payment period occurrence.
+        /// </summary>
+        public Money PaymentAmount { get; set; }
+
+        /// <summary>
+        /// Gets the total number of payments made in the life of this subscription.
+        /// If the trial period includes an amount, those payments are included here.
+        /// If the value cannot be determined, in the case where the subscription
+        /// has no defined end date, it is null.
+        /// </summary>
+        public virtual int? TotalPayments
+        {
+            get
+            {
+                var billingPayments = BillingPayments;
+
+                if (billingPayments == null)
+                {
+                    return null;
+                }
+
+                var trialPayments = TrialPayments;
+
+                var count = billingPayments + trialPayments.ValueOr(0);
 
                 return count;
             }
@@ -457,58 +536,15 @@ namespace DotNetMerchant.Billing.Model
                     return new Money(infinity);
                 }
 
-                var billingPayments = PaymentAmount * BillingPayments.Value;
+                var billingPayments = PaymentAmount*BillingPayments.Value;
 
                 var trialPayments = TrialAmount.HasValue && TrialPayments.HasValue
-                                          ? TrialAmount.Value*TrialPayments.Value
-                                          : 0;
+                                        ? TrialAmount.Value*TrialPayments.Value
+                                        : 0;
 
                 var proratedPayment = ProratedAmount.HasValue ? ProratedAmount.Value : 0;
 
                 return billingPayments + trialPayments + proratedPayment;
-            }
-        }
-
-        /// <summary>
-        /// Gets the total amount of money paid during the life of this subscription.
-        /// If there is a trial period with a non-zero payment amount, this is not included.
-        /// If the value cannot be determined, it is infinite.
-        /// </summary>
-        public virtual Money TotalBillingAmount
-        {
-            get
-            {
-                if (!PeriodEndDate.HasValue)
-                {
-                    var infinity = PaymentAmount > 0
-                                       ? double.PositiveInfinity
-                                       : PaymentAmount < 0
-                                             ? double.NegativeInfinity
-                                             : 0;
-
-                    return new Money(infinity);
-                }
-
-                var billingPayments = PaymentAmount * BillingPayments.Value;
-                return billingPayments;
-            }
-        }
-
-        /// <summary>
-        /// Gets the total amount of money paid during the trial life of this subscription.
-        /// If there is no trial period defined, or the trial is free, this is null.
-        /// </summary>
-        public virtual Money? TotalTrialAmount
-        {
-            get
-            {
-                if (!TrialAmount.HasValue || !TrialPayments.HasValue)
-                {
-                    return null;
-                }
-
-                var trialPayments = TrialAmount.Value * TrialPayments.Value;
-                return trialPayments;
             }
         }
 
@@ -526,29 +562,6 @@ namespace DotNetMerchant.Billing.Model
         /// The start date that regular billing period payments begin.
         /// </summary>
         public DateTime PaymentStartDate { get; set; }
-
-        /// <summary>
-        /// This is the date subscription was activated.
-        /// The payment start date is when regular billing occurs, whereas this is the date
-        /// the subscription was activated. This is also the date the prorated subscription
-        /// payment is due. If there is no prorated payment due, this is null.
-        /// </summary>
-        public DateTime? ProratedStartDate { get; set; }
-        
-        ///<summary>
-        /// The unique identifier for this subscription.
-        /// You set this value if you intend to save this instance to a database.
-        /// If you pass this instance to a payment processor, the ID assigned by the
-        /// processor, if any, is assigned to <see cref="ReferenceId" />.
-        ///</summary>
-        public Identity Id { get; set; }
-
-        /// <summary>
-        /// The unique identifier for this subscription assigned by an external provider.
-        /// If you pass this instance to a payment processor, the ID assigned by the
-        /// processor, if any, is assigned here.
-        /// </summary>
-        public Identity? ReferenceId { get; set; }
 
         #endregion
 
@@ -572,7 +585,7 @@ namespace DotNetMerchant.Billing.Model
                 return;
             }
 
-            if(activated > start)
+            if (activated > start)
             {
                 var temp = activated;
                 activated = start;
@@ -580,7 +593,7 @@ namespace DotNetMerchant.Billing.Model
             }
 
             var payments = PaymentDates.ToArray();
-            if(payments.Length < 2)
+            if (payments.Length < 2)
             {
                 return;
             }
@@ -588,13 +601,13 @@ namespace DotNetMerchant.Billing.Model
             var secondPayment = payments[1];
             var offsetDays = DateSpan.GetDifference(DateInterval.Days, activated, start);
             var periodDays = DateSpan.GetDifference(DateInterval.Days, PaymentStartDate, secondPayment);
-            if(periodDays == 0)
+            if (periodDays == 0)
             {
                 return;
             }
 
-            var percentage = Convert.ToDouble(offsetDays) / Convert.ToDouble(periodDays);
-            var prorated = billingAmount * percentage;
+            var percentage = Convert.ToDouble(offsetDays)/Convert.ToDouble(periodDays);
+            var prorated = billingAmount*percentage;
 
             ProratedAmount = prorated;
             ProratedStartDate = activated;
@@ -602,7 +615,7 @@ namespace DotNetMerchant.Billing.Model
 
         private void SetPaymentStartDateByTrialPeriod(int trialOccurrences)
         {
-            if(!TrialPeriod.HasValue)
+            if (!TrialPeriod.HasValue)
             {
                 return;
             }

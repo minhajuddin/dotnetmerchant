@@ -1,26 +1,27 @@
 #region License
 
-// The MIT License
+// DotNetMerchant
+// (http://dotnetmerchant.org)
+// Copyright (c) 2010 Conatus Creative Inc.
 // 
-// Copyright (c) 2009 Conatus Creative, Inc.
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
 // 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
 // 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #endregion
 
@@ -29,8 +30,6 @@ using DotNetMerchant.Beanstream;
 using DotNetMerchant.Model;
 using DotNetMerchant.Payments;
 using DotNetMerchant.Payments.Model;
-using DotNetMerchant.Payments.Processors.Beanstream;
-using DotNetMerchant.UnitTests.Processors;
 using NUnit.Framework;
 
 namespace DotNetMerchant.Gateways.UnitTests.Beanstream
@@ -43,7 +42,6 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
                                         "username",
                                         "password")
         {
-
         }
 
         [Test]
@@ -57,16 +55,17 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
                                             "123",
                                             expiryMonth,
                                             expiryYear);
-            
-            var beanstream = new BeanstreamProcessor(CredentialFirst, 
-                                                     CredentialSecond, 
+
+            var beanstream = new BeanstreamProcessor(CredentialFirst,
+                                                     CredentialSecond,
                                                      CredentialThird);
 
             //  Billing address is required for card transactions
             beanstream.SetBillingAddress(new Address
                                              {
                                                  FirstName = "Paul Randal",
-                                                 Email = "prandal@mydomain.net", // required
+                                                 Email = "prandal@mydomain.net",
+                                                 // required
                                                  Phone = "9999999",
                                                  AddressLine = "1045 Main Street",
                                                  City = "Vancouver",
@@ -76,40 +75,6 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
                                              });
 
             var result = beanstream.Authorize(10.00, creditCard);
-
-            Console.WriteLine(result.RequestUri.OriginalString);
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.TransactionStatus == TransactionStatus.Approved);
-        }
-
-        [Test]
-        public void Can_purchase()
-        {
-            var expiryMonth = DateTime.UtcNow.Month;
-            var expiryYear = DateTime.UtcNow.Year;
-
-            var creditCard = new CreditCard("4030000010001234",
-                                            "Paul Randal",
-                                            expiryMonth, expiryYear);
-
-            var beanstream = new BeanstreamProcessor(CredentialFirst,
-                                                     CredentialSecond,
-                                                     CredentialThird);
-
-            // Billing address is required for card transactions
-            beanstream.SetBillingAddress(new Address
-                                             {
-                                                 FirstName = "Paul Randal",
-                                                 Email = "prandal@mydomain.net", // required
-                                                 Phone = "9999999",
-                                                 AddressLine = "1045 Main Street",
-                                                 City = "Vancouver",
-                                                 State = "BC",
-                                                 Zip = "V8R 1J6",
-                                                 Country = "CA",
-                                             });
-
-            var result = beanstream.Purchase(10.00, creditCard);
 
             Console.WriteLine(result.RequestUri.OriginalString);
             Assert.IsNotNull(result);
@@ -136,7 +101,8 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
             beanstream.SetBillingAddress(new Address
                                              {
                                                  FirstName = "Paul Randal",
-                                                 Email = "prandal@mydomain.net", // required
+                                                 Email = "prandal@mydomain.net",
+                                                 // required
                                                  Phone = "9999999",
                                                  AddressLine = "1045 Main Street",
                                                  City = "Vancouver",
@@ -147,6 +113,41 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
 
             var auth = beanstream.Authorize(10.00, creditCard);
             var result = beanstream.Capture(10.00, creditCard, auth.TransactionId);
+
+            Console.WriteLine(result.RequestUri.OriginalString);
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.TransactionStatus == TransactionStatus.Approved);
+        }
+
+        [Test]
+        public void Can_purchase()
+        {
+            var expiryMonth = DateTime.UtcNow.Month;
+            var expiryYear = DateTime.UtcNow.Year;
+
+            var creditCard = new CreditCard("4030000010001234",
+                                            "Paul Randal",
+                                            expiryMonth, expiryYear);
+
+            var beanstream = new BeanstreamProcessor(CredentialFirst,
+                                                     CredentialSecond,
+                                                     CredentialThird);
+
+            // Billing address is required for card transactions
+            beanstream.SetBillingAddress(new Address
+                                             {
+                                                 FirstName = "Paul Randal",
+                                                 Email = "prandal@mydomain.net",
+                                                 // required
+                                                 Phone = "9999999",
+                                                 AddressLine = "1045 Main Street",
+                                                 City = "Vancouver",
+                                                 State = "BC",
+                                                 Zip = "V8R 1J6",
+                                                 Country = "CA",
+                                             });
+
+            var result = beanstream.Purchase(10.00, creditCard);
 
             Console.WriteLine(result.RequestUri.OriginalString);
             Assert.IsNotNull(result);
@@ -173,7 +174,8 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
             beanstream.SetBillingAddress(new Address
                                              {
                                                  FirstName = "Paul Randal",
-                                                 Email = "prandal@mydomain.net", // required
+                                                 Email = "prandal@mydomain.net",
+                                                 // required
                                                  Phone = "9999999",
                                                  AddressLine = "1045 Main Street",
                                                  City = "Vancouver",
@@ -184,7 +186,7 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
 
             var auth = beanstream.Authorize(10.00, creditCard);
             var capture = beanstream.Capture(10.00, creditCard, auth.TransactionId);
-            
+
             var result = beanstream.Void(capture.TransactionId);
             Console.WriteLine(result.RequestUri.OriginalString);
             Assert.IsNotNull(result);

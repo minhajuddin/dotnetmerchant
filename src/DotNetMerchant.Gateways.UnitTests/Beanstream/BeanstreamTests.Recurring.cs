@@ -1,3 +1,30 @@
+#region License
+
+// DotNetMerchant
+// (http://dotnetmerchant.org)
+// Copyright (c) 2010 Conatus Creative Inc.
+// 
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+// 
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#endregion
+
 using System;
 using DotNetMerchant.Beanstream;
 using DotNetMerchant.Billing;
@@ -12,16 +39,6 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
 {
     partial class BeanstreamTests
     {
-        [Test]
-        public void Can_create_standard_recurring_billing()
-        {
-            var result = CreateSubscription();
-
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.TransactionStatus == TransactionStatus.Approved);
-            Assert.IsNotNull(result.RecurringBillingId);
-        }
-
         private BeanstreamResult CreateSubscription()
         {
             var subscription = new Subscription("Test Subscription",
@@ -53,6 +70,16 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
         }
 
         [Test]
+        public void Can_create_standard_recurring_billing()
+        {
+            var result = CreateSubscription();
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.TransactionStatus == TransactionStatus.Approved);
+            Assert.IsNotNull(result.RecurringBillingId);
+        }
+
+        [Test]
         public void Can_update_standard_recurring_billing()
         {
             // ReferenceId is set here
@@ -69,11 +96,11 @@ namespace DotNetMerchant.Gateways.UnitTests.Beanstream
                                       "John Q Customer",
                                       DateTime.Now.Month,
                                       DateTime.Now.Year);
-            
-            var beanstream = new BeanstreamProcessor(CredentialFirst, 
-                                                     CredentialSecond, 
+
+            var beanstream = new BeanstreamProcessor(CredentialFirst,
+                                                     CredentialSecond,
                                                      CredentialThird);
-            
+
             var result = beanstream.UpdateRecurringBilling(subscription, card);
 
             Assert.IsNotNull(result);

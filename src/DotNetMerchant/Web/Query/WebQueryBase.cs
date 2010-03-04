@@ -1,42 +1,43 @@
 #region License
 
-// The MIT License
+// DotNetMerchant
+// (http://dotnetmerchant.org)
+// Copyright (c) 2010 Conatus Creative Inc.
 // 
-// Copyright (c) 2009 Conatus Creative, Inc.
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
 // 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
 // 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #endregion
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using DotNetMerchant.Web.Caching;
-using DotNetMerchant.Web.Extensions;
 using DotNetMerchant.Extensions;
 using DotNetMerchant.Web.Attributes;
+using DotNetMerchant.Web.Caching;
+using DotNetMerchant.Web.Extensions;
+using StringExtensions = DotNetMerchant.Web.Extensions.StringExtensions;
 
 namespace DotNetMerchant.Web.Query
 {
@@ -58,7 +59,7 @@ namespace DotNetMerchant.Web.Query
             ParseUserAgent();
             ParseWebEntity();
         }
-        
+
         public IWebQueryInfo Info { get; private set; }
         public string UserAgent { get; private set; }
 
@@ -105,6 +106,7 @@ namespace DotNetMerchant.Web.Query
         public string Proxy { get; set; }
         public string AuthorizationHeader { get; protected set; }
         public bool UseCompression { get; set; }
+        protected WebEntity Entity { get; set; }
 
         protected virtual WebRequest BuildPostWebRequest(string url, out byte[] content)
         {
@@ -117,7 +119,7 @@ namespace DotNetMerchant.Web.Query
         {
             url = AppendParameters(url);
 
-            var request = (HttpWebRequest)WebRequest.Create(url);
+            var request = (HttpWebRequest) WebRequest.Create(url);
             request.Method = "POST";
             request.ContentType = Entity.ContentType;
 
@@ -147,7 +149,7 @@ namespace DotNetMerchant.Web.Query
         {
             url = AppendParameters(url);
 
-            var request = (HttpWebRequest)WebRequest.Create(url);
+            var request = (HttpWebRequest) WebRequest.Create(url);
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
 
@@ -193,8 +195,13 @@ namespace DotNetMerchant.Web.Query
                     continue;
                 }
 
-                url = DotNetMerchant.Extensions.StringExtensions.Concat(url, parameters > 0 || url.Contains("?") ? "&" : "?");
-                url = DotNetMerchant.Extensions.StringExtensions.Concat(url, "{0}={1}".FormatWith(parameter.Name, parameter.Value.UrlEncode()));
+                url = String.Concat(url, parameters > 0 || url.Contains("?") ? "&" : "?");
+                url = DotNetMerchant.Extensions.StringExtensions.Concat(url,
+                                                                        "{0}={1}".FormatWith(parameter.Name,
+                                                                                             StringExtensions.UrlEncode(
+                                                                                                                           parameter
+                                                                                                                               .
+                                                                                                                               Value)));
                 parameters++;
             }
 
@@ -219,10 +226,10 @@ namespace DotNetMerchant.Web.Query
 
             ValidateRequiredParameters(properties);
             ValidateSpecificationParameters(properties);
-            
+
             var collection = new WebParameterCollection();
             parameters.ForEach(p => collection.Add(new WebParameter(p.Key, p.Value)));
-            
+
             return collection;
         }
 
@@ -255,14 +262,14 @@ namespace DotNetMerchant.Web.Query
             foreach (var property in properties)
             {
                 var value = property.GetValue(Info, null);
-               
+
                 if (value == null)
                 {
                     continue;
                 }
 
                 var attributes = property.GetCustomAttributes<SpecificationAttribute>(true);
-                foreach(var attribute in attributes)
+                foreach (var attribute in attributes)
                 {
                     var satisfied = value.Satisfies(attribute.SpecificationType);
                     if (satisfied)
@@ -345,8 +352,6 @@ namespace DotNetMerchant.Web.Query
             }
         }
 
-        protected WebEntity Entity { get; set; }
-        
         protected string HandleWebException(WebException ex)
         {
             if (ex.Response is HttpWebResponse && ex.Response != null)
@@ -375,7 +380,7 @@ namespace DotNetMerchant.Web.Query
         }
 
         private static IWebQueryClient CreateWebQueryClient(IDictionary<string, string> headers,
-                                                            WebParameterCollection parameters, 
+                                                            WebParameterCollection parameters,
                                                             string userAgent)
         {
             return new WebQueryClient(headers, parameters, userAgent);
@@ -404,7 +409,7 @@ namespace DotNetMerchant.Web.Query
                 // no expiration specified
                 if (asyncResult is Pair<WebRequest, Triplet<byte[], IClientCache, string>>)
                 {
-                    var cacheScheme = (Pair<WebRequest, Triplet<byte[], IClientCache, string>>)asyncResult;
+                    var cacheScheme = (Pair<WebRequest, Triplet<byte[], IClientCache, string>>) asyncResult;
                     var cache = cacheScheme.Second.Second;
 
                     var url = cacheScheme.First.RequestUri.ToString();
@@ -421,14 +426,14 @@ namespace DotNetMerchant.Web.Query
 
                     request = cacheScheme.First;
                     content = cacheScheme.Second.First;
-                    store = new Triplet<IClientCache, object, string> { First = cache, Second = null, Third = prefix };
+                    store = new Triplet<IClientCache, object, string> {First = cache, Second = null, Third = prefix};
                 }
                 else
                     // absolute expiration specified
                     if (asyncResult is Pair<WebRequest, Pair<byte[], Triplet<IClientCache, DateTime, string>>>)
                     {
                         var cacheScheme =
-                            (Pair<WebRequest, Pair<byte[], Triplet<IClientCache, DateTime, string>>>)asyncResult;
+                            (Pair<WebRequest, Pair<byte[], Triplet<IClientCache, DateTime, string>>>) asyncResult;
                         var url = cacheScheme.First.RequestUri.ToString();
                         var cache = cacheScheme.Second.Second.First;
                         var expiry = cacheScheme.Second.Second.Second;
@@ -446,14 +451,15 @@ namespace DotNetMerchant.Web.Query
 
                         request = cacheScheme.First;
                         content = cacheScheme.Second.First;
-                        store = new Triplet<IClientCache, object, string> { First = cache, Second = expiry, Third = prefix };
+                        store = new Triplet<IClientCache, object, string>
+                                    {First = cache, Second = expiry, Third = prefix};
                     }
                     else
                         // sliding expiration specified
                         if (asyncResult is Pair<WebRequest, Pair<byte[], Triplet<IClientCache, TimeSpan, string>>>)
                         {
                             var cacheScheme =
-                                (Pair<WebRequest, Pair<byte[], Triplet<IClientCache, TimeSpan, string>>>)asyncResult;
+                                (Pair<WebRequest, Pair<byte[], Triplet<IClientCache, TimeSpan, string>>>) asyncResult;
                             var url = cacheScheme.First.RequestUri.ToString();
                             var cache = cacheScheme.Second.Second.First;
                             var expiry = cacheScheme.Second.Second.Second;
@@ -471,7 +477,8 @@ namespace DotNetMerchant.Web.Query
 
                             request = cacheScheme.First;
                             content = cacheScheme.Second.First;
-                            store = new Triplet<IClientCache, object, string> { First = cache, Second = expiry, Third = prefix };
+                            store = new Triplet<IClientCache, object, string>
+                                        {First = cache, Second = expiry, Third = prefix};
                         }
                         else
                         {
@@ -494,7 +501,8 @@ namespace DotNetMerchant.Web.Query
                 stream.Close();
 
                 request.BeginGetResponse(PostAsyncResponseCallback,
-                                         new Pair<WebRequest, Triplet<IClientCache, object, string>> { First = request, Second = store });
+                                         new Pair<WebRequest, Triplet<IClientCache, object, string>>
+                                             {First = request, Second = store});
             }
         }
 
@@ -533,13 +541,13 @@ namespace DotNetMerchant.Web.Query
                             if (expiry is DateTime)
                             {
                                 // absolute
-                                cache.Insert(key, result, (DateTime)expiry);
+                                cache.Insert(key, result, (DateTime) expiry);
                             }
 
                             if (expiry is TimeSpan)
                             {
                                 // sliding
-                                cache.Insert(key, result, (TimeSpan)expiry);
+                                cache.Insert(key, result, (TimeSpan) expiry);
                             }
                         }
 
@@ -561,7 +569,7 @@ namespace DotNetMerchant.Web.Query
             byte[] content;
             var request = BuildPostWebRequest(url, out content);
 
-            var state = new Pair<WebRequest, byte[]> { First = request, Second = content };
+            var state = new Pair<WebRequest, byte[]> {First = request, Second = content};
             var args = new WebQueryRequestEventArgs(url);
             OnQueryRequest(args);
 
@@ -575,7 +583,7 @@ namespace DotNetMerchant.Web.Query
             byte[] content;
             var request = BuildMultiPartFormRequest(url, parameters, out content);
 
-            var state = new Pair<WebRequest, byte[]> { First = request, Second = content };
+            var state = new Pair<WebRequest, byte[]> {First = request, Second = content};
             var args = new WebQueryRequestEventArgs(url);
             OnQueryRequest(args);
 
@@ -595,10 +603,10 @@ namespace DotNetMerchant.Web.Query
             else
             {
                 var state = new Pair<IClientCache, string>
-                {
-                    First = cache,
-                    Second = key
-                };
+                                {
+                                    First = cache,
+                                    Second = key
+                                };
 
                 client.OpenReadCompleted += ClientOpenReadCompleted;
                 client.OpenReadAsync(new Uri(url), state);
@@ -619,10 +627,10 @@ namespace DotNetMerchant.Web.Query
             else
             {
                 var state = new Pair<IClientCache, Pair<string, DateTime>>
-                {
-                    First = cache,
-                    Second = new Pair<string, DateTime> { First = key, Second = absoluteExpiration }
-                };
+                                {
+                                    First = cache,
+                                    Second = new Pair<string, DateTime> {First = key, Second = absoluteExpiration}
+                                };
 
                 client.OpenReadCompleted += ClientOpenReadCompleted;
                 client.OpenReadAsync(new Uri(url), state);
@@ -643,10 +651,10 @@ namespace DotNetMerchant.Web.Query
             else
             {
                 var state = new Pair<IClientCache, Pair<string, TimeSpan>>
-                {
-                    First = cache,
-                    Second = new Pair<string, TimeSpan> { First = key, Second = slidingExpiration }
-                };
+                                {
+                                    First = cache,
+                                    Second = new Pair<string, TimeSpan> {First = key, Second = slidingExpiration}
+                                };
 
                 client.OpenReadCompleted += ClientOpenReadCompleted;
                 client.OpenReadAsync(new Uri(url), state);
@@ -672,7 +680,9 @@ namespace DotNetMerchant.Web.Query
             var key = CreateCacheKey(prefixKey, url);
 
             ThreadPool.QueueUserWorkItem(
-                work => ExecuteGetAsyncAndCacheWithExpiry(cache, key, url, absoluteExpiration, client));
+                                            work =>
+                                            ExecuteGetAsyncAndCacheWithExpiry(cache, key, url, absoluteExpiration,
+                                                                              client));
         }
 
         protected virtual void ExecuteGetAsync(string url, string prefixKey, IClientCache cache,
@@ -684,7 +694,8 @@ namespace DotNetMerchant.Web.Query
             var key = CreateCacheKey(prefixKey, url);
 
             ThreadPool.QueueUserWorkItem(
-                work => ExecuteGetAsyncAndCacheWithExpiry(cache, key, url, slidingExpiration, client));
+                                            work =>
+                                            ExecuteGetAsyncAndCacheWithExpiry(cache, key, url, slidingExpiration, client));
         }
 
         protected virtual void ClientOpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
@@ -696,7 +707,7 @@ namespace DotNetMerchant.Web.Query
                     using (var reader = new StreamReader(stream))
                     {
                         var result = reader.ReadToEnd();
-                        Response = ((IWebQueryClient)sender).Response;
+                        Response = ((IWebQueryClient) sender).Response;
 
                         if (e.UserState != null)
                         {
@@ -745,15 +756,15 @@ namespace DotNetMerchant.Web.Query
             var request = BuildPostWebRequest(url, out content);
 
             var state = new Pair<WebRequest, Triplet<byte[], IClientCache, string>>
-            {
-                First = request,
-                Second = new Triplet<byte[], IClientCache, string>
-                {
-                    First = content,
-                    Second = cache,
-                    Third = key
-                }
-            };
+                            {
+                                First = request,
+                                Second = new Triplet<byte[], IClientCache, string>
+                                             {
+                                                 First = content,
+                                                 Second = cache,
+                                                 Third = key
+                                             }
+                            };
 
             var args = new WebQueryRequestEventArgs(url);
             OnQueryRequest(args);
@@ -770,19 +781,19 @@ namespace DotNetMerchant.Web.Query
             var request = BuildPostWebRequest(url, out content);
 
             var state = new Pair<WebRequest, Pair<byte[], Triplet<IClientCache, DateTime, string>>>
-            {
-                First = request,
-                Second = new Pair<byte[], Triplet<IClientCache, DateTime, string>>
-                {
-                    First = content,
-                    Second = new Triplet<IClientCache, DateTime, string>
-                    {
-                        First = cache,
-                        Second = absoluteExpiration,
-                        Third = prefixKey
-                    }
-                }
-            };
+                            {
+                                First = request,
+                                Second = new Pair<byte[], Triplet<IClientCache, DateTime, string>>
+                                             {
+                                                 First = content,
+                                                 Second = new Triplet<IClientCache, DateTime, string>
+                                                              {
+                                                                  First = cache,
+                                                                  Second = absoluteExpiration,
+                                                                  Third = prefixKey
+                                                              }
+                                             }
+                            };
 
             var args = new WebQueryRequestEventArgs(url);
             OnQueryRequest(args);
@@ -799,19 +810,19 @@ namespace DotNetMerchant.Web.Query
             var request = BuildPostWebRequest(url, out content);
 
             var state = new Pair<WebRequest, Pair<byte[], Triplet<IClientCache, TimeSpan, string>>>
-            {
-                First = request,
-                Second = new Pair<byte[], Triplet<IClientCache, TimeSpan, string>>
-                {
-                    First = content,
-                    Second = new Triplet<IClientCache, TimeSpan, string>
-                    {
-                        First = cache,
-                        Second = slidingExpiration,
-                        Third = prefixKey
-                    }
-                }
-            };
+                            {
+                                First = request,
+                                Second = new Pair<byte[], Triplet<IClientCache, TimeSpan, string>>
+                                             {
+                                                 First = content,
+                                                 Second = new Triplet<IClientCache, TimeSpan, string>
+                                                              {
+                                                                  First = cache,
+                                                                  Second = slidingExpiration,
+                                                                  Third = prefixKey
+                                                              }
+                                             }
+                            };
 
             var args = new WebQueryRequestEventArgs(url);
             OnQueryRequest(args);
@@ -1056,7 +1067,7 @@ namespace DotNetMerchant.Web.Query
                                                                    out byte[] bytes)
         {
             var boundary = Guid.NewGuid().ToString();
-            var request = (HttpWebRequest)WebRequest.Create(url);
+            var request = (HttpWebRequest) WebRequest.Create(url);
 
             request.PreAuthenticate = true;
             request.AllowWriteStreamBuffering = true;
@@ -1263,7 +1274,7 @@ namespace DotNetMerchant.Web.Query
                     throw new NotSupportedException("Only HTTP POSTS can use post parameters");
             }
         }
-        
+
         public static string QuickGet(string url)
         {
             return QuickGet(url, null, null, null);

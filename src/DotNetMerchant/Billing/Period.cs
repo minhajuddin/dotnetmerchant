@@ -1,26 +1,27 @@
-﻿#region License
+#region License
 
-// The MIT License
+// DotNetMerchant
+// (http://dotnetmerchant.org)
+// Copyright (c) 2010 Conatus Creative Inc.
 // 
-// Copyright (c) 2009 Conatus Creative, Inc.
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
 // 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
 // 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #endregion
 
@@ -150,12 +151,12 @@ namespace DotNetMerchant.Billing
         /// <param name="period">The period.</param>
         /// <param name="start">The start date.</param>
         /// <returns></returns>
-        public static IEnumerable<DateTime> GetOccurrences(Period period, 
+        public static IEnumerable<DateTime> GetOccurrences(Period period,
                                                            DateInterval interval,
                                                            DateTime start)
         {
             var calendar = CultureInfo.CurrentCulture.Calendar;
-            
+
             switch (period.Frequency)
             {
                 case PeriodFrequency.Days:
@@ -185,7 +186,7 @@ namespace DotNetMerchant.Billing
                                                             DateTime start,
                                                             DateTime end)
         {
-            var difference = DateSpan.GetDifference(interval, start, end) / period.Quantifier;
+            var difference = DateSpan.GetDifference(interval, start, end)/period.Quantifier;
 
             if (start.Kind == DateTimeKind.Utc)
             {
@@ -197,19 +198,19 @@ namespace DotNetMerchant.Billing
                 switch (period.Frequency)
                 {
                     case PeriodFrequency.Days:
-                        var days = calendar.AddDays(start, period.Quantifier * i);
+                        var days = calendar.AddDays(start, period.Quantifier*i);
                         yield return DeferOccurrenceFallingOnWeekend(calendar, days);
                         break;
                     case PeriodFrequency.Weeks:
-                        var weeks = calendar.AddWeeks(start, period.Quantifier * i);
+                        var weeks = calendar.AddWeeks(start, period.Quantifier*i);
                         yield return DeferOccurrenceFallingOnWeekend(calendar, weeks);
                         break;
                     case PeriodFrequency.Months:
-                        var months = calendar.AddMonths(start, period.Quantifier * i);
+                        var months = calendar.AddMonths(start, period.Quantifier*i);
                         yield return DeferOccurrenceFallingOnWeekend(calendar, months);
                         break;
                     case PeriodFrequency.Years:
-                        var years = calendar.AddYears(start, period.Quantifier * i);
+                        var years = calendar.AddYears(start, period.Quantifier*i);
                         yield return DeferOccurrenceFallingOnWeekend(calendar, years);
                         break;
                     default:

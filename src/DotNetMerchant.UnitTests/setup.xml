@@ -1,4 +1,4 @@
-﻿<setup>
+<setup>
   <processors>
     <processor name="authorizedotnet">
       <development>
@@ -11,9 +11,13 @@
         <merchantId>193930000</merchantId>
         <username>api-test</username>
         <password>MmvW484D</password>
-        <recurringBillingPassCode>JS373wJG4LmP8Lkhljp1DVm5HH9779j1</recurringBillingPassCode>
-        <paymentProfilesPassCode>r6anjjnP68LL8L3bMvCG8tuacn3eCBGD</paymentProfilesPassCode>
-      </development>  
-    </processor>    
-  </processors>  
+        <recurringBillingPassCode>
+          JS373wJG4LmP8Lkhljp1DVm5HH9779j1
+        </recurringBillingPassCode>
+        <paymentProfilesPassCode>
+          r6anjjnP68LL8L3bMvCG8tuacn3eCBGD
+        </paymentProfilesPassCode>
+      </development>
+    </processor>
+  </processors>
 </setup>

@@ -1,26 +1,27 @@
 #region License
 
-// The MIT License
+// DotNetMerchant
+// (http://dotnetmerchant.org)
+// Copyright (c) 2010 Conatus Creative Inc.
 // 
-// Copyright (c) 2009 Conatus Creative, Inc.
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
 // 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
 // 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #endregion
 
@@ -52,15 +53,11 @@ namespace DotNetMerchant.Payments.Processors
         where K : IPaymentProcessorResult, new()
     {
         #region todo: remove protected members and consider placement of state
+
         /// <summary>
         /// Internal state for storing a credit card.
         /// </summary>
         protected CreditCard _creditCard;
-
-        /// <summary>
-        /// Internal state for storing a payment method
-        /// </summary>
-        protected PaymentMethod _paymentMethod;
 
         /// <summary>
         /// Internal state for store a credit card transaction type
@@ -70,7 +67,13 @@ namespace DotNetMerchant.Payments.Processors
         /// <summary>
         /// Internal state for store processor info.
         /// </summary>
-        protected T _info; 
+        protected T _info;
+
+        /// <summary>
+        /// Internal state for storing a payment method
+        /// </summary>
+        protected PaymentMethod _paymentMethod;
+
         #endregion
 
         /// <summary>
@@ -101,7 +104,7 @@ namespace DotNetMerchant.Payments.Processors
         /// The friendly name for this payment processor.
         /// </summary>
         public abstract string DisplayName { get; }
-        
+
         /// <summary>
         /// The homepage for this payment processor or API.
         /// </summary>
@@ -117,7 +120,7 @@ namespace DotNetMerchant.Payments.Processors
         /// The regions this payment processor will support.
         /// </summary>
         public abstract IEnumerable<RegionInfo> SupportedRegions { get; }
-        
+
         /// <summary>
         /// The authentication scheme used to identify the merchant account
         /// requesting payment processing from this service.
@@ -330,8 +333,8 @@ namespace DotNetMerchant.Payments.Processors
         /// <param name="card">The card.</param>
         /// <param name="uri">The URI.</param>
         /// <returns></returns>
-        protected K RequestWithMoneyAndCard(CreditCardTransactionType type, 
-                                            Money amount, 
+        protected K RequestWithMoneyAndCard(CreditCardTransactionType type,
+                                            Money amount,
                                             CreditCard card,
                                             Uri uri)
         {
@@ -347,8 +350,8 @@ namespace DotNetMerchant.Payments.Processors
         /// <param name="transactionId">The transaction id.</param>
         /// <param name="uri">The URI.</param>
         /// <returns></returns>
-        protected K RequestWithTransaction(CreditCardTransactionType type, 
-                                           string transactionId, 
+        protected K RequestWithTransaction(CreditCardTransactionType type,
+                                           string transactionId,
                                            Uri uri)
         {
             ProcessWithTransaction(type, transactionId);
@@ -365,11 +368,11 @@ namespace DotNetMerchant.Payments.Processors
         /// <param name="transactionId">The transaction id.</param>
         /// <param name="uri">The URI.</param>
         /// <returns></returns>
-        protected K RequestWithMoneyCreditCardAndTransaction(CreditCardTransactionType type, 
-                                                       Money amount, 
-                                                       CreditCard card,
-                                                       string transactionId,
-                                                       Uri uri)
+        protected K RequestWithMoneyCreditCardAndTransaction(CreditCardTransactionType type,
+                                                             Money amount,
+                                                             CreditCard card,
+                                                             string transactionId,
+                                                             Uri uri)
         {
             ProcessWithMoneyAndCreditCard(amount, card, type);
             ProcessWithMoneyAndTransaction(amount, transactionId, type);

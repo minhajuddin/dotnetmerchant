@@ -1,33 +1,25 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Core", "DotNetMerchant\DotNetMerchant.Core.csproj", "{D178767B-0678-4C75-91E6-9F58AA37B36C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Core.UnitTests", "DotNetMerchant.UnitTests\DotNetMerchant.Core.UnitTests.csproj", "{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{5639AD0D-6A46-45C1-A6D7-1D428A8A0452}"
 	ProjectSection(SolutionItems) = preProject
 		License.txt = License.txt
 		Processors.txt = Processors.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reference Implementation", "Reference Implementation", "{33F7930B-5D68-4CC0-A9D2-279005213511}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudoFitness", "SudoFitness\SudoFitness.csproj", "{D8784883-C20B-4B63-B011-623DBA9ABC81}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudoFitness.UnitTests", "SudoFitness.UnitTests\SudoFitness.UnitTests.csproj", "{8738BDAD-EE48-433D-8D29-F3DE751D8D48}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{3752BA4D-AD3C-4138-8C56-2074638DE3D2}"
 	ProjectSection(SolutionItems) = preProject
-		..\lib\Unity\Microsoft.Practices.Unity.dll = ..\lib\Unity\Microsoft.Practices.Unity.dll
 		..\lib\nunit.framework.dll = ..\lib\nunit.framework.dll
+		..\lib\System.ComponentModel.Composition.dll = ..\lib\System.ComponentModel.Composition.dll
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Storefront", "DotNetMerchant.Storefront\DotNetMerchant.Storefront.csproj", "{83E7C71E-9C09-4066-A9FC-55523F4700EB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Storefront.UnitTests", "DotNetMerchant.Storefront.UnitTests\DotNetMerchant.Storefront.UnitTests.csproj", "{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment Gateways", "Payment Gateways", "{1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{3406C07A-2672-40F0-98E4-C52858CE8100}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Core", "DotNetMerchant\DotNetMerchant.Core.csproj", "{D178767B-0678-4C75-91E6-9F58AA37B36C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Core.UnitTests", "DotNetMerchant.UnitTests\DotNetMerchant.Core.UnitTests.csproj", "{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Beanstream", "DotNetMerchant.Beanstream\DotNetMerchant.Beanstream.csproj", "{8E959D59-7C82-49F0-8FDF-88580BE10A9F}"
 EndProject
@@ -36,8 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.Gateways.UnitTests", "DotNetMerchant.Gateways.UnitTests\DotNetMerchant.Gateways.UnitTests.csproj", "{A68CDF8E-DF54-42C8-8100-5A44B3F7D384}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMerchant.AuthorizeNet", "DotNetMerchant.AuthorizeNet\DotNetMerchant.AuthorizeNet.csproj", "{66B7E4B8-7368-443F-9B1A-6663DB94D567}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{3406C07A-2672-40F0-98E4-C52858CE8100}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,22 +43,6 @@ Global
 		{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8784883-C20B-4B63-B011-623DBA9ABC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8784883-C20B-4B63-B011-623DBA9ABC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8784883-C20B-4B63-B011-623DBA9ABC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8784883-C20B-4B63-B011-623DBA9ABC81}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8738BDAD-EE48-433D-8D29-F3DE751D8D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8738BDAD-EE48-433D-8D29-F3DE751D8D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8738BDAD-EE48-433D-8D29-F3DE751D8D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8738BDAD-EE48-433D-8D29-F3DE751D8D48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83E7C71E-9C09-4066-A9FC-55523F4700EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83E7C71E-9C09-4066-A9FC-55523F4700EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83E7C71E-9C09-4066-A9FC-55523F4700EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83E7C71E-9C09-4066-A9FC-55523F4700EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E959D59-7C82-49F0-8FDF-88580BE10A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E959D59-7C82-49F0-8FDF-88580BE10A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E959D59-7C82-49F0-8FDF-88580BE10A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -90,13 +64,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D8784883-C20B-4B63-B011-623DBA9ABC81} = {33F7930B-5D68-4CC0-A9D2-279005213511}
-		{8738BDAD-EE48-433D-8D29-F3DE751D8D48} = {33F7930B-5D68-4CC0-A9D2-279005213511}
 		{8E959D59-7C82-49F0-8FDF-88580BE10A9F} = {1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}
 		{B078BD16-084A-47F8-BD9D-86CE8FFD9D22} = {1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}
 		{66B7E4B8-7368-443F-9B1A-6663DB94D567} = {1C94F3B4-BE0E-4F52-BE5D-ACB4BFBAE14A}
 		{9E853CFD-C4B8-4BCB-B8AB-83A6D9852B28} = {3406C07A-2672-40F0-98E4-C52858CE8100}
-		{EE9CF4BF-1838-4D30-825D-A391BD85A2D5} = {3406C07A-2672-40F0-98E4-C52858CE8100}
 		{A68CDF8E-DF54-42C8-8100-5A44B3F7D384} = {3406C07A-2672-40F0-98E4-C52858CE8100}
 	EndGlobalSection
 EndGlobal
