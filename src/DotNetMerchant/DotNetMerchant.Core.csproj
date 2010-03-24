@@ -54,6 +54,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hammock">
+      <HintPath>..\..\lib\Hammock.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -120,38 +123,6 @@
     <Compile Include="Specifications\NotSpecification.cs" />
     <Compile Include="Specifications\OrSpecification.cs" />
     <Compile Include="Specifications\SpecificationBase.cs" />
-    <Compile Include="Web\Attributes\HeaderAttribute.cs" />
-    <Compile Include="Web\Attributes\NamedAttribute.cs" />
-    <Compile Include="Web\Attributes\ParameterAttribute.cs" />
-    <Compile Include="Web\Attributes\UserAgentAttribute.cs" />
-    <Compile Include="Web\Caching\AspNetCache.cs" />
-    <Compile Include="Web\Caching\CacheFactory.cs" />
-    <Compile Include="Web\Caching\IClientCache.cs" />
-    <Compile Include="Web\Caching\IWebCache.cs" />
-    <Compile Include="Web\Extensions\CollectionExtensions.cs" />
-    <Compile Include="Web\Extensions\ReflectionExtensions.cs" />
-    <Compile Include="Web\Extensions\RegexExtensions.cs" />
-    <Compile Include="Web\Extensions\StringExtensions.cs" />
-    <Compile Include="Web\Extensions\WebExtensions.cs" />
-    <Compile Include="Web\HttpPostParameter.cs" />
-    <Compile Include="Web\HttpPostParameterType.cs" />
-    <Compile Include="Web\IWebQueryClient.cs" />
-    <Compile Include="Web\Pair.cs" />
-    <Compile Include="Web\Query\Basic\BasicAuthWebQuery.cs" />
-    <Compile Include="Web\Query\IWebQueryInfo.cs" />
-    <Compile Include="Web\Query\WebQueryBase.cs" />
-    <Compile Include="Web\Triplet.cs" />
-    <Compile Include="Web\WebCallback.cs" />
-    <Compile Include="Web\WebFormat.cs" />
-    <Compile Include="Web\WebMethod.cs" />
-    <Compile Include="Web\WebOperation.cs" />
-    <Compile Include="Web\WebParameter.cs" />
-    <Compile Include="Web\WebParameterCollection.cs" />
-    <Compile Include="Web\WebQueryClient.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Web\WebQueryRequestEventArgs.cs" />
-    <Compile Include="Web\WebQueryResponseEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Billing\Model\_Model.cd" />
@@ -190,18 +161,9 @@
     <Compile Include="Payments\RecurringBillingTransactionType.cs" />
     <Compile Include="Payments\Workflow\ISupportBillingProfiles.cs" />
     <Compile Include="Payments\Workflow\ISupportRecurringBilling.cs" />
-    <Compile Include="Web\Attributes\RequiredAttribute.cs" />
-    <Compile Include="Web\Attributes\SpecificationAttribute.cs" />
-    <Compile Include="Web\Attributes\WebEntityAttribute.cs" />
-    <Compile Include="Web\Extensions\SerializationExtensions.cs" />
-    <Compile Include="Web\Query\WebEntity.cs" />
-    <Compile Include="Web\Query\XmlQueryInfo.cs" />
-    <Compile Include="Web\Xml\XmlWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Specifications\ValidEmailSpecification.cs" />
-    <Compile Include="Web\Attributes\BooleanToIntegerAttribute.cs" />
-    <Compile Include="Web\Attributes\DateTimeFormatAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Billing\Model\Extensions\" />

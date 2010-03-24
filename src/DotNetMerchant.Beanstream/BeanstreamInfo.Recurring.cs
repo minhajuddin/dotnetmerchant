@@ -26,7 +26,8 @@
 #endregion
 
 using System;
-using DotNetMerchant.Web.Attributes;
+using Hammock.Attributes.Specialized;
+using Hammock.Attributes.Validation;
 
 namespace DotNetMerchant.Beanstream
 {

@@ -37,9 +37,7 @@ using DotNetMerchant.Payments.Authentication;
 using DotNetMerchant.Payments.Model;
 using DotNetMerchant.Payments.Model.Extensions;
 using DotNetMerchant.Payments.Workflow;
-using DotNetMerchant.Web;
-using DotNetMerchant.Web.Query;
-using DotNetMerchant.Web.Query.Basic;
+using Hammock.Web;
 
 namespace DotNetMerchant.Payments.Processors
 {
@@ -172,18 +170,17 @@ namespace DotNetMerchant.Payments.Processors
         /// <returns></returns>
         protected K Request(XDocument xml, Uri uri)
         {
-            var info = new XmlQueryInfo {Xml = xml.ToString()};
-            return RequestImpl(info, uri);
+            //var info = new XmlQueryInfo {Xml = xml.ToString()};
+            //return RequestImpl(info, uri);
+
+            // TODO Gateway
+            return default(K);
         }
 
         private static K RequestImpl(IWebQueryInfo info, Uri uri)
         {
-            var query = new BasicAuthWebQuery(info) {Method = WebMethod.Post};
-            var response = query.Request(uri.ToString());
-
-            var result = new K {RequestUri = query.RequestUri};
-            result.PopulateFromResponse(response);
-            return result;
+            // TODO Gateway
+            return default(K);
         }
 
         /// <summary>

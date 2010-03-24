@@ -33,7 +33,6 @@ using DotNetMerchant.Billing.Model;
 using DotNetMerchant.Extensions;
 using DotNetMerchant.Model;
 using DotNetMerchant.Payments.Model;
-using DotNetMerchant.Web.Xml;
 
 namespace DotNetMerchant.Payments.Processors.AuthorizeNet
 {
@@ -116,7 +115,7 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
                                                        CreditCard card)
         {
             XNamespace xmlns = "AnetApi/xml/v1/schema/AnetApiSchema.xsd";
-            var xml = new XmlWrapper(xmlns);
+            //var xml = new XmlWrapper(xmlns);
 
             var hasSubscription = subscription != null;
 
@@ -133,6 +132,10 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
                 subscription = null;
             }
 
+            // TODO Gateway
+            return null;
+
+            /*
             return new XDocument(
                 XmlWrapper.Declare("1.0", "utf-8")
                 , xml.Tag("ARB{0}SubscriptionRequest".FormatWith(type)
@@ -144,8 +147,10 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
                           , xml.If(hasSubscription, BuildSubscriptionNode(subscription, xml, card))
                       )
                 );
+            */
         }
 
+        /*
         private XElement BuildSubscriptionNode(Subscription subscription,
                                                XmlWrapper xml,
                                                CreditCard card)
@@ -212,5 +217,6 @@ namespace DotNetMerchant.Payments.Processors.AuthorizeNet
                                  )
                 );
         }
+        */
     }
 }

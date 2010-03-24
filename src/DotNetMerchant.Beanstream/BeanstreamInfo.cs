@@ -27,7 +27,7 @@
 
 using System;
 using DotNetMerchant.Payments;
-using DotNetMerchant.Web.Attributes;
+using Hammock.Attributes.Specialized;
 
 namespace DotNetMerchant.Beanstream
 {

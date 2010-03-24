@@ -27,7 +27,7 @@
 
 using DotNetMerchant.Payments;
 using DotNetMerchant.Payments.Processors.AuthorizeNet;
-using DotNetMerchant.Web.Attributes;
+using Hammock.Attributes.Specialized;
 
 namespace DotNetMerchant.AuthorizeNet
 {

@@ -25,7 +25,7 @@
 
 #endregion
 
-using DotNetMerchant.Web.Query;
+using Hammock.Web;
 
 namespace DotNetMerchant.Payments
 {
