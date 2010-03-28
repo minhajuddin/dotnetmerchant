@@ -5,8 +5,8 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_DotNetMerchant.Harness_session',
-  :secret      => 'b3adcd94e7b49dcfe6a009b0e9c6da3a24be4f4ac3e36ec748b50558b1d05899474930b36d60f1f856a8de468e46c196edc1473a9c2ea4e57a33e061cbe2e642'
+  :key         => '_leafblower_session',
+  :secret      => 'd0dda335a7d96cf996c4d1a5668a5743c1f70b674fa935897cb5b57c02a7723d0f9677bfe15f7244b9d7613f4b79421d4a6f08af67b3f54e8939585a64aa19be'
 }
 
 # Use the database for sessions instead of the cookie-based default,

@@ -1,0 +1,57 @@
+# Logfile created on Sat Mar 27 15:09:02 -0400 2010REQUESTING PAGE: GET /contact with {} and HTTP headers {}
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-27 16:37:23) [GET]
+REQUESTING PAGE: GET /contact with {} and HTTP headers {}
+
+
+Processing ApplicationController#contact (for 127.0.0.1 at 2010-03-27 16:39:07) [GET]
+REQUESTING PAGE: GET /contact with {} and HTTP headers {}
+
+
+Processing HomeController#contact (for 127.0.0.1 at 2010-03-27 16:43:05) [GET]
+Rendering home/contact
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://www.example.com/contact]
+REQUESTING PAGE: GET /contact with {} and HTTP headers {}
+
+
+Processing HomeController#contact (for 127.0.0.1 at 2010-03-27 16:45:20) [GET]
+Rendering home/contact
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://www.example.com/contact]
+REQUESTING PAGE: GET /contact with {} and HTTP headers {}
+
+
+Processing HomeController#contact (for 127.0.0.1 at 2010-03-27 16:45:59) [GET]
+Rendering home/contact
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://www.example.com/contact]
+REQUESTING PAGE: GET /version with {} and HTTP headers {}
+
+
+Processing VersionController#current (for 127.0.0.1 at 2010-03-27 20:14:07) [GET]
+Rendering version/current
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://www.example.com/version]
+REQUESTING PAGE: GET /version with {} and HTTP headers {}
+
+
+Processing VersionController#current (for 127.0.0.1 at 2010-03-27 20:15:36) [GET]
+Rendering version/current
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://www.example.com/version]
+REQUESTING PAGE: GET /version with {} and HTTP headers {}
+
+
+Processing VersionController#current (for 127.0.0.1 at 2010-03-27 20:16:32) [GET]
+Rendering version/current
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://www.example.com/version]
+REQUESTING PAGE: GET /version with {} and HTTP headers {}
+
+
+Processing VersionController#current (for 127.0.0.1 at 2010-03-28 10:30:46) [GET]
+
+
+Processing ApplicationController#current (for 127.0.0.1 at 2010-03-28 10:30:46) [GET]
+REQUESTING PAGE: GET /version with {} and HTTP headers {}
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 12:08:35) [GET]
+Rendering version/index
+Completed in 23ms (View: 19, DB: 0) | 200 OK [http://www.example.com/version]

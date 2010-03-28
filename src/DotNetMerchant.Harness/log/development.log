@@ -1,0 +1,1038 @@
+
+
+Processing Rails::InfoController#properties (for 10.0.0.119 at 2010-03-27 15:11:34) [GET]
+  [4;36;1mSQL (58.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 245ms (View: 28, DB: 59) | 200 OK [http://10.0.0.5/rails/info/properties]
+
+
+Processing ApplicationController#index (for 10.0.0.119 at 2010-03-28 10:43:50) [GET]
+
+ActionController::RoutingError (No route matches "/version.xml" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#current (for 10.0.0.119 at 2010-03-28 10:44:01) [GET]
+
+SyntaxError (/home/jason/www/leafblower/app/controllers/version_controller.rb:9: syntax error, unexpected $end, expecting kEND):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (186.5ms)
+Rendered rescues/_request_and_response (3.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#current (for 10.0.0.119 at 2010-03-28 10:45:14) [GET]
+
+SyntaxError (/home/jason/www/leafblower/app/controllers/version_controller.rb:9: syntax error, unexpected $end, expecting kEND):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (68.8ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#current (for 10.0.0.119 at 2010-03-28 10:46:50) [GET]
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#current (for 10.0.0.119 at 2010-03-28 10:49:55) [GET]
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#current (for 10.0.0.119 at 2010-03-28 11:16:20) [GET]
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing ApplicationController#current (for 10.0.0.119 at 2010-03-28 11:40:18) [GET]
+
+SyntaxError (/home/jason/www/leafblower/app/controllers/version_controller.rb:6: syntax error, unexpected kEND, expecting $end):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (69.1ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#current (for 10.0.0.119 at 2010-03-28 11:42:09) [GET]
+
+ActionView::MissingTemplate (Missing template version/current.erb in view path app/views):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#current (for 10.0.0.119 at 2010-03-28 11:44:31) [GET]
+
+ActionView::MissingTemplate (Missing template version/current.erb in view path app/views):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#current (for 10.0.0.119 at 2010-03-28 11:45:03) [GET]
+
+ActionView::MissingTemplate (Missing template version/current.erb in view path app/views):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#current (for 10.0.0.119 at 2010-03-28 11:47:52) [GET]
+Rendering version/current
+Completed in 19ms (View: 15, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing ApplicationController#index (for 10.0.0.119 at 2010-03-28 11:48:21) [GET]
+
+ActionController::RoutingError (No route matches "/version.xml" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 10.0.0.119 at 2010-03-28 11:55:09) [GET]
+
+ActionController::RoutingError (No route matches "/version.xml" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 11:59:58) [GET]
+Rendering version/index
+ERROR: compiling _run_builder_app47views47version47index46xml46builder RAISED compile error
+/home/jason/www/leafblower/app/views/version/index.xml.builder:6: syntax error, unexpected kENSURE, expecting $end
+Function body:           def _run_builder_app47views47version47index46xml46builder(local_assigns)
+            old_output_buffer = output_buffer;;_set_controller_content_type(Mime::XML);xml = ::Builder::XmlMarkup.new(:indent => 2);self.output_buffer = xml.target!;xml.instruct! :xml, :version => "1.0"
+xml.version do 
+	@version
+	end
+end;xml.target!;
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /home/jason/www/leafblower/app/views/version/index.xml.builder:6:in `compile!'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:945:in `render_without_benchmark'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1326:in `default_render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1332:in `perform_action_without_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/home/jason/www/leafblower/app/views/version/index.xml.builder:6: syntax error, unexpected kENSURE, expecting $end) on line #6 of app/views/version/index.xml.builder:
+3: 	@version
+4: 	end
+5: end
+
+    app/views/version/index.xml.builder:6:in `compile!'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (91.7ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 12:00:50) [GET]
+Rendering version/index
+ERROR: compiling _run_builder_app47views47version47index46xml46builder RAISED compile error
+/home/jason/www/leafblower/app/views/version/index.xml.builder:6: syntax error, unexpected kENSURE, expecting $end
+Function body:           def _run_builder_app47views47version47index46xml46builder(local_assigns)
+            old_output_buffer = output_buffer;;_set_controller_content_type(Mime::XML);xml = ::Builder::XmlMarkup.new(:indent => 2);self.output_buffer = xml.target!;xml.instruct! :xml, :version => "1.0"
+xml.version do 
+	@version
+	end
+end;xml.target!;
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /home/jason/www/leafblower/app/views/version/index.xml.builder:6:in `compile!'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:945:in `render_without_benchmark'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1326:in `default_render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1332:in `perform_action_without_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/home/jason/www/leafblower/app/views/version/index.xml.builder:6: syntax error, unexpected kENSURE, expecting $end) on line #6 of app/views/version/index.xml.builder:
+3: 	@version
+4: 	end
+5: end
+
+    app/views/version/index.xml.builder:6:in `compile!'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (88.5ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 12:03:03) [GET]
+Rendering version/index
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 12:06:35) [GET]
+Rendering version/index
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 12:07:41) [GET]
+Rendering version/index
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 14:07:30) [GET]
+Rendering version/index
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 14:10:00) [GET]
+Rendering version/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 14:10:41) [GET]
+Rendering version/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 14:10:56) [GET]
+Rendering version/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 14:27:37) [GET]
+Rendering version/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 14:28:51) [GET]
+Rendering version/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 14:29:39) [GET]
+Rendering version/index
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 14:45:55) [GET]
+Rendering version/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 14:47:49) [GET]
+Rendering version/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 14:56:00) [GET]
+Rendering version/index
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:01:38) [GET]
+Rendering version/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:02:27) [GET]
+Rendering version/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:04:08) [GET]
+Rendering version/index
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:07:32) [GET]
+Rendering version/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:09:57) [GET]
+Rendering version/index
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:10:23) [GET]
+Rendering version/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:10:55) [GET]
+Rendering version/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:15:00) [GET]
+Rendering version/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index (for 127.0.0.1 at 2010-03-28 15:15:22) [GET]
+Rendering version/index
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://localhost/version]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 15:25:06) [GET]
+Rendering version/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#index to xml (for 127.0.0.1 at 2010-03-28 16:21:53) [GET]
+Rendering version/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/version.xml]
+
+
+Processing VersionController#index to xml (for 127.0.0.1 at 2010-03-28 16:24:31) [GET]
+Rendering version/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/version.xml]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 16:24:31) [GET]
+
+ActionController::RoutingError (No route matches "/version.xml/version.json" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 16:25:42) [GET]
+
+ActionView::MissingTemplate (Missing template version/index.erb in view path app/views):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:26:59) [GET]
+
+ActionView::MissingTemplate (Missing template version/index.erb in view path app/views):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 16:40:00) [GET]
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:40:06) [GET]
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://mail/version.json]
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:41:22) [GET]
+
+ActionView::MissingTemplate (Missing template version/index.erb in view path app/views):
+  app/controllers/version_controller.rb:5:in `index'
+  app/controllers/version_controller.rb:4:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:41:46) [GET]
+
+ActionView::MissingTemplate (Missing template version/index.erb in view path app/views):
+  app/controllers/version_controller.rb:5:in `index'
+  app/controllers/version_controller.rb:4:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:41:56) [GET]
+
+ActionView::MissingTemplate (Missing template version/index.erb in view path app/views):
+  app/controllers/version_controller.rb:5:in `index'
+  app/controllers/version_controller.rb:4:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 16:42:26) [GET]
+
+ActionView::MissingTemplate (Missing template version/index.erb in view path app/views):
+  app/controllers/version_controller.rb:5:in `index'
+  app/controllers/version_controller.rb:4:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 16:43:04) [GET]
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 16:43:21) [GET]
+
+IOError (not opened for reading):
+  app/controllers/version_controller.rb:5:in `index'
+  app/controllers/version_controller.rb:4:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (153.6ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:43:43) [GET]
+
+IOError (not opened for reading):
+  app/controllers/version_controller.rb:5:in `index'
+  app/controllers/version_controller.rb:4:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (291.2ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 16:45:19) [GET]
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 16:49:04) [GET]
+
+NoMethodError (undefined method `value=' for nil:NilClass):
+  app/controllers/version_controller.rb:3:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (73.8ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 16:54:49) [GET]
+
+NoMethodError (undefined method `version=' for nil:NilClass):
+  app/controllers/version_controller.rb:3:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (73.2ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:55:01) [GET]
+
+NoMethodError (undefined method `version=' for nil:NilClass):
+  app/controllers/version_controller.rb:3:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (73.2ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:56:26) [GET]
+
+NoMethodError (undefined method `version=' for "0.0.0.1":String):
+  app/controllers/version_controller.rb:4:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (72.8ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to json (for 10.0.0.119 at 2010-03-28 16:56:53) [GET]
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://mail/version.json]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 17:15:58) [GET]
+
+SyntaxError (/home/jason/www/leafblower/app/models/version.rb:2: syntax error, unexpected ':', expecting kEND
+ attr_accessor : major,minor,revision
+                ^
+/home/jason/www/leafblower/app/models/version.rb:2: syntax error, unexpected '\n', expecting '='
+/home/jason/www/leafblower/app/models/version.rb:11: syntax error, unexpected $end, expecting kEND):
+  app/controllers/version_controller.rb:3:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (84.4ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 17:16:43) [GET]
+
+SyntaxError (/home/jason/www/leafblower/app/models/version.rb:11: syntax error, unexpected $end, expecting kEND):
+  app/controllers/version_controller.rb:3:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (223.4ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 17:17:13) [GET]
+Completed in 10ms (View: 1, DB: 0) | 406 Not Acceptable [http://mail/version.xml]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 17:17:36) [GET]
+Completed in 10ms (View: 1, DB: 0) | 406 Not Acceptable [http://mail/version.xml]
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 17:18:09) [GET]
+Completed in 10ms (View: 1, DB: 0) | 406 Not Acceptable [http://mail/version.xml]
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 17:19:43) [GET]
+Completed in 10ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to xml (for 127.0.0.1 at 2010-03-28 17:20:49) [GET]
+Completed in 10ms (View: 1, DB: 0) | 406 Not Acceptable [http://localhost/version.xml]
+
+
+Processing VersionController#index to xml (for 127.0.0.1 at 2010-03-28 17:27:07) [GET]
+Rendering /version
+
+ActionView::MissingTemplate (Missing template /version.erb in view path app/views):
+  app/controllers/version_controller.rb:7:in `index'
+  app/controllers/version_controller.rb:5:in `index'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to xml (for 127.0.0.1 at 2010-03-28 17:29:04) [GET]
+Rendering version/index
+
+ActionView::TemplateError (String can't be coerced into Fixnum) on line #3 of app/views/version/index.xml.builder:
+1: xml.instruct! :xml, :version => "1.0"
+2: xml.leafblower do
+3: 	xml.version @version.to_s
+4: end
+
+    app/models/version.rb:10:in `+'
+    app/models/version.rb:10:in `to_s'
+    app/views/version/index.xml.builder:3:in `_run_builder_app47views47version47index46xml46builder'
+    builder (2.1.2) lib/builder/xmlbase.rb:134:in `call'
+    builder (2.1.2) lib/builder/xmlbase.rb:134:in `_nested_structures'
+    builder (2.1.2) lib/builder/xmlbase.rb:58:in `method_missing'
+    app/views/version/index.xml.builder:2:in `_run_builder_app47views47version47index46xml46builder'
+    app/controllers/version_controller.rb:5:in `index'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (237.9ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 17:29:50) [GET]
+Rendering version/index
+
+ActionView::TemplateError (String can't be coerced into Fixnum) on line #3 of app/views/version/index.xml.builder:
+1: xml.instruct! :xml, :version => "1.0"
+2: xml.leafblower do
+3: 	xml.version @version.to_s
+4: end
+
+    app/models/version.rb:10:in `+'
+    app/models/version.rb:10:in `to_s'
+    app/views/version/index.xml.builder:3:in `_run_builder_app47views47version47index46xml46builder'
+    builder (2.1.2) lib/builder/xmlbase.rb:134:in `call'
+    builder (2.1.2) lib/builder/xmlbase.rb:134:in `_nested_structures'
+    builder (2.1.2) lib/builder/xmlbase.rb:58:in `method_missing'
+    app/views/version/index.xml.builder:2:in `_run_builder_app47views47version47index46xml46builder'
+    app/controllers/version_controller.rb:5:in `index'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (105.3ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 17:30:40) [GET]
+Rendering version/index
+
+ActionView::TemplateError (String can't be coerced into Fixnum) on line #3 of app/views/version/index.xml.builder:
+1: xml.instruct! :xml, :version => "1.0"
+2: xml.leafblower do
+3: 	xml.version @version
+4: end
+
+    app/models/version.rb:10:in `+'
+    app/models/version.rb:10:in `to_s'
+    builder (2.1.2) lib/builder/xmlbase.rb:48:in `method_missing'
+    builder (2.1.2) lib/builder/xmlbase.rb:41:in `each'
+    builder (2.1.2) lib/builder/xmlbase.rb:41:in `method_missing'
+    app/views/version/index.xml.builder:3:in `_run_builder_app47views47version47index46xml46builder'
+    builder (2.1.2) lib/builder/xmlbase.rb:134:in `call'
+    builder (2.1.2) lib/builder/xmlbase.rb:134:in `_nested_structures'
+    builder (2.1.2) lib/builder/xmlbase.rb:58:in `method_missing'
+    app/views/version/index.xml.builder:2:in `_run_builder_app47views47version47index46xml46builder'
+    app/controllers/version_controller.rb:5:in `index'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (251.4ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing VersionController#index to xml (for 10.0.0.119 at 2010-03-28 17:32:08) [GET]
+Rendering version/index
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://mail/version.xml]
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 17:32:45) [GET]
+Completed in 10ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 17:55:11) [GET]
+Completed in 10ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 17:55:40) [GET]
+Completed in 11ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to xml (for 127.0.0.1 at 2010-03-28 17:59:11) [GET]
+Rendering version/index
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/version.xml]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 17:59:11) [GET]
+
+ActionController::RoutingError (No route matches "/version.xml/version.json" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 18:00:26) [GET]
+Completed in 10ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to xml (for 127.0.0.1 at 2010-03-28 18:55:22) [GET]
+Rendering version/index
+Completed in 26ms (View: 16, DB: 0) | 200 OK [http://localhost/version.xml]
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 18:55:26) [GET]
+Completed in 11ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
+
+
+Processing VersionController#index to json (for 127.0.0.1 at 2010-03-28 18:56:32) [GET]
+Completed in 11ms (View: 1, DB: 0) | 200 OK [http://localhost/version.json]
