@@ -15,7 +15,10 @@ require 'cucumber/web/tableish'
 require 'webrat'
 require 'webrat/core/matchers'
 
+<<<<<<< HEAD:src/DotNetMerchant.Harness/features/support/env.rb
 
+=======
+>>>>>>> ea800715a1906ab57c328dc1f4a15f7ad0c42273:src/DotNetMerchant.Harness/features/support/env.rb
 Webrat.configure do |config|
   config.mode = :rails
   config.open_error_files = false # Set to true if you want error pages to pop up in the browser
