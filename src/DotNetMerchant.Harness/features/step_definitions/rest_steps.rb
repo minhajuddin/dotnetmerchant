@@ -2,7 +2,7 @@
 require 'curb'
 $root_url = "http://localhost:3000"
 
-Given /^the following post parameters$/ do |table|
+Given /^the following parameters$/ do |table|
   table.hashes.each do |hash|
     Factory(:PostParam, hash)
   end
@@ -11,7 +11,15 @@ end
 When /^(?:|I )get (.+)$/ do |endpoint|
   path = path_to(endpoint)
   url = $root_url + path
-  c = Curl::Easy.http_get( url )
+  first = true 
+  c = Curl::Easy.new
+  PostParam.all.each do |param|
+    url = url + (first ? '?' : '&' )
+	first = false
+	url = url + param.name + '=' + c.escape(param.value.to_s)
+  end 
+  c.url = url
+  c.http_get()
   @body = c.body_str
   @responseCode = c.response_code
 end
@@ -24,19 +32,37 @@ When /^(?:|I )post to (.+)$/ do |endpoint|
 	Curl::PostField.new(param.name, param.value)
   end }
   req.http_post
+  @responseCode = req.response_code
 end
-When /^I restfully post to the VerifyCreditCard endpoint as xml$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
 
 Then /^(?:|the )response should contain xml element "([^\"]*)"$/ do |text|  
 	assert @body.include? "<" + text + ">" 
 end
 
-Then /^the response should contain json property "([^\"]*)"$/ do |prop|
-  assert @body.include? '"' + prop + '"'
+Then /^the response should contain json property "([^\"]*)" with value "([^\"]*)"$/ do |prop, value|
+  json = ActiveSupport::JSON.decode(@body)
+  json[prop].should == value
 end
+
+Then /^the response should contain json property "([^\"]*)" with value true$/ do |prop|
+  json = ActiveSupport::JSON.decode(@body)
+  assert json[prop]
+end
+
+Then /^the response should contain json property "([^\"]*)" with value false$/ do |prop|
+  json = ActiveSupport::JSON.decode(@body)
+  assert !json[prop]
+end
+
+Then /^the response should contain json property "([^\"]*)"$/ do |prop|
+  json = ActiveSupport::JSON.decode(@body)
+  assert !json[prop].nil?
+end
+
+Then /^the response should contain "([^\"]*)"$/ do |str|
+  assert @body.include? str
+end
+
 
 Then /^the response code should indicate success$/ do
    assert @responseCode >= 200 and @responseCode < 300

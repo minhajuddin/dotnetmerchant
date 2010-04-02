@@ -13,7 +13,9 @@ module NavigationHelpers
 	when /the version endpoint as json/
 	  '/version.json'
 	when /the VerifyCreditCard endpoint as xml/
-	  '/verifycreditcard.xml'
+	  '/verify_credit_card.xml'
+	 when /the VerifyCreditCard endpoint as json/
+	  '/verify_credit_card.json'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

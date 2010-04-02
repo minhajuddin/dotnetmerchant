@@ -4,7 +4,7 @@ class VersionController < ApplicationController
 
 	respond_to do |format|
 		format.json{ render:json=>@version.to_json}
-		format.xml 
+		format.xml
 	end
   end
 end

@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'version'
   map.resources :version
-  map.connect  '/verifycreditcard.xml', :controller => 'verifyCreditCard', :action=>'index'
+  map.resources :verify_credit_card
   #map.connect '/version', :controller => 'version', :action=>'current'
   #map.connect '/version.xml', :controller => 'version', :action=>'current'
   # The priority is based upon order of creation: first created -> highest priority.
