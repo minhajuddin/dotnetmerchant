@@ -20,9 +20,11 @@ class VerifyCreditCardController < ApplicationController
 		end
 		respond_to do |format|
 				format.json do
-					render:json=>{ :credit_card => @credit_card, :valid => @valid }.to_json
+					render:status => (@valid ? 200 : 400 ), :json=>{ :credit_card => @credit_card, :valid => @valid }.to_json
 				end
-				format.xml
+				format.xml do
+					render:status => (@valid ? 200 : 400 )
+				end
 		end
 		 
 		

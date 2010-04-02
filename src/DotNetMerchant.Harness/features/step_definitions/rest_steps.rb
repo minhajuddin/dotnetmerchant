@@ -68,4 +68,8 @@ Then /^the response code should indicate success$/ do
    assert @responseCode >= 200 and @responseCode < 300
 end
 
+Then /^the response code should indicate failure$/ do
+   assert @responseCode >= 400
+end
+
   

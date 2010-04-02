@@ -40,7 +40,7 @@ Scenario: VerifyCreditCard endpoint should not validate an invalid card returnin
 		| last_name    | Halper           | 
 		| verification | 121              |
 		When I get the VerifyCreditCard endpoint as json
-		Then the response code should indicate success 
+		Then the response code should indicate failure 
 		And the response should contain json property "valid" with value false	
 
 Scenario: VerifyCreditCard endpoint should not validate an invalid card returning xml
@@ -53,7 +53,7 @@ Scenario: VerifyCreditCard endpoint should not validate an invalid card returnin
 		| last_name    | Halper           | 
 		| verification | 121              |
 		When I get the VerifyCreditCard endpoint as xml
-		Then the response code should indicate success 
+		Then the response code should indicate failure 
 		And the response should contain "<valid>false</valid>"
 		
 Scenario: VerifyCreditCard endpoint should not validate an invalid card returning json
@@ -66,7 +66,7 @@ Scenario: VerifyCreditCard endpoint should not validate an invalid card returnin
 		| last_name    | Halper           | 
 		| verification | 121              |
 		When I get the VerifyCreditCard endpoint as json
-		Then the response code should indicate success 
+		Then the response code should indicate failure 
 		And the response should contain json property "valid" with value false	
 		And the response should contain "expired"
 
@@ -80,6 +80,6 @@ Scenario: VerifyCreditCard endpoint should not validate an expired card returnin
 		| last_name    | Halper           | 
 		| verification | 121              |
 		When I get the VerifyCreditCard endpoint as xml
-		Then the response code should indicate success 
+		Then the response code should indicate failure 
 		And the response should contain "<valid>false</valid>"
 		And the response should contain "expired"		
