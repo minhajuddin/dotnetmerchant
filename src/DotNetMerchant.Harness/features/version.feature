@@ -4,11 +4,7 @@ Feature: Version API
 	I want to be able to send a get request and get back the version
 	
 	Scenario: Version endpoint should exist as xml
-<<<<<<< HEAD:src/DotNetMerchant.Harness/features/version.feature
 		When I get the version endpoint as xml
-=======
-		When I restfully get the version endpoint as xml
->>>>>>> ea800715a1906ab57c328dc1f4a15f7ad0c42273:src/DotNetMerchant.Harness/features/version.feature
 		Then the response code should indicate success 
 		And the response should contain xml element "version"
 		And the response should contain xml element "major"
@@ -16,11 +12,7 @@ Feature: Version API
 		And the response should contain xml element "revision"
 
 	Scenario: Version endpoint should exist as json
-<<<<<<< HEAD:src/DotNetMerchant.Harness/features/version.feature
 		When I get the version endpoint as json
-=======
-		When I restfully get the version endpoint as json
->>>>>>> ea800715a1906ab57c328dc1f4a15f7ad0c42273:src/DotNetMerchant.Harness/features/version.feature
 		Then the response code should indicate success
 		And the response should contain json property "major"
 		And the response should contain json property "minor"
