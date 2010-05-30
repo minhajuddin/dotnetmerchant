@@ -39,14 +39,17 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 
-  config.gem "activesupport",   :lib=> false,        :version => ">=2.3.2"  unless File.directory? (File.join(Rails.root, 'vendor/gems/activesupport'))
-  config.gem "activemerchant",  :lib=> false,        :version => ">=1.5.0"  unless File.directory? (File.join(Rails.root, 'vendor/gems/activemerchant'))
-  config.gem "rspec",           :lib=> "spec/rails", :version => ">=1.2.6"  unless File.directory? (File.join(Rails.root, 'vendor/gems/rspec')) 
-  config.gem "gherkin",  	:lib=> false,        :version => ">=1.0.27" unless File.directory? (File.join(Rails.root, 'vendor/gems/gherkin'))
-  config.gem "cucumber",        :lib=> false,        :version => ">=0.3.0"  unless File.directory? (File.join(Rails.root, 'vendor/gems/cucumber'))
-  config.gem "pickle",          :lib=> false,        :version => ">=0.2.5"  unless File.directory? (File.join(Rails.root, 'vendor/gems/pickle'))
-  config.gem "curb",            :lib=> false,        :version => ">=0.0.1"  unless File.directory? (File.join(Rails.root, 'vendor/gems/curb'))
-  config.gem "json",            :lib=> false,        :version => ">=1.2.4"  unless File.directory? (File.join(Rails.root, 'vendor/gems/json'))
-  config.gem "factory_girl",    :lib=> false,        :version => ">=1.2.2"  unless File.directory? (File.join(Rails.root, 'vendor/gems/factorygirl'))
+  config.gem "activesupport",   :lib=> false,        :version => ">=2.3.2"  unless File.directory?(File.join(Rails.root, 'vendor/gems/activesupport'))
+  config.gem "activemerchant",  :lib=> false,        :version => ">=1.5.0"  unless File.directory?(File.join(Rails.root, 'vendor/gems/activemerchant'))
+  config.gem "rspec",           :lib=> "spec/rails", :version => ">=1.2.6"  unless File.directory?(File.join(Rails.root, 'vendor/gems/rspec')) 
+  config.gem "gherkin",  	:lib=> false,        :version => ">=1.0.27" unless File.directory?(File.join(Rails.root, 'vendor/gems/gherkin'))
+  config.gem "cucumber",        :lib=> false,        :version => ">=0.3.0"  unless File.directory?(File.join(Rails.root, 'vendor/gems/cucumber'))
+  config.gem "pickle",          :lib=> false,        :version => ">=0.2.5"  unless File.directory?(File.join(Rails.root, 'vendor/gems/pickle'))
+  config.gem "curb",            :lib=> false,        :version => ">=0.0.1"  unless File.directory?(File.join(Rails.root, 'vendor/gems/curb'))
+  config.gem "json",            :lib=> false,        :version => ">=1.2.4"  unless File.directory?(File.join(Rails.root, 'vendor/gems/json'))
+  config.gem "factory_girl",    :lib=> false,        :version => ">=1.2.2"  unless File.directory?(File.join(Rails.root, 'vendor/gems/factorygirl'))
+  config.gem "database_cleaner",:lib=> false,        :version => ">=0.5.0"  unless File.directory?(File.join(Rails.root, 'vendor/gems/databasecleaner'))
+  config.gem "nokogiri",        :lib=> false,        :version => ">=1.4.2"  unless File.directory?(File.join(Rails.root, 'vendor/gems/nokogiri'))
+  config.gem "webrat",          :lib=> false,        :version => ">=0.7.0"  unless File.directory?(File.join(Rails.root, 'vendor/gems/webrat'))
 
 end
