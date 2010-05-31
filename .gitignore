@@ -31,3 +31,5 @@ TestResults
 ~$*
 
 log
+
+src/DotNetMerchant.Harness/vendor/gems/*
