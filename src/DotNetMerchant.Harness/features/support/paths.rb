@@ -1,31 +1,22 @@
 module NavigationHelpers
-  # Maps a name to a path. Used by the
-  #
-  #   When /^I go to (.+)$/ do |page_name|
-  #
-  # step definition in web_steps.rb
-  #
-  def path_to(page_name)
-    case page_name
-    
-	when /the version endpoint as xml/
-	  '/version.xml'
-	when /the version endpoint as json/
-	  '/version.json'
-	when /the VerifyCreditCard endpoint as xml/
-	  '/verify_credit_card.xml'
-	 when /the VerifyCreditCard endpoint as json/
-	  '/verify_credit_card.json'
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
-    else
-      raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
-        "Now, go and add a mapping in #{__FILE__}"
+  def path_to(resource = "", endpoint = "", format ="")
+    #translate as needed
+    resource.downcase!
+    endpoint.downcase!
+    format.downcase!
+    if resource == 'creditcard'
+      resource = 'credit_card'
     end
+
+    if resource.length > 0
+	     '/' + resource + '/' + endpoint + ( format.length > 0 ? '.' + format : "" )
+      else
+          if endpoint.length > 0
+	        '/' + endpoint + '.' + ( format.length > 0 ? '.' + format : "" )
+          else
+            raise 'at least an endpoint must be specified.'
+          end
+      end
   end
 end
 

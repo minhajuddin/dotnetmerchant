@@ -8,8 +8,10 @@ Given /^the following parameters$/ do |table|
   end
 end
 
-When /^(?:|I )get (.+)$/ do |endpoint|
-  path = path_to(endpoint)
+=begin
+
+When /^(?:|I )get \b.*\b as (.+)$/ do |endpoint, format|
+  path = path_to("", endpoint)
   url = $root_url + path
   first = true 
   c = Curl::Easy.new
@@ -24,8 +26,11 @@ When /^(?:|I )get (.+)$/ do |endpoint|
   @responseCode = c.response_code
 end
 
-When /^(?:|I )post to (.+)$/ do |endpoint|
-  path = path_to(endpoint)
+=end
+=begin
+
+When /^(?:|I )post to \b.*\b as (.+)$/ do |endpoint, format|
+  path = path_to( "", endpoint, format)
   url = $root_url + path
   req = Curl::Easy.new( url ) {
   PostParam.all do |param|
@@ -34,6 +39,38 @@ When /^(?:|I )post to (.+)$/ do |endpoint|
   req.http_post
   @responseCode = req.response_code
 end
+=end
+
+When /^(?:|I )post to the (\b.*\b) endpoint of the (\b.*\b) resource as (.+)$/ do |endpoint, resource, format|
+  path = path_to(resource, endpoint, format)
+  url = $root_url + path
+  req = Curl::Easy.new( url ) {
+  PostParam.all do |param|
+	Curl::PostField.new(param.name, param.value)
+  end }
+  req.http_post
+  @responseCode = req.response_code
+end
+
+When /^(?:|I )get the (\b.*\b) endpoint of the (\b.*\b) resource as (.+)$/ do |endpoint, resource, format|
+
+  path = path_to(resource, endpoint, format)
+  print path
+  url = $root_url + path
+  first = true 
+  c = Curl::Easy.new
+  PostParam.all.each do |param|
+    url = url + (first ? '?' : '&' )
+	first = false
+	url = url + param.name + '=' + c.escape(param.value.to_s)
+  end 
+  c.url = url
+  c.http_get()
+
+  @body = c.body_str
+  @responseCode = c.response_code
+end
+
 
 Then /^(?:|the )response should contain xml element "([^\"]*)"$/ do |text|  
 	assert @body.include? "<" + text + ">" 

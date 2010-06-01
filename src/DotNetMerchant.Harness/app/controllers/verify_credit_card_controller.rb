@@ -1,10 +1,10 @@
 require 'rubygems'
 require 'active_merchant'
 
-class VerifyCreditCardController < ApplicationController
-	#GET /verify_credit_card
-	#GET /verify_credit_card.xml
-	def index
+class CreditCard < ApplicationController
+	#GET /credit_card/verify.json
+	#GET /credit_card/verify.xml
+	def verify
 		@credit_card = ActiveMerchant::Billing::CreditCard.new(
 			:number     => params[:number],
 			:month      => params[:month],
