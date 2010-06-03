@@ -33,3 +33,7 @@ TestResults
 log
 
 src/DotNetMerchant.Harness/vendor/gems/*
+
+.idea/
+
+.idea/*
