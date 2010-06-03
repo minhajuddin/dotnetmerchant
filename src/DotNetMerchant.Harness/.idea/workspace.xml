@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager" verified="true">
     <list default="true" readonly="true" id="55a10162-2665-4a55-abb0-bb44d3e905db" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/rest_steps.rb" afterPath="$PROJECT_DIR$/features/step_definitions/rest_steps.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/verify_credit_card_controller.rb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/support/paths.rb" afterPath="$PROJECT_DIR$/features/support/paths.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rerun.txt" afterPath="$PROJECT_DIR$/rerun.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/DotNetMerchant.Harness.iml" afterPath="$PROJECT_DIR$/.idea/DotNetMerchant.Harness.iml" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="DotNetMerchant.Harness.iws" />
@@ -60,7 +59,7 @@
       <file leaf-file-name="paths.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/features/support/paths.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="28" selection-start="415" selection-end="415" vertical-scroll-proportion="0.35343617">
+            <state line="11" column="18" selection-start="270" selection-end="270" vertical-scroll-proportion="0.27769986">
               <folding />
             </state>
           </provider>
@@ -623,7 +622,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/features/support/paths.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="28" selection-start="415" selection-end="415" vertical-scroll-proportion="0.35343617">
+        <state line="11" column="18" selection-start="270" selection-end="270" vertical-scroll-proportion="0.27769986">
           <folding />
         </state>
       </provider>

@@ -4,15 +4,16 @@ module NavigationHelpers
     resource = path[:resource]
     endpoint = path[:endpoint]
     format = path[:format]
-    if resource == 'creditcard'
+
+    if resource && resource.downcase == 'creditcard'
       resource = 'credit_card'
     end
 
-    if resource != nil
-	     '/' + resource.downcase + '/' + endpoint.downcase + ( format == nil ? '.' + format : '' )
+    if resource
+	     '/' + resource.downcase + '/' + endpoint.downcase + ( '.'  + format.downcase if format)
     else
-          if endpoint != nil
-	        '/' + endpoint + ( format.length > 0 ? '.' + format : '' )
+          if endpoint
+	        '/' + endpoint + ('.'  + format.downcase if format)
           else
             raise 'at least an endpoint must be specified.'
           end
