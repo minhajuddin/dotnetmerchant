@@ -8,10 +8,9 @@ Given /^the following parameters$/ do |table|
   end
 end
 
-=begin
-
-When /^(?:|I )get \b.*\b as (.+)$/ do |endpoint, format|
-  path = path_to("", endpoint)
+When /^(?:|I )get the (\b.*\b) endpoint as (.+)$/ do |endpoint, format|
+  path = path_to( :endpoint => endpoint, :format => format)
+  print path
   url = $root_url + path
   first = true 
   c = Curl::Easy.new
@@ -26,11 +25,8 @@ When /^(?:|I )get \b.*\b as (.+)$/ do |endpoint, format|
   @responseCode = c.response_code
 end
 
-=end
-=begin
-
-When /^(?:|I )post to \b.*\b as (.+)$/ do |endpoint, format|
-  path = path_to( "", endpoint, format)
+When /^(?:|I )post to the (\b.*\b) endpoint as (.+)$/ do |endpoint, format|
+  path = path_to(  :endpoint => endpoint, :format => format)
   url = $root_url + path
   req = Curl::Easy.new( url ) {
   PostParam.all do |param|
@@ -39,10 +35,9 @@ When /^(?:|I )post to \b.*\b as (.+)$/ do |endpoint, format|
   req.http_post
   @responseCode = req.response_code
 end
-=end
 
 When /^(?:|I )post to the (\b.*\b) endpoint of the (\b.*\b) resource as (.+)$/ do |endpoint, resource, format|
-  path = path_to(resource, endpoint, format)
+  path = path_to(:resource => resource, :endpoint => endpoint, :format => format)
   url = $root_url + path
   req = Curl::Easy.new( url ) {
   PostParam.all do |param|
@@ -54,7 +49,7 @@ end
 
 When /^(?:|I )get the (\b.*\b) endpoint of the (\b.*\b) resource as (.+)$/ do |endpoint, resource, format|
 
-  path = path_to(resource, endpoint, format)
+  path = path_to( :resource => resource, :endpoint => endpoint, :format => format)
   print path
   url = $root_url + path
   first = true 
