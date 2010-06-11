@@ -5,14 +5,8 @@ class CreditCardController < ApplicationController
   #GET /credit_card/verify.json
   #GET /credit_card/verify.xml
   def verify
-    @credit_card = ActiveMerchant::Billing::CreditCard.new(
-            :number     => params[:number],
-            :month      => params[:month],
-            :year       => params[:year],
-            :first_name => params[:first_name],
-            :last_name  => params[:last_name],
-            :verification_value => params[:verification]
-    )
+    @credit_card = build_creditcard_from_params( params )
+    
     if @credit_card.valid?
       @valid = true
     else

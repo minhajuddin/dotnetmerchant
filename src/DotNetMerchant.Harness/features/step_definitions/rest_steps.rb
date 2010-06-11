@@ -50,7 +50,6 @@ end
 When /^(?:|I )get the (\b.*\b) endpoint of the (\b.*\b) resource as (.+)$/ do |endpoint, resource, format|
 
   path = path_to( :resource => resource, :endpoint => endpoint, :format => format)
-  print path
   url = $root_url + path
   first = true 
   c = Curl::Easy.new

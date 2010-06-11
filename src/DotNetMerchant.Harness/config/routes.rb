@@ -1,9 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'version'
   map.resources :version
-  #map.resources :credit_card
-  map.connect '/credit_card/verify.xml', :controller =>'credit_card', :action =>'verify', :format =>'xml'
-  map.connect '/credit_card/verify.json', :controller =>'credit_card', :action =>'verify', :format =>'json'
+  map.resources :credit_card
+  map.connect '/bogus/:action.:format', :controller=>'gateway_base'
+#  map.resources :gateway_base
+#  map.connect '/credit_card/verify.xml', :controller =>'credit_card', :action =>'verify', :format =>'xml'
+#  map.connect '/credit_card/verify.json', :controller =>'credit_card', :action =>'verify', :format =>'json'
+#  map.connect '/bogus/authorize.xml', :controller => 'gateway_base', :action => 'authorize', :format => 'xml'
+#  map.connect '/bogus/authorize.json', :controller => 'gateway_base', :action => 'authorize', :format => 'json'
   #map.connect '/version', :controller => 'version', :action=>'current'
   #map.connect '/version.xml', :controller => 'version', :action=>'current'
   # The priority is based upon order of creation: first created -> highest priority.
@@ -45,7 +49,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  #map.connect ':controller/:action/:id'
+  #map.connect ':controller/:action/:id.:format'
   
 end
