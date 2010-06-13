@@ -112,3 +112,6 @@ Then /^the response code should indicate failure$/ do
    assert @responsecode >= 400
 end
 
+Then /^the response code should indicate unauthorized/ do
+   assert @responsecode == 401
+end
