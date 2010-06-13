@@ -1,11 +1,14 @@
-#jason's curl rest steps
-require 'curb'
+# rest steps
+require 'rest_client'
+require 'cgi'
 $root_url = "http://localhost:3000"
 
 Given /^the following parameters$/ do |table|
+  @parameters = Hash.new
   table.hashes.each do |hash|
-    Factory(:PostParam, hash)
+    @parameters[hash[:name]] = hash[:value]
   end
+  #@parameters = table.hashes
 end
 
 When /^(?:|I )get the (\b.*\b) endpoint as (.+)$/ do |endpoint, format|
@@ -13,56 +16,62 @@ When /^(?:|I )get the (\b.*\b) endpoint as (.+)$/ do |endpoint, format|
   print path
   url = $root_url + path
   first = true 
-  c = Curl::Easy.new
-  PostParam.all.each do |param|
-    url = url + (first ? '?' : '&' )
-	first = false
-	url = url + param.name + '=' + c.escape(param.value.to_s)
-  end 
-  c.url = url
-  c.http_get()
-  @body = c.body_str
-  @responseCode = c.response_code
+
+  if !@parameters.nil?
+    @parameters.each do |param|
+      url = url + (first ? '?' : '&' )
+      first = false
+      url = url + param[0] + '=' + CGI.escape(param[1].to_s)
+    end
+  end
+  response = RestClient.get(url)
+  @body = response.body
+  @responsecode = response.code
 end
 
 When /^(?:|I )post to the (\b.*\b) endpoint as (.+)$/ do |endpoint, format|
   path = path_to(  :endpoint => endpoint, :format => format)
   url = $root_url + path
-  req = Curl::Easy.new( url ) {
-  PostParam.all do |param|
-	Curl::PostField.new(param.name, param.value)
-  end }
-  req.http_post
-  @responseCode = req.response_code
+  begin
+    response = RestClient.post( url, @parameters )
+  rescue => x
+   response = x.response
+  end
+  @body = response.body
+  @responsecode = response.code
 end
 
 When /^(?:|I )post to the (\b.*\b) endpoint of the (\b.*\b) resource as (.+)$/ do |endpoint, resource, format|
   path = path_to(:resource => resource, :endpoint => endpoint, :format => format)
   url = $root_url + path
-  req = Curl::Easy.new( url ) {
-  PostParam.all do |param|
-	Curl::PostField.new(param.name, param.value)
-  end }
-  req.http_post
-  @responseCode = req.response_code
+  begin
+    response = RestClient.post( url, @parameters )
+  rescue => x
+    response = x.response
+  end
+  @body = response.body
+  @responsecode = response.code
 end
 
 When /^(?:|I )get the (\b.*\b) endpoint of the (\b.*\b) resource as (.+)$/ do |endpoint, resource, format|
 
   path = path_to( :resource => resource, :endpoint => endpoint, :format => format)
   url = $root_url + path
-  first = true 
-  c = Curl::Easy.new
-  PostParam.all.each do |param|
-    url = url + (first ? '?' : '&' )
-	first = false
-	url = url + param.name + '=' + c.escape(param.value.to_s)
-  end 
-  c.url = url
-  c.http_get()
-
-  @body = c.body_str
-  @responseCode = c.response_code
+  first = true
+  if !@parameters.nil?
+    @parameters.each do |param|
+      url = url + (first ? '?' : '&' )
+      first = false
+      url = url + param[0] + '=' + CGI.escape(param[1].to_s)
+    end
+  end
+  begin
+    response = RestClient.get( url )
+  rescue => x
+    response =x.response
+  end
+  @body = response.body
+  @responsecode = response.code
 end
 
 
@@ -96,10 +105,10 @@ end
 
 
 Then /^the response code should indicate success$/ do
-   assert @responseCode >= 200 and @responseCode < 300
+   assert @responsecode >= 200 and @responsecode < 300
 end
 
 Then /^the response code should indicate failure$/ do
-   assert @responseCode >= 400
+   assert @responsecode >= 400
 end
 

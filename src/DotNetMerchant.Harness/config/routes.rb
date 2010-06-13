@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'version'
   map.resources :version
-  map.resources :credit_card
+  map.connect '/credit_card/:action.:format', :controller=>'credit_card'
   map.connect '/bogus/:action.:format', :controller=>'gateway_base'
 #  map.resources :gateway_base
 #  map.connect '/credit_card/verify.xml', :controller =>'credit_card', :action =>'verify', :format =>'xml'
