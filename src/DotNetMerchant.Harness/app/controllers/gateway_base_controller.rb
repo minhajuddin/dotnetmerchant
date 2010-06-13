@@ -1,4 +1,5 @@
 require 'active_merchant'
+
 class GatewayBaseController < ApplicationController
 
   def new
@@ -14,38 +15,64 @@ class GatewayBaseController < ApplicationController
     end
     return @_gateway
   end
-  def authorize
-    @creditcard = build_creditcard_from_params( params )
-    @amount = params[:amount]
-    if params[:test]
-      ActiveMerchant::Billing::Base.mode = :test
-    end
 
-    response = gateway.authorize( @amount, @creditcard )
-    if response.success?
-      @ident = response.authorization
-      @approved = true
+
+  def authorize
+    if !ensure_post?
+        return
     else
-      @approved = false
-    end
-    respond_to do |format|
-      format.json do
-        render :status => (@approved ? 200 : 401), :json=>{:credit_card => @creditcard, :approved => @approved, :amount => @amount, :ident => @ident}.to_json
+      @creditcard = build_creditcard_from_params( params )
+      @amount = params[:amount]
+      if params[:test]
+        ActiveMerchant::Billing::Base.mode = :test
       end
-      format.xml do
-        render :status => (@approved ? 200 : 401)
+
+      response = gateway.authorize( @amount, @creditcard )
+      if response.success?
+        @ident = response.authorization
+        @approved = true
+        @msg = ""
+      else
+        @approved = false
+        @msg = response.message
+      end
+      respond_to do |format|
+        format.json do
+          render :status => (@approved ? 200 : 401), :json=>{:credit_card => @creditcard, :approved => @approved, :amount => @amount, :ident => @ident, :message => @msg}.to_json
+        end
+        format.xml do
+          render :status => (@approved ? 200 : 401)
+        end
       end
     end
   end
 
   def capture
-    @creditcard = build_creditcard_from_params( params )
+    if !ensure_post?
+      return
+    end
     @amount = params[:amount]
+    @ident = params[:ident]
+    
     if params[:test]
       ActiveMerchant::Billing::Base.mode = :test
     end
     @ident = params[:ident]
-    gateway.capture( @amount, @creditcard, @ident )
+    response = gateway.capture( @amount, @ident )
+    @msg = response.message
+    if response.success?
+        @approved = true
+      else
+        @approved = false
+      end
+      respond_to do |format|
+        format.json do
+          render :status => (@approved ? 200 : 401), :json=>{:approved => @approved, :amount => @amount, :ident => @ident, :message => @msg}.to_json
+        end
+        format.xml do
+          render :status => (@approved ? 200 : 401)
+        end
+    end
   end
 
   def void

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  def build_creditcard_from_params( params )
+  def build_creditcard_from_params(params)
     print params
     ActiveMerchant::Billing::CreditCard.new(
             :number              => params[:number],
@@ -16,6 +16,22 @@ class ApplicationController < ActionController::Base
             :year                => params[:year],
             :first_name          => params[:first_name],
             :last_name           => params[:last_name],
-            :verification_value  => params[:verification]  )
+            :verification_value  => params[:verification])
+  end
+
+  def ensure_post?
+    if !request.post?
+      @error = "HTTP Post required"
+      respond_to do |format|
+        format.json do
+          render :status => 405, :json=>{:error => @error}.to_json
+        end
+        format.xml do
+          render :status => 405
+        end
+      end
+      return false
+    end
+    return true
   end
 end

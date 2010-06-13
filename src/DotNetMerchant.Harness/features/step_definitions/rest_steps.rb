@@ -13,7 +13,7 @@ end
 
 When /^(?:|I )get the (\b.*\b) endpoint as (.+)$/ do |endpoint, format|
   path = path_to( :endpoint => endpoint, :format => format)
-  print path
+  
   url = $root_url + path
   first = true 
 
@@ -114,4 +114,8 @@ end
 
 Then /^the response code should indicate unauthorized/ do
    assert @responsecode == 401
+end
+
+Then /^the response code should indicate that the method is not allowed/ do
+   assert @responsecode == 405
 end
