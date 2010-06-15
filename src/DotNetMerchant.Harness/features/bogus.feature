@@ -53,6 +53,55 @@ Scenario: Authorize endpoint of the Bogus resource should only allow POST reques
           When I get the Authorize endpoint of the Bogus resource as json
           Then the response code should indicate that the method is not allowed  
 
+############################################## Purchase ##########################################################
+Scenario: Purchase endpoint of the Bogus resource should validate a valid transaction and return xml
+	Given the following parameters
+		| name         | value            |
+		| number       | 1                |
+        | amount       | 1000             |
+        | test         | true             |
+		When I post to the Purchase endpoint of the Bogus resource as xml
+		Then the response code should indicate success
+		And the response should contain "<purchase>"
+        And the response should contain "<approved>true</approved>"
+
+Scenario: Purchase endpoint of the Bogus resource should not validate an invalid transaction and return xml
+	Given the following parameters
+		| name         | value            |
+		| number       | 2                |
+        | amount       | 1000             |
+        | test         | true             |
+		When I post to the Purchase endpoint of the Bogus resource as xml
+		Then the response code should indicate unauthorized
+		And the response should contain "<purchase>"
+        And the response should contain "<approved>false</approved>"
+
+Scenario: Purchase endpoint of the Bogus resource should validate a valid transaction and return json
+      Given the following parameters
+          | name         | value            |
+          | number       | 1                |
+          | amount       | 1000             |
+          | test         | true             |
+          When I post to the Purchase endpoint of the Bogus resource as json
+          Then the response code should indicate success
+          And the response should contain json property "approved" with value true
+
+Scenario: Purchase endpoint of the Bogus resource should not validate an invalid transaction and return json
+      Given the following parameters
+          | name         | value            |
+          | number       | 2                |
+          | amount       | 1000             |
+          | test         | true             |
+          When I post to the Purchase endpoint of the Bogus resource as json
+          Then the response code should indicate unauthorized
+          And the response should contain json property "approved" with value false
+
+Scenario: Purchase endpoint of the Bogus resource should only allow POST requests
+        Given the following parameters
+          | name         | value            |
+          | fake         | param            |
+          When I get the Purchase endpoint of the Bogus resource as json
+          Then the response code should indicate that the method is not allowed
 ############################################## Void ##########################################################
 Scenario: Void endpoint of the Bogus resource should cancel a pre-authorized transaction, returning json
       Given the following parameters

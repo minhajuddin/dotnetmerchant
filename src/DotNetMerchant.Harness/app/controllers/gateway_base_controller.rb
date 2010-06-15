@@ -47,6 +47,37 @@ class GatewayBaseController < ApplicationController
     end
   end
 
+
+  def purchase
+    if !ensure_post?
+        return
+    else
+      @creditcard = build_creditcard_from_params( params )
+      @amount = params[:amount]
+      if params[:test]
+        ActiveMerchant::Billing::Base.mode = :test
+      end
+
+      response = gateway.purchase( @amount, @creditcard )
+      if response.success?
+        @ident = response.authorization
+        @approved = true
+        @msg = ""
+      else
+        @approved = false
+        @msg = response.message
+      end
+      respond_to do |format|
+        format.json do
+          render :status => (@approved ? 200 : 401), :json=>{:credit_card => @creditcard, :approved => @approved, :amount => @amount, :ident => @ident, :message => @msg}.to_json
+        end
+        format.xml do
+          render :status => (@approved ? 200 : 401)
+        end
+      end
+    end
+  end
+
   def capture
     if !ensure_post?
       return
