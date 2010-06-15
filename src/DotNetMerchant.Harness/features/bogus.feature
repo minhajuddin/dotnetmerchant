@@ -3,6 +3,7 @@ Feature: Bogus Resource
 	As a REST Client
 	I want to be able to initiate credit card transactions and receive status messages
 
+############################################## Authorize ##########################################################
 Scenario: Authorize endpoint of the Bogus resource should validate a valid transaction and return xml
 	Given the following parameters
 		| name         | value            |
@@ -45,6 +46,14 @@ Scenario: Authorize endpoint of the Bogus resource should not validate an invali
           Then the response code should indicate unauthorized
           And the response should contain json property "approved" with value false
 
+Scenario: Authorize endpoint of the Bogus resource should only allow POST requests
+        Given the following parameters
+          | name         | value            |
+          | fake         | param            |
+          When I get the Authorize endpoint of the Bogus resource as json
+          Then the response code should indicate that the method is not allowed  
+
+############################################## Void ##########################################################
 Scenario: Void endpoint of the Bogus resource should cancel a pre-authorized transaction, returning json
       Given the following parameters
           | name         | value            |
@@ -63,27 +72,6 @@ Scenario: Void endpoint of the Bogus resource should cancel a pre-authorized tra
           Then the response code should indicate success
           And the response should contain "<void>"
           And the response should contain "<approved>true</approved>"
-
-Scenario: Capture endpoint of the Bogus resource should not complete a phony transaction, returning xml
-      Given the following parameters
-          | name         | value            |
-          | amount       | 1000             |
-          | ident        | 2                |
-          | test         | true             |
-          When I post to the Capture endpoint of the Bogus resource as xml
-          Then the response code should indicate unauthorized
-          And the response should contain "<capture>"
-          And the response should contain "<approved>false</approved>"
-
-Scenario: Capture endpoint of the Bogus resource should not complete a phony transaction, returning json
-      Given the following parameters
-          | name         | value            |
-          | amount       | 1000             |
-          | ident        | 2                |
-          | test         | true             |
-          When I post to the Capture endpoint of the Bogus resource as json
-          Then the response code should indicate unauthorized
-          And the response should contain json property "approved" with value false
 
 Scenario: Void endpoint of the Bogus resource should not cancel a phony transaction, returning json
       Given the following parameters
@@ -106,12 +94,56 @@ Scenario: Void endpoint of the Bogus resource should not cancel a phony transact
           And the response should contain "<void>"
           And the response should contain "<approved>false</approved>"
 
-Scenario: Authorize endpoint of the Bogus resource should only allow POST requests
+Scenario: Void endpoint of the Bogus resource should only allow POST requests
+          Given the following parameters
+            | name         | value            |
+            | fake         | param            |
+            When I get the Void endpoint of the Bogus resource as json
+            Then the response code should indicate that the method is not allowed
+
+
+############################################## Capture ##########################################################
+Scenario: Capture endpoint of the Bogus resource should complete a pre-authorized transaction, returning json
         Given the following parameters
+            | name         | value            |
+            | number       | 1                |
+            | amount       | 10000            |
+            | test         | true             |
+            When I post to the Capture endpoint of the Bogus resource as json
+            Then the response code should indicate success
+            And the response should contain json property "approved" with value true
+
+Scenario: Cature endpoint of the Bogus resource should complete a pre-authorized transaction, returning xml
+        Given the following parameters
+            | name         | value            |
+            | number       | 1                |
+            | amount       | 10000            |
+            | test         | true             |
+            When I post to the Capture endpoint of the Bogus resource as xml
+            Then the response code should indicate success
+            And the response should contain "<capture>"
+            And the response should contain "<approved>true</approved>"
+
+Scenario: Capture endpoint of the Bogus resource should not complete a phony transaction, returning xml
+      Given the following parameters
           | name         | value            |
-          | fake         | param            |
-          When I get the Authorize endpoint of the Bogus resource as json
-          Then the response code should indicate that the method is not allowed
+          | amount       | 1000             |
+          | ident        | 2                |
+          | test         | true             |
+          When I post to the Capture endpoint of the Bogus resource as xml
+          Then the response code should indicate unauthorized
+          And the response should contain "<capture>"
+          And the response should contain "<approved>false</approved>"
+
+Scenario: Capture endpoint of the Bogus resource should not complete a phony transaction, returning json
+      Given the following parameters
+          | name         | value            |
+          | amount       | 1000             |
+          | ident        | 2                |
+          | test         | true             |
+          When I post to the Capture endpoint of the Bogus resource as json
+          Then the response code should indicate unauthorized
+          And the response should contain json property "approved" with value false
 
 Scenario: Capture endpoint of the Bogus resource should only allow POST requests
         Given the following parameters
@@ -120,10 +152,4 @@ Scenario: Capture endpoint of the Bogus resource should only allow POST requests
           When I get the Capture endpoint of the Bogus resource as json
           Then the response code should indicate that the method is not allowed
 
-Scenario: Void endpoint of the Bogus resource should only allow POST requests
-        Given the following parameters
-          | name         | value            |
-          | fake         | param            |
-          When I get the Void endpoint of the Bogus resource as json
-          Then the response code should indicate that the method is not allowed
 
