@@ -103,6 +103,31 @@ class GatewayBaseController < ApplicationController
   end
 
   def credit
+    if !ensure_post?
+      return
+    end
+    @amount = params[:amount]
+    @ident = params[:ident]
+
+    if params[:test]
+      ActiveMerchant::Billing::Base.mode = :test
+    end
+    @ident = params[:ident]
+    response = gateway.credit( @amount, @ident )
+    @msg = response.message
+    if response.success?
+        @approved = true
+      else
+        @approved = false
+      end
+      respond_to do |format|
+        format.json do
+          render :status => (@approved ? 200 : 401), :json=>{:approved => @approved, :amount => @amount, :ident => @ident, :message => @msg}.to_json
+        end
+        format.xml do
+          render :status => (@approved ? 200 : 401)
+        end
+    end
   end
 
 

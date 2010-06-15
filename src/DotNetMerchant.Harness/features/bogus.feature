@@ -152,4 +152,53 @@ Scenario: Capture endpoint of the Bogus resource should only allow POST requests
           When I get the Capture endpoint of the Bogus resource as json
           Then the response code should indicate that the method is not allowed
 
+############################################## Credit ##########################################################
+Scenario: Credit endpoint of the Bogus resource should complete a pre-authorized transaction, returning json
+        Given the following parameters
+            | name         | value            |
+            | number       | 1                |
+            | amount       | 10000            |
+            | test         | true             |
+            When I post to the Credit endpoint of the Bogus resource as json
+            Then the response code should indicate success
+            And the response should contain json property "approved" with value true
+
+Scenario: Cature endpoint of the Bogus resource should complete a pre-authorized transaction, returning xml
+        Given the following parameters
+            | name         | value            |
+            | number       | 1                |
+            | amount       | 10000            |
+            | test         | true             |
+            When I post to the Credit endpoint of the Bogus resource as xml
+            Then the response code should indicate success
+            And the response should contain "<credit>"
+            And the response should contain "<approved>true</approved>"
+
+Scenario: Credit endpoint of the Bogus resource should not complete a phony transaction, returning xml
+      Given the following parameters
+          | name         | value            |
+          | amount       | 1000             |
+          | ident        | 2                |
+          | test         | true             |
+          When I post to the Credit endpoint of the Bogus resource as xml
+          Then the response code should indicate unauthorized
+          And the response should contain "<credit>"
+          And the response should contain "<approved>false</approved>"
+
+Scenario: Credit endpoint of the Bogus resource should not complete a phony transaction, returning json
+      Given the following parameters
+          | name         | value            |
+          | amount       | 1000             |
+          | ident        | 2                |
+          | test         | true             |
+          When I post to the Credit endpoint of the Bogus resource as json
+          Then the response code should indicate unauthorized
+          And the response should contain json property "approved" with value false
+
+Scenario: Credit endpoint of the Bogus resource should only allow POST requests
+        Given the following parameters
+          | name         | value            |
+          | fake         | param            |
+          When I get the Credit endpoint of the Bogus resource as json
+          Then the response code should indicate that the method is not allowed
 
