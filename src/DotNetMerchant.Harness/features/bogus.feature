@@ -14,6 +14,8 @@ Scenario: Authorize endpoint of the Bogus resource should validate a valid trans
 		Then the response code should indicate success 
 		And the response should contain "<authorization>"
         And the response should contain "<approved>true</approved>"
+        And the response should contain "<cvv_result>"
+        And the response should contain "<avs_result>"
 
 Scenario: Authorize endpoint of the Bogus resource should not validate an invalid transaction and return xml
 	Given the following parameters
@@ -35,6 +37,8 @@ Scenario: Authorize endpoint of the Bogus resource should validate a valid trans
           When I post to the Authorize endpoint of the Bogus resource as json
           Then the response code should indicate success
           And the response should contain json property "approved" with value true
+          And the response should contain json property "avs_result"
+          And the response should contain json property "cvv_result"
 
 Scenario: Authorize endpoint of the Bogus resource should not validate an invalid transaction and return json
       Given the following parameters
@@ -64,6 +68,8 @@ Scenario: Purchase endpoint of the Bogus resource should validate a valid transa
 		Then the response code should indicate success
 		And the response should contain "<purchase>"
         And the response should contain "<approved>true</approved>"
+        And the response should contain "<cvv_result>"
+        And the response should contain "<avs_result>"
 
 Scenario: Purchase endpoint of the Bogus resource should not validate an invalid transaction and return xml
 	Given the following parameters

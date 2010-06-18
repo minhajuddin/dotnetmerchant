@@ -19,19 +19,16 @@ class ApplicationController < ActionController::Base
             :verification_value  => params[:verification])
   end
 
-  def ensure_post?
-    if !request.post?
+  
+  def render_post_required_error
       @error = "HTTP Post required"
       respond_to do |format|
         format.json do
           render :status => 405, :json=>{:error => @error}.to_json
-        end
-        format.xml do
-          render :status => 405
-        end
       end
-      return false
+      format.xml do
+        render :status => 405
+      end
     end
-    return true
   end
 end
