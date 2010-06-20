@@ -1,18 +1,13 @@
 require 'active_merchant'
 
 class GatewayBaseController < ApplicationController
-  def new
 
-  end
-
-  def gateway
-    if @_gateway.nil?
-      @_gateway = ActiveMerchant::Billing::BogusGateway.new({
-              :login    => 'demo',
-              :password => 'password'
-      })
-    end
-    return @_gateway
+  def creategateway (test)
+    ActiveMerchant::Billing::Base.mode = :test if test
+    ActiveMerchant::Billing::BogusGateway.new({
+            :login    => 'demo',
+            :password => 'password'
+    })
   end
 
 
@@ -25,18 +20,14 @@ class GatewayBaseController < ApplicationController
     creditcard = build_creditcard_from_params(params)
     amount = params[:amount]
 
-    ActiveMerchant::Billing::Base.mode = :test if params[:test]
+    gateway = creategateway(params[:test] == true)
 
-    gateway_response = gateway.authorize(amount, creditcard)
-    auth = GatewayResponse.new gateway_response
-
-    respond_to do |format|
-      format.json do
-        render :status => ( auth.approved? ? 200 : 401), :json => auth.to_json
-      end
-      format.xml do
-        render :status => ( auth.approved? ? 200 : 401), :xml => auth.to_xml( :root => 'authorization', :dasherize => false, :skip_types => true )
-      end
+    begin
+      gateway_response = gateway.authorize(amount, creditcard)
+      auth = GatewayResponse.new gateway_response
+      render_result(auth, "authorization")
+    rescue StandardError => x
+      render_error(x, "authorization")
     end
   end
 
@@ -48,26 +39,14 @@ class GatewayBaseController < ApplicationController
     end
     creditcard = build_creditcard_from_params(params)
     amount = params[:amount]
-    if params[:test]
-      ActiveMerchant::Billing::Base.mode = :test
-    end
+    gateway = creategateway(params[:test] == true)
 
-    gateway_response = gateway.purchase(amount, creditcard)
-    purchase = GatewayResponse.new gateway_response
-
-    if purchase.approved?
-      status = 200
-    else
-      status = 401
-    end
-
-    respond_to do |format|
-      format.json do
-         render :status => status, :json => purchase.to_json
-      end
-      format.xml do
-        render :status => status, :xml => purchase.to_xml( :root => "purchase", :dasherize => false, :skip_types => true)
-      end
+    begin
+      gateway_response = gateway.purchase(amount, creditcard)
+      purchase = GatewayResponse.new gateway_response
+      render_result(purchase, "purchase")
+    rescue StandardError => x
+      render_error(x, "purchase")
     end
   end
 
@@ -79,19 +58,13 @@ class GatewayBaseController < ApplicationController
     amount = params[:amount]
     ident = params[:ident]
 
-    ActiveMerchant::Billing::Base.mode = :test if params[:test]
-
-
-    response = gateway.capture(amount, ident)
-    capture = GatewayResponse.new response
-
-    respond_to do |format|
-      format.json do
-        render :status => (capture.approved? ? 200 : 401), :json => capture.to_json
-      end
-      format.xml do
-        render :status => (capture.approved? ? 200 : 401), :xml => capture.to_xml(:root => "capture", :dasherize => false, :skip_types => true)
-      end
+    gateway = creategateway(params[:test] == true)
+    begin
+      response = gateway.capture(amount, ident)
+      capture = GatewayResponse.new response
+      render_result(capture, "capture")
+    rescue StandardError => x
+      render_error(x, "capture")
     end
   end
 
@@ -101,19 +74,16 @@ class GatewayBaseController < ApplicationController
       return
     end
 
-    ActiveMerchant::Billing::Base.mode = :test if params[:test]
+    gateway = creategateway(params[:test] == true)
 
     ident = params[:ident]
-    response = gateway.void(ident)
-    void = GatewayResponse.new response
-    exclude = [:amount, :cvv_result, :avs_result]
-    respond_to do |format|
-      format.json do
-        render :status => (void.approved? ? 200 : 401), :json => void.to_json(:except => exclude)
-      end
-      format.xml do
-        render :status => (void.approved? ? 200 : 401), :xml =>  void.to_xml(:except => exclude, :root =>'void', :dasherize => false, :skip_types => true)
-      end
+    begin
+      response = gateway.void(ident)
+      void = GatewayResponse.new response
+      exclude = [:amount, :cvv_result, :avs_result]
+      render_result(void, "void", {:except => exclude})
+    rescue StandardError => x
+      render_error(x, "void")
     end
   end
 
@@ -125,18 +95,40 @@ class GatewayBaseController < ApplicationController
     amount = params[:amount]
     ident = params[:ident]
 
-    ActiveMerchant::Billing::Base.mode = :test if params[:test]
-    response = gateway.credit(amount, ident)
-    credit = GatewayResponse.new response
-    respond_to do |format|
-      format.json do
-        render :status => (credit.approved? ? 200 : 401), :json => credit.to_json
-      end
-      format.xml do
-        render :status => (credit.approved? ? 200 : 401), :xml => credit.to_xml(:root=>'credit', :dasherize => false, :skip_types => true)
-      end
+    gateway = creategateway(params[:test] == true)
+    begin
+      response = gateway.credit(amount, ident)
+      credit = GatewayResponse.new response
+      render_result(credit, 'credit')
+    end
+  rescue StandardError => x
+    render_error(x, 'credit')
+  end
+end
+
+private
+def render_error(x, action)
+  error = {:error => x.message}
+  respond_to do |format|
+    format.json do
+      render :status => 400, :json => error.to_json
+    end
+    format.xml do
+      render :status => 400, :xml => error.to_xml(:root => action, :skip_types => true)
     end
   end
+end
 
-
+def render_result(response, action, options={})
+  respond_to do |format|
+    format.json do
+      render :status => (response.approved? ? 200 : 401), :json => response.to_json(options)
+    end
+    format.xml do
+      options[:root] = action
+      options[:dasherize] = false unless !options[:dasherize].nil?
+      options[:skip_types] = true unless !options[:skip_types].nil?
+      render :status => (response.approved? ? 200 : 401), :xml => response.to_xml(options)
+    end
+  end
 end

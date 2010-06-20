@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :version
   map.connect '/credit_card/:action.:format', :controller=>'credit_card'
   map.connect '/bogus/:action.:format', :controller=>'gateway_base'
+  map.connect '/braintree/:action.:format', :controller=>'braintree'
 #  map.resources :gateway_base
 #  map.connect '/credit_card/verify.xml', :controller =>'credit_card', :action =>'verify', :format =>'xml'
 #  map.connect '/credit_card/verify.json', :controller =>'credit_card', :action =>'verify', :format =>'json'

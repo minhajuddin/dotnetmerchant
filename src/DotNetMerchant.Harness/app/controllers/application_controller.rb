@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   def build_creditcard_from_params(params)
-    print params
     ActiveMerchant::Billing::CreditCard.new(
             :number              => params[:number],
             :month               => params[:month],
