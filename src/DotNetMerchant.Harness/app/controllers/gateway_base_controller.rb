@@ -2,11 +2,13 @@ require 'active_merchant'
 
 class GatewayBaseController < ApplicationController
 
-  def creategateway (test)
-    ActiveMerchant::Billing::Base.mode = :test if test
+  def creategateway (options = {})
+    test = options[:test] || false
+    ActiveMerchant::Billing::Base.mode = test
+
     ActiveMerchant::Billing::BogusGateway.new({
-            :login    => 'demo',
-            :password => 'password'
+            :login    => options[:login] || 'user',
+            :password => options[:password] || 'password'
     })
   end
 
@@ -19,8 +21,8 @@ class GatewayBaseController < ApplicationController
 
     creditcard = build_creditcard_from_params(params)
     amount = params[:amount]
+    gateway = creategateway(params)
 
-    gateway = creategateway(params[:test] == true)
 
     begin
       gateway_response = gateway.authorize(amount, creditcard)
@@ -38,15 +40,17 @@ class GatewayBaseController < ApplicationController
       return
     end
     creditcard = build_creditcard_from_params(params)
-    amount = params[:amount]
-    gateway = creategateway(params[:test] == true)
+    amount = params[:amount].to_i
+    gateway = creategateway(params)
 
     begin
       gateway_response = gateway.purchase(amount, creditcard)
       purchase = GatewayResponse.new gateway_response
       render_result(purchase, "purchase")
     rescue StandardError => x
-      render_error(x, "purchase")
+      f = Fakovv.new
+      f.message = x.message << ' amount was ' << amount
+      render_error(f, "purchase")
     end
   end
 
@@ -55,10 +59,11 @@ class GatewayBaseController < ApplicationController
       render_post_required_error
       return
     end
+
     amount = params[:amount]
     ident = params[:ident]
 
-    gateway = creategateway(params[:test] == true)
+    gateway = creategateway(params)
     begin
       response = gateway.capture(amount, ident)
       capture = GatewayResponse.new response
@@ -74,7 +79,7 @@ class GatewayBaseController < ApplicationController
       return
     end
 
-    gateway = creategateway(params[:test] == true)
+    gateway = creategateway(params)
 
     ident = params[:ident]
     begin
@@ -95,7 +100,7 @@ class GatewayBaseController < ApplicationController
     amount = params[:amount]
     ident = params[:ident]
 
-    gateway = creategateway(params[:test] == true)
+    gateway = creategateway(params)
     begin
       response = gateway.credit(amount, ident)
       credit = GatewayResponse.new response
@@ -104,31 +109,46 @@ class GatewayBaseController < ApplicationController
   rescue StandardError => x
     render_error(x, 'credit')
   end
-end
 
-private
-def render_error(x, action)
-  error = {:error => x.message}
-  respond_to do |format|
-    format.json do
-      render :status => 400, :json => error.to_json
+
+  private
+  def render_error(x, action)
+    error = {:error => x.message}
+    respond_to do |format|
+      format.json do
+        render :status => 400, :json => error.to_json
+      end
+      format.xml do
+        render :status => 400, :xml => error.to_xml(:root => action, :skip_types => true)
+      end
     end
-    format.xml do
-      render :status => 400, :xml => error.to_xml(:root => action, :skip_types => true)
+  end
+
+  def render_result(response, action, options={})
+    respond_to do |format|
+      format.json do
+        render :status => (response.approved? ? 200 : 401), :json => response.to_json(options)
+      end
+      format.xml do
+        options[:root] = action
+        options[:dasherize] = false unless !options[:dasherize].nil?
+        options[:skip_types] = true unless !options[:skip_types].nil?
+        render :status => (response.approved? ? 200 : 401), :xml => response.to_xml(options)
+      end
     end
+  end
+
+  def build_creditcard_from_params(params)
+    ActiveMerchant::Billing::CreditCard.new(
+            :number              => params[:number],
+            :month               => params[:month],
+            :year                => params[:year],
+            :first_name          => params[:first_name],
+            :last_name           => params[:last_name],
+            :verification_value  => params[:verification])
   end
 end
 
-def render_result(response, action, options={})
-  respond_to do |format|
-    format.json do
-      render :status => (response.approved? ? 200 : 401), :json => response.to_json(options)
-    end
-    format.xml do
-      options[:root] = action
-      options[:dasherize] = false unless !options[:dasherize].nil?
-      options[:skip_types] = true unless !options[:skip_types].nil?
-      render :status => (response.approved? ? 200 : 401), :xml => response.to_xml(options)
-    end
-  end
+class Fakovv
+  attr_accessor :message
 end

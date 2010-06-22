@@ -1,10 +1,12 @@
 class BraintreeController < GatewayBaseController
 
-  def creategateway (test)
-    ActiveMerchant::Billing::Base.mode = :test if test
+  def creategateway (options = {})
+    test = options[:test] || false
+    ActiveMerchant::Billing::Base.mode = test
+
     ActiveMerchant::Billing::BraintreeGateway.new({
-            :login    => 'demo',
-            :password => 'password'
+            :login    => options[:login] || 'user',
+            :password => options[:password] || 'password'
     })
   end
 end
