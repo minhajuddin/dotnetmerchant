@@ -4,7 +4,7 @@ class GatewayBaseController < ApplicationController
 
   def creategateway (options = {})
     test = options[:test] || false
-    ActiveMerchant::Billing::Base.mode = test
+    ActiveMerchant::Billing::Base.mode = test ? :test : :production
 
     ActiveMerchant::Billing::BogusGateway.new({
             :login    => options[:login] || 'user',
@@ -20,7 +20,7 @@ class GatewayBaseController < ApplicationController
     end
 
     creditcard = build_creditcard_from_params(params)
-    amount = params[:amount]
+    amount = params[:amount].to_i
     gateway = creategateway(params)
 
 
@@ -60,7 +60,7 @@ class GatewayBaseController < ApplicationController
       return
     end
 
-    amount = params[:amount]
+    amount = params[:amount].to_i
     ident = params[:ident]
 
     gateway = creategateway(params)
@@ -97,7 +97,7 @@ class GatewayBaseController < ApplicationController
       render_post_required_error
       return
     end
-    amount = params[:amount]
+    amount = params[:amount].to_i
     ident = params[:ident]
 
     gateway = creategateway(params)

@@ -1,12 +1,12 @@
 class AuthorizeNetController < GatewayBaseController
  def creategateway (options = {})
     test = options[:test] || false
-    ActiveMerchant::Billing::Base.mode = :test if test
+    ActiveMerchant::Billing::Base.mode = test ? :test : :production
 
     ActiveMerchant::Billing::AuthorizeNetGateway.new({
             :login    => options[:login] || 'user',
             :password => options[:password] || 'password',
-            :test => test
+            :test => options[:gatewaytest] || false
     })
   end
 end

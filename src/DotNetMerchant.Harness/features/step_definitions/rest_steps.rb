@@ -14,7 +14,14 @@ Given /^the following parameters$/ do |table|
 end
 
 Given /^the (\b.*\b) credentials$/ do |credentials|
-   credfile = YAML.load_file( File.join(Rails.root, 'features', 'support', 'credentials.yml'))
+   credfilepath = File.join(Rails.root, 'features', 'support', 'credentials.yml')
+
+   assert File.exists?(credfilepath), "Add a file called credentials.yml to features/support. see credentials.yml.example"
+
+   credfile = YAML.load_file(credfilepath)
+
+   assert !credfile[credentials].nil?, "Add credentials called '" + credentials + "' to features/support/credentials.yml"
+   
    credfile[credentials].each do | name, value |
      @parameters[name.intern] = value
    end
