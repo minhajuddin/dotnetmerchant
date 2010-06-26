@@ -10,6 +10,7 @@ Scenario: Authorize endpoint of the Bogus resource should validate a valid trans
 		| number       | 1                |
         | amount       | 1000             |
         | test         | true             |
+     And the default credentials
 		When I post to the Authorize endpoint of the Bogus resource as xml
 		Then the response code should indicate success 
 		And the response should contain "<authorization>"
@@ -23,6 +24,7 @@ Scenario: Authorize endpoint of the Bogus resource should not validate an invali
 		| number       | 2                |
         | amount       | 1000             |
         | test         | true             |
+    And the default credentials
 		When I post to the Authorize endpoint of the Bogus resource as xml
 		Then the response code should indicate unauthorized
 		And the response should contain "<authorization>"
@@ -34,6 +36,7 @@ Scenario: Authorize endpoint of the Bogus resource should validate a valid trans
           | number       | 1                |
           | amount       | 1000             |
           | test         | true             |
+      And the default credentials
           When I post to the Authorize endpoint of the Bogus resource as json
           Then the response code should indicate success
           And the response should contain json property "approved" with value true
@@ -46,6 +49,7 @@ Scenario: Authorize endpoint of the Bogus resource should not validate an invali
           | number       | 2                |
           | amount       | 1000             |
           | test         | true             |
+      And the default credentials
           When I post to the Authorize endpoint of the Bogus resource as json
           Then the response code should indicate unauthorized
           And the response should contain json property "approved" with value false
@@ -64,6 +68,7 @@ Scenario: Purchase endpoint of the Bogus resource should validate a valid transa
 		| number       | 1                |
         | amount       | 1000             |
         | test         | true             |
+ 
 		When I post to the Purchase endpoint of the Bogus resource as xml
 		Then the response code should indicate success
 		And the response should contain "<purchase>"

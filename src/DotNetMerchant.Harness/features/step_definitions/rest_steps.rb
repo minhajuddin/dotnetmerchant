@@ -1,6 +1,8 @@
 # rest steps
 require 'rest_client'
 require 'cgi'
+require 'yaml'
+
 $root_url = "http://localhost:3000"
 
 Given /^the following parameters$/ do |table|
@@ -9,6 +11,13 @@ Given /^the following parameters$/ do |table|
     @parameters[hash[:name]] = hash[:value]
   end
   #@parameters = table.hashes
+end
+
+Given /^the (\b.*\b) credentials$/ do |credentials|
+   credfile = YAML.load_file( File.join(Rails.root, 'features', 'support', 'credentials.yml'))
+   credfile[credentials].each do | name, value |
+     @parameters[name.intern] = value
+   end
 end
 
 When /^(?:|I )get the (\b.*\b) endpoint as (.+)$/ do |endpoint, format|

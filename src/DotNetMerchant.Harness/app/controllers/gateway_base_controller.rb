@@ -138,15 +138,7 @@ class GatewayBaseController < ApplicationController
     end
   end
 
-  def build_creditcard_from_params(params)
-    ActiveMerchant::Billing::CreditCard.new(
-            :number              => params[:number],
-            :month               => params[:month],
-            :year                => params[:year],
-            :first_name          => params[:first_name],
-            :last_name           => params[:last_name],
-            :verification_value  => params[:verification])
-  end
+  
 end
 
 class Fakovv
