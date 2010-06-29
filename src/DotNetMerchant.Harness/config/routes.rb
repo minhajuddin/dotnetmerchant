@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/bogus/:action.:format', :controller=>'gateway_base'
   map.connect '/braintree/:action.:format', :controller=>'braintree'
   map.connect '/authorizenet/:action.:format', :controller=>'authorize_net'
+  map.connect '/beanstream/:action.:format', :controller=>'beanstream'
 #  map.resources :gateway_base
 #  map.connect '/credit_card/verify.xml', :controller =>'credit_card', :action =>'verify', :format =>'xml'
 #  map.connect '/credit_card/verify.json', :controller =>'credit_card', :action =>'verify', :format =>'json'

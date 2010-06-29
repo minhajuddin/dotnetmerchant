@@ -1,11 +1,11 @@
 Feature: Authorize_Net Resource
-  In order test the base controller functionality
+  In order test the AuthorizeNet controller functionality
   As a REST Client
   I want to be able to initiate credit card transactions and receive status messages
 
 ############################################## Authorize ##########################################################
 
-  Scenario: Authorize endpoint of the Authorize_Net resource should validate a valid transaction and return xml
+  Scenario: Authorize endpoint of the AuthorizeNet resource should validate a valid transaction and return xml
     Given the following parameters
       | name       | value         |
       | amount     | 1000          |
@@ -52,7 +52,7 @@ Feature: Authorize_Net Resource
       | test        | true          |
       | gatewaytest | true          |
     And the AuthorizeNet credentials
-    And the AuthorizeNet's invalid visa details
+    And the AuthorizeNet gateway's invalid visa details
     When I post to the Authorize endpoint of the AuthorizeNet resource as json
     Then the response code should indicate unauthorized
     And the response should contain json property "approved" with value false
