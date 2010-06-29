@@ -8,13 +8,9 @@ Feature: Authorize_Net Resource
   Scenario: Authorize endpoint of the Authorize_Net resource should validate a valid transaction and return xml
     Given the following parameters
       | name       | value         |
-      | number     | 4007000000027 |
-      | year       | 2011          |
-      | month      | 8             |
-      | first_name | Han           |
-      | last_name  | Soloo         |
       | amount     | 1000          |
       | test       | true          |
+    And the AuthorizeNet gateway's valid visa details
     And the AuthorizeNet credentials
     When I post to the Authorize endpoint of the AuthorizeNet resource as xml
     Then the response code should indicate success
@@ -26,15 +22,11 @@ Feature: Authorize_Net Resource
   Scenario: Authorize endpoint of the AuthorizeNet resource should not validate an invalid transaction and return xml
     Given the following parameters
       | name        | value         |
-      | number      | 4222222222222 |
-      | year        | 2011          |
-      | month       | 8             |
-      | first_name  | Han           |
-      | last_name   | Soloo         |
       | amount      | 200           |
       | test        | true          |
       | gatewaytest | true          |
     And the AuthorizeNet credentials
+    And the AuthorizeNet gateway's invalid visa details
     When I post to the Authorize endpoint of the AuthorizeNet resource as xml
     Then the response code should indicate unauthorized
     And the response should contain "<authorization>"
@@ -43,14 +35,10 @@ Feature: Authorize_Net Resource
   Scenario: Authorize endpoint of the AuthorizeNet resource should validate a valid transaction and return json
     Given the following parameters
       | name       | value          |
-      | number     | 4012888818888  |
-      | year       | 2011           |
-      | month      | 8              |
-      | first_name | Han            |
-      | last_name  | Soloo          |
       | amount     | 1823           |
       | test       | true           |
     And the AuthorizeNet credentials
+    And the AuthorizeNet gateway's valid amex details
     When I post to the Authorize endpoint of the AuthorizeNet resource as json
     Then the response code should indicate success
     And the response should contain json property "approved" with value true
@@ -60,15 +48,11 @@ Feature: Authorize_Net Resource
   Scenario: Authorize endpoint of the AuthorizeNet resource should not validate an invalid transaction and return json
     Given the following parameters
       | name        | value         |
-      | number      | 4222222222222 |
-      | year        | 2011          |
-      | month       | 8             |
-      | first_name  | Han           |
-      | last_name   | Soloo         |
       | amount      | 200           |
       | test        | true          |
       | gatewaytest | true          |
     And the AuthorizeNet credentials
+    And the AuthorizeNet's invalid visa details
     When I post to the Authorize endpoint of the AuthorizeNet resource as json
     Then the response code should indicate unauthorized
     And the response should contain json property "approved" with value false
@@ -82,14 +66,10 @@ Feature: Authorize_Net Resource
   Scenario: Purchase endpoint of the AuthorizeNet resource should validate a valid transaction and return xml
     Given the following parameters
       | name       | value           |
-      | number     | 370000000000002 |
-      | year       | 2011            |
-      | month      | 8               |
-      | first_name | Han             |
-      | last_name  | Soloo           |
       | amount     | 1433            |
       | test       | true            |
     And the AuthorizeNet credentials
+    And the AuthorizeNet gateway's valid amex details
     When I post to the Purchase endpoint of the AuthorizeNet resource as xml
     Then the response code should indicate success
     And the response should contain "<purchase>"
@@ -100,15 +80,11 @@ Feature: Authorize_Net Resource
   Scenario: Purchase endpoint of the AuthorizeNet resource should not validate an invalid transaction and return xml
     Given the following parameters
       | name        | value         |
-      | number      | 4222222222222 |
-      | year        | 2011          |
-      | month       | 8             |
-      | first_name  | Han           |
-      | last_name   | Soloo         |
       | amount      | 200           |
       | test        | true          |
       | gatewaytest | true          |
     And the AuthorizeNet credentials
+    And the AuthorizeNet gateway's invalid visa details
     When I post to the Purchase endpoint of the AuthorizeNet resource as xml
     Then the response code should indicate unauthorized
     And the response should contain "<purchase>"
@@ -117,14 +93,10 @@ Feature: Authorize_Net Resource
   Scenario: Purchase endpoint of the AuthorizeNet resource should validate a valid transaction and return json
     Given the following parameters
       | name       | value         |
-      | number     | 4012888818888 |
-      | year       | 2011          |
-      | month      | 8             |
-      | first_name | Han           |
-      | last_name  | Soloo         |
       | amount     | 1859          |
       | test       | true          |
     And the AuthorizeNet credentials
+    And the AuthorizeNet gateway's valid visa2 details
     When I post to the Purchase endpoint of the AuthorizeNet resource as json
     Then the response code should indicate success
     And the response should contain json property "approved" with value true
@@ -132,14 +104,10 @@ Feature: Authorize_Net Resource
   Scenario: Purchase endpoint of the AuthorizeNet resource should not validate an invalid transaction and return json
     Given the following parameters
       | name        | value         |
-      | number      | 4222222222222 |
-      | year        | 2011          |
-      | month       | 8             |
-      | first_name  | Han           |
-      | last_name   | Soloo         |
       | amount      | 200           |
       | test        | true          |
       | gatewaytest | true          |
+    And the AuthorizeNet gateway's invalid visa details
     And the AuthorizeNet credentials
     When I post to the Purchase endpoint of the AuthorizeNet resource as json
     Then the response code should indicate unauthorized

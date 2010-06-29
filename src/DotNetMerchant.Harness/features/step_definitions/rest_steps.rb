@@ -4,6 +4,7 @@ require 'cgi'
 require 'yaml'
 
 $root_url = "http://localhost:3000"
+$credfilepath = File.join(Rails.root, 'features', 'support', 'credentials.yml')
 
 Given /^the following parameters$/ do |table|
   @parameters = Hash.new
@@ -13,19 +14,35 @@ Given /^the following parameters$/ do |table|
   #@parameters = table.hashes
 end
 
-Given /^the (\b.*\b) credentials$/ do |credentials|
-   credfilepath = File.join(Rails.root, 'features', 'support', 'credentials.yml')
-
-   assert File.exists?(credfilepath), "Add a file called credentials.yml to features/support. see credentials.yml.example"
-
-   credfile = YAML.load_file(credfilepath)
-
-   assert !credfile[credentials].nil?, "Add credentials called '" + credentials + "' to features/support/credentials.yml"
+Given /^the (\b.*\b) credentials$/ do |gateway|
    
-   credfile[credentials].each do | name, value |
+
+   assert File.exists?($credfilepath), "Add a file called credentials.yml to features/support. see credentials.yml.example"
+
+   credfile = YAML.load_file($credfilepath)
+
+   assert !credfile[gateway].nil?, "Add credentials called '" + gateway + "' to features/support/credentials.yml"
+   assert !credfile[gateway]["credentials"].nil?, "Add values for credentials: to gateway " + gateway + " in features/support/credentials.yml"
+   
+   credfile[gateway]["credentials"].each do | name, value |
      @parameters[name.intern] = value
    end
 end
+
+Given /^the (\b.*\b) gateway's (\b.*\b) (\b.*\b) details$/ do |gateway, variant, cardtype|
+
+   assert File.exists?($credfilepath), "Add a file called credentials.yml to features/support. see credentials.yml.example"
+
+   credfile = YAML.load_file($credfilepath)
+   assert !credfile[gateway].nil?, "Add credentials called '" + gateway + "' to features/support/credentials.yml"
+   assert !credfile[gateway][cardtype].nil?, "Add a card type called '" + cardtype + "' under the " + gateway + " gateway in features/support/credentials.yml"
+   assert !credfile[gateway][cardtype][variant].nil?, "Add a card variant called '"+ variant + "' to card type " + cardtype + " under the " + gateway + " gateway in features/support/credentials.yml"
+   credfile[gateway][cardtype][variant].each do | name, value |
+     @parameters[name.intern] = value
+   end
+
+end
+
 
 When /^(?:|I )get the (\b.*\b) endpoint as (.+)$/ do |endpoint, format|
   path = path_to( :endpoint => endpoint, :format => format)
